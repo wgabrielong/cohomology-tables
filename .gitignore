@@ -1,0 +1,15 @@
+# Julia
+Manifest.toml
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+/docs/build/
+
+# editors / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Downloaded upstream complexes. Never committed: this repository redistributes
+# no triangulations. See docs/PROVENANCE.md.
+/cache/

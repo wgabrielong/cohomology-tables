@@ -1,0 +1,343 @@
+{
+  "coefficients": "Z",
+  "cohomology": [{
+    "basis_labels": ["1"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [0]
+    }, {
+      "coefficient": "1",
+      "face": [13]
+    }, {
+      "coefficient": "1",
+      "face": [14]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [9]
+    }, {
+      "coefficient": "1",
+      "face": [11]
+    }, {
+      "coefficient": "1",
+      "face": [12]
+    }, {
+      "coefficient": "1",
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [10]
+    }, {
+      "coefficient": "1",
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [6]
+    }, {
+      "coefficient": "1",
+      "face": [8]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [7]
+    }]],
+    "degree": 0,
+    "group": "Z",
+    "invariant_factors": ["0"]
+  }, {
+    "basis_labels": ["x1_1", "x1_2", "x1_3"],
+    "cocycle_representatives": [[{
+      "coefficient": "-1",
+      "face": [2, 5]
+    }, {
+      "coefficient": "-1",
+      "face": [2, 8]
+    }, {
+      "coefficient": "-1",
+      "face": [0, 5]
+    }, {
+      "coefficient": "-1",
+      "face": [6, 8]
+    }, {
+      "coefficient": "1",
+      "face": [4, 7]
+    }, {
+      "coefficient": "1",
+      "face": [5, 7]
+    }, {
+      "coefficient": "1",
+      "face": [0, 6]
+    }, {
+      "coefficient": "1",
+      "face": [4, 6]
+    }], [{
+      "coefficient": "1",
+      "face": [3, 4]
+    }, {
+      "coefficient": "-1",
+      "face": [4, 10]
+    }, {
+      "coefficient": "1",
+      "face": [0, 3]
+    }, {
+      "coefficient": "-1",
+      "face": [3, 7]
+    }, {
+      "coefficient": "1",
+      "face": [0, 11]
+    }, {
+      "coefficient": "-1",
+      "face": [4, 5]
+    }, {
+      "coefficient": "-1",
+      "face": [4, 7]
+    }, {
+      "coefficient": "1",
+      "face": [10, 11]
+    }, {
+      "coefficient": "-1",
+      "face": [6, 7]
+    }], [{
+      "coefficient": "-1",
+      "face": [1, 14]
+    }, {
+      "coefficient": "-1",
+      "face": [12, 14]
+    }, {
+      "coefficient": "1",
+      "face": [2, 5]
+    }, {
+      "coefficient": "1",
+      "face": [2, 8]
+    }, {
+      "coefficient": "-1",
+      "face": [0, 2]
+    }, {
+      "coefficient": "1",
+      "face": [2, 12]
+    }, {
+      "coefficient": "1",
+      "face": [6, 8]
+    }, {
+      "coefficient": "1",
+      "face": [0, 1]
+    }, {
+      "coefficient": "1",
+      "face": [0, 8]
+    }]],
+    "degree": 1,
+    "group": "Z^3",
+    "invariant_factors": ["0", "0", "0"]
+  }, {
+    "basis_labels": ["x2"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [4, 6, 7]
+    }]],
+    "degree": 2,
+    "group": "Z/2",
+    "invariant_factors": ["2"]
+  }],
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 2,
+    "f_vector": [15, 51, 34],
+    "facets_sha256": "8aad0f415fecd7e6a4f42b17c8db08e9264068f41ed6b97f8df5b9a505e8283a",
+    "n_facets": 34,
+    "n_vertices": 15
+  },
+  "consistency_checks": [],
+  "provenance": "Sage",
+  "reproducible_labelling": false,
+  "ring_presentation": null,
+  "schema": "cohomology-tables/ring-record/1",
+  "source": {
+    "invocation": "simplicial_complexes.SurfaceOfGenus(4, orientable=False)",
+    "kind": "sage",
+    "labelling_caveat": "simplicial_complexes.SurfaceOfGenus(4, orientable=False) returns a differently labelled complex on each Sage process. The facets_sha256 below is the labelling this record was computed from and will not generally be reproduced; the cohomology ring is unaffected, being a topological invariant, but the cocycle representatives belong to that labelling. regenerate_sage.jl checks isomorphism invariants for these entries instead of the hash.",
+    "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
+    "reproducible_labelling": false,
+    "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
+  },
+  "space": "N_4",
+  "structure_constants": [{
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 0
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 1,
+      "index": 1,
+      "label": "x1_1"
+    },
+    "coefficients": ["1", "0", "0"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 1,
+      "index": 2,
+      "label": "x1_2"
+    },
+    "coefficients": ["0", "1", "0"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 1,
+      "index": 3,
+      "label": "x1_3"
+    },
+    "coefficients": ["0", "0", "1"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 2,
+      "index": 1,
+      "label": "x2"
+    },
+    "coefficients": ["1"],
+    "product_degree": 2
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 1,
+      "label": "x1_1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1", "0", "0"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 1,
+      "label": "x1_1"
+    },
+    "b": {
+      "degree": 1,
+      "index": 2,
+      "label": "x1_2"
+    },
+    "coefficients": ["1"],
+    "product_degree": 2
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 1,
+      "label": "x1_1"
+    },
+    "b": {
+      "degree": 1,
+      "index": 3,
+      "label": "x1_3"
+    },
+    "coefficients": ["1"],
+    "product_degree": 2
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 2,
+      "label": "x1_2"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["0", "1", "0"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 2,
+      "label": "x1_2"
+    },
+    "b": {
+      "degree": 1,
+      "index": 1,
+      "label": "x1_1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 2
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 3,
+      "label": "x1_3"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["0", "0", "1"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 3,
+      "label": "x1_3"
+    },
+    "b": {
+      "degree": 1,
+      "index": 1,
+      "label": "x1_1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 2
+  }, {
+    "a": {
+      "degree": 2,
+      "index": 1,
+      "label": "x2"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 2
+  }],
+  "structure_constants_complete": true,
+  "topological_type": "non-orientable surface of genus 4",
+  "vertex_order_convention": "Alexander-Whitney cup product with respect to the ascending order of the canonical 0-based vertex labels; see docs/CANONICALIZATION.md"
+}

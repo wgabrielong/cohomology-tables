@@ -1,0 +1,89 @@
+{
+  "coefficients": "Z",
+  "cohomology": [{
+    "basis_labels": ["1"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [0]
+    }]],
+    "degree": 0,
+    "group": "Z",
+    "invariant_factors": ["0"]
+  }, {
+    "basis_labels": ["x1"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [0, 1]
+    }]],
+    "degree": 1,
+    "group": "Z",
+    "invariant_factors": ["0"]
+  }],
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 1,
+    "f_vector": [3, 3],
+    "facets_sha256": "292050944910a3a7f1da145b8d152535524602ddce87f8a25a30aea5bf589526",
+    "n_facets": 3,
+    "n_vertices": 3
+  },
+  "consistency_checks": [],
+  "provenance": "built-in",
+  "ring_presentation": "Z[x1]/(x1^2),  |x1| = 1",
+  "schema": "cohomology-tables/ring-record/1",
+  "source": {
+    "invocation": "sphere(1)",
+    "kind": "builtin",
+    "note": "constructed by this package; see src/spaces.jl"
+  },
+  "space": "S^1",
+  "structure_constants": [{
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 0
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 1,
+      "index": 1,
+      "label": "x1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 1,
+      "label": "x1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 1
+  }],
+  "structure_constants_complete": true,
+  "topological_type": "1-sphere",
+  "vertex_order_convention": "Alexander-Whitney cup product with respect to the ascending order of the canonical 0-based vertex labels; see docs/CANONICALIZATION.md"
+}

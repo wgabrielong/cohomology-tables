@@ -1,0 +1,30 @@
+version = 1
+
+# Package source. Oscar.jl is GPL-3.0-or-later, so this must be too.
+[[annotations]]
+path = [
+  "src/**",
+  "scripts/**",
+  "test/**",
+  "docs/**",
+  ".github/**",
+  "Project.toml",
+  "README.md",
+  "CITATION.cff",
+  ".gitignore",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Wern Juin Gabriel Ong"
+SPDX-License-Identifier = "GPL-3.0-or-later"
+
+# Computed cohomology ring records. These contain no upstream facet lists --
+# only a rebuild recipe, a hash of the input, and results computed here.
+[[annotations]]
+path = ["records/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Wern Juin Gabriel Ong"
+SPDX-License-Identifier = "CC0-1.0"
+
+# Deliberately unannotated: the input complexes from Frank H. Lutz's Manifold
+# Page and from SageMath are neither stored nor redistributed by this
+# repository, and no licence is asserted over them. See docs/PROVENANCE.md.

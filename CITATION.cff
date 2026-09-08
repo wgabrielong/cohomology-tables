@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, please cite it as below. For the simplicial
+  complexes it computes with, cite their own sources instead: those are listed
+  per catalogue in docs/PROVENANCE.md, and this repository redistributes none of
+  them.
+title: cohomology-tables
+abstract: >-
+  Cohomology rings and cup product multiplication tables for spaces with a
+  simplicial model, built on the experimental hypercomplex machinery in OSCAR.
+  Ships a catalogue of 203 spaces, one simplicial model per topological type,
+  obtained from SageMath, Frank H. Lutz's Manifold Page and the literature; no
+  triangulations are stored in the repository. Generated ring records carry a
+  rebuild recipe, a SHA-256 of the canonicalised input, cocycle representatives
+  and cup product structure constants.
+type: software
+authors:
+  - family-names: Ong
+    given-names: Wern Juin Gabriel
+    email: gabriel_ong@ieee.org
+repository-code: "https://github.com/wgabrielong/cohomology-tables"
+version: 0.1.0
+date-released: "2026-09-09"
+license: GPL-3.0-or-later
+keywords:
+  - algebraic topology
+  - cohomology ring
+  - cup product
+  - simplicial complex
+  - computational topology
+  - OSCAR
