@@ -464,8 +464,8 @@ There are two record families, distinguished by a token in the filename:
 generated over a fixed grid — `ZZ`, `QQ`, `GF(2)`, `GF(3)`, `GF(5)`, `GF(7)` —
 and carry groups, invariant factors, Betti numbers and torsion, with **no
 representatives** and no `vertex_order_convention` (homology does not depend on
-the vertex order). As shipped that is 227 ring records and 1182 homology
-records, about 12 MB.
+the vertex order). As shipped that is 242 ring records and 1182 homology
+records, about 19 MB.
 
 ```bash
 julia scripts/export_records.jl                  # ring records + MANIFEST.tsv
@@ -598,6 +598,13 @@ Worth recording, because each was found by a check rather than by reading:
 * **`scripts/run_tables.jl` failed on every space.**
   `simplicial_cohomology_ring(::SpaceEntry, R)` called `e.build()` on a struct
   whose field is `recipe`. It shipped broken and is now covered by a test.
+* **Two ring records shipped as 0-byte files.** `write_record` opened the
+  output path before computing the JSON, so a record whose consistency checks
+  ran past the export budget truncated the file and left it there;
+  `HMT_32` and `Hom_C6_compl_K5_small` shipped that way over `ZZ`. Writes now
+  serialise first and go through a temp file and a rename, so a record is
+  either complete or absent. A test asserts every shipped record is non-empty
+  and brace-delimited.
 * **`scripts/regenerate_sage.jl` claimed more than it did.** Its output said
   "f-vector and homology match" while comparing only the f-vector. It now reads
   `MANIFEST.tsv`, which carries `f_vector` and `integral_homology` columns, so

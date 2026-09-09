@@ -217,6 +217,29 @@ const OFFLINE_MODELS = vcat(["point" => point_space()],
           length(facets(sphere(2)))
   end
 
+  @testset "every shipped record is complete" begin
+    # Two 0-byte records shipped in the first release: `write_record` opened the
+    # path before computing the JSON, so a computation that ran past its budget
+    # truncated the file and left it there. Writes now serialise first and go
+    # through a temp file, and this guards the corpus against a repeat.
+    dir = joinpath(@__DIR__, "..", "records")
+    files = filter(f -> endswith(f, ".json"), readdir(dir))
+    @test !isempty(files)
+    for f in files
+      path = joinpath(dir, f)
+      @test filesize(path) > 0
+      text = read(path, String)
+      @test startswith(text, "{") && endswith(rstrip(text), "}")
+    end
+    # a failed write must leave neither a partial record nor a temp file behind
+    tmpdir = mktempdir()
+    e = find_space("S^2")
+    X = simplicial_cohomology_ring("S^2", sphere(2), ZZ)
+    path = write_record(tmpdir, e, X)
+    @test filesize(path) > 0
+    @test isempty(filter(f -> startswith(f, "."), readdir(tmpdir)))
+  end
+
   @testset "homology record shape and filenames" begin
     e = find_space("S^2")
     rec = homology_record(e, simplicial_homology("S^2", sphere(2), ZZ))

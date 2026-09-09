@@ -327,6 +327,27 @@ function record_prefix(name::AbstractString; kind::AbstractString = "")
 end
 
 """
+    _write_atomic(path, text) -> String
+
+Write `text` to `path` via a temp file in the same directory, then rename. The
+rename is atomic on a POSIX filesystem, so a reader never sees a half-written
+record and a crash mid-write leaves the previous file intact.
+"""
+function _write_atomic(path::AbstractString, text::AbstractString)
+  tmp = joinpath(dirname(path), ".$(basename(path)).tmp")
+  try
+    open(tmp, "w") do io
+      print(io, text)
+    end
+    mv(tmp, path; force = true)
+  catch
+    isfile(tmp) && rm(tmp; force = true)
+    rethrow()
+  end
+  return path
+end
+
+"""
     write_record(dir, entry, X; date_accessed) -> String
 
 Write the record for `entry`/`X` into `dir` and return the path.
@@ -336,11 +357,14 @@ function write_record(dir::AbstractString, e::SpaceEntry, X::CohomologyRing;
                       max_basis::Int = 40)
   isdir(dir) || mkpath(dir)
   path = joinpath(dir, record_filename(e.name, X.coeff_ring))
-  open(path, "w") do io
-    print(io, json_string(ring_record(e, X; date_accessed = date_accessed,
-                                      max_basis = max_basis)))
-  end
-  return path
+  # Serialise first, then write. `ring_record` runs the consistency checks and
+  # can exceed the time budget; opening the path first would truncate it and
+  # leave a 0-byte file behind on failure, which is what shipped for HMT_32 and
+  # Hom_C6_compl_K5_small. Write through a temp file so a record is either
+  # complete or absent, never partial.
+  text = json_string(ring_record(e, X; date_accessed = date_accessed,
+                                 max_basis = max_basis))
+  return _write_atomic(path, text)
 end
 
 ### -------------------------------------------------------------------------
@@ -409,8 +433,6 @@ function write_homology_record(dir::AbstractString, e::SpaceEntry, X::Simplicial
                                date_accessed::Union{Nothing,AbstractString} = nothing)
   isdir(dir) || mkpath(dir)
   path = joinpath(dir, record_filename(e.name, X.coeff_ring; kind = "homology"))
-  open(path, "w") do io
-    print(io, json_string(homology_record(e, X; date_accessed = date_accessed)))
-  end
-  return path
+  text = json_string(homology_record(e, X; date_accessed = date_accessed))
+  return _write_atomic(path, text)
 end
