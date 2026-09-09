@@ -662,19 +662,20 @@ Seconds, measured one computation at a time on an Apple M2 Max Mac Studio
 `simplicial_cohomology_ring` *together with its full `cup_product_table`*.
 "faces" is the number of simplices in all dimensions, `sum(f_vector(K))`.
 
-| space | vertices | facets | dim | faces | `H_*` ZZ | `H_*` GF(2) | ring GF(2) | ring GF(7) |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| `S^2` | 4 | 4 | 2 | 14 | 0.00 | 0.00 | 0.00 | 0.00 |
-| `T^2` | 7 | 14 | 2 | 42 | 0.00 | 0.00 | 0.01 | 0.06 |
-| `T^3` | 15 | 90 | 3 | 390 | 0.00 | 0.01 | 0.04 | 0.09 |
-| `Poincare sphere` | 16 | 90 | 3 | 392 | 0.00 | 0.01 | 0.02 | 0.02 |
-| `RP^4` | 16 | 150 | 4 | 991 | 0.02 | 0.07 | 0.17 | 0.08 |
-| `K3` | 16 | 288 | 4 | 1704 | 0.00 | 0.34 | 3.5 | 6.2 |
-| `HP^2` | 15 | 490 | 8 | 16383 | 0.03 | 33 | 34 | 31 |
-| `CP^3` | 18 | 622 | 6 | 8884 | 0.02 | 10 | 14 | 12 |
-| `RP^5` | 24 | 676 | 5 | 6452 | 0.03 | 6.8 | 11 | 5.5 |
-| `HMT_32` | 159 | 3196 | 2 | 6709 | 0.43 | 7.2 | 57 | 6.9 |
-| `S^2 x Poincare sphere` | 64 | 3600 | 5 | 33296 | 0.20 | 149 | 255 | 226 |
+| space | vertices | facets | dim | faces | `H_*` ZZ | `H_*` GF(2) | ring ZZ | ring GF(2) | ring GF(7) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `S^2` | 4 | 4 | 2 | 14 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
+| `T^2` | 7 | 14 | 2 | 42 | 0.00 | 0.00 | 0.01 | 0.01 | 0.06 |
+| `T^3` | 15 | 90 | 3 | 390 | 0.00 | 0.01 | 0.06 | 0.04 | 0.09 |
+| `Poincare sphere` | 16 | 90 | 3 | 392 | 0.00 | 0.01 | 0.02 | 0.02 | 0.02 |
+| `RP^4` | 16 | 150 | 4 | 991 | 0.02 | 0.07 | 0.16 | 0.17 | 0.08 |
+| `K3` | 16 | 288 | 4 | 1704 | 0.00 | 0.34 | 8.4 | 3.5 | 6.2 |
+| `HP^2` | 15 | 490 | 8 | 16383 | 0.03 | 33 | 70 | 34 | 31 |
+| `CP^3` | 18 | 622 | 6 | 8884 | 0.02 | 10 | 14 | 14 | 12 |
+| `RP^5` | 24 | 676 | 5 | 6452 | 0.03 | 6.8 | 8.9 | 11 | 5.5 |
+| `Hom_C6_compl_K5_small` | 33 | 920 | 4 | 5418 | 0.01 | 4.4 | 193 | 75 | 140 |
+| `HMT_32` | 159 | 3196 | 2 | 6709 | 0.43 | 7.2 | 1039 | 57 | 6.9 |
+| `S^2 x Poincare sphere` | 64 | 3600 | 5 | 33296 | 0.20 | 149 | 482 | 255 | 226 |
 
 Two fixed overheads are excluded from those numbers: about **16 seconds** to
 start Julia and load OSCAR, and a few seconds more the first time each code path
@@ -683,10 +684,12 @@ a second for homology. Both are paid once per session, not once per space.
 
 What the table shows:
 
-* **Integral homology is nearly free.** Over `ZZ` the work is delegated to
-  Polymake, so even the largest entry here finishes in a fifth of a second. The
-  field cases are the ones that cost: they go through this package's chain
-  complex and its rank computations.
+* **Integral homology is nearly free; the integral *ring* is the expensive
+  case.** Over `ZZ` homology is delegated to Polymake, so even the largest entry
+  here finishes in a fifth of a second. The cohomology ring over `ZZ` is the
+  opposite: it is the slowest column everywhere it is not trivial, because the
+  canonical bases come from Smith normal forms rather than ranks. `HMT_32` takes
+  1039 seconds over `ZZ` against 6.9 over `GF(7)`, a factor of 150.
 * **Facet count is a poor predictor.** What matters is the total face count and
   the size of the cohomology. `HP^2` has 490 facets — fewer than `RP^5` or
   `HMT_32` — but dimension 8 gives it 16 383 faces, and the largest rank it has
@@ -694,6 +697,12 @@ What the table shows:
   facets, but a 2-complex, so only 6709 faces. Taken to the extreme, `PG128` is
   a 2-complex on 127 vertices, which looks cheap, but `H^1` has rank 2541 and it
   does not finish.
+* **The cup product is quadratic in the number of basis classes.**
+  `Hom_C6_compl_K5_small` is a small complex — 920 facets, 5418 faces, homology
+  in 0.01 s — but `H^2` has rank 58, so the ring carries 60 classes and the
+  table 3600 products. Its cost tracks those 60 classes rather than its 920
+  facets, and 60 is also why its record stores no structure constants: the
+  `max_basis` cutoff is 40.
 * **Coefficients matter.** `RP^4` over `GF(7)` has nothing above degree 0, so
   there is no table to build; over `GF(2)` the same space has a class in every
   degree. `HMT_32`, whose torsion is entirely 2-primary, takes 57 seconds over
@@ -704,8 +713,10 @@ Six entries are marked `heavy` because they were measured not to finish:
 `Hom_n9_655_compl_K4`. `catalogue()` includes them, `catalogue(; heavy = false)`
 does not, and the drivers skip them unless you pass `--all` or name one with
 `--only`. They stay in the catalogue because they are legitimate spaces, not
-because they will finish. Everything else is fast: `S^2 x Poincare sphere`, the
-last row above, is the slowest of the other 197.
+because they will finish. Of the other 197, exactly three exceeded the
+300-second export budget over `ZZ` — the last three rows above — and they were
+re-exported under a 30-minute budget instead. `HMT_32` at just over 17 minutes
+is the slowest of the 197 in any coefficient ring.
 
 ---
 
