@@ -248,28 +248,13 @@ OSCAR's `DGAlgCohRing`.
 ### Verifying
 
 ```bash
-julia scripts/verify_homology.jl              # the whole computable catalogue
-julia scripts/verify_homology.jl --deep       # + an independent integral check
-julia scripts/verify_homology.jl --only K3
+julia scripts/verify_homology.jl             # cheap pass
+julia scripts/verify_homology.jl --cross     # + cross-check against H^*
+julia scripts/verify_homology.jl --deep      # + independent integral homology
 ```
 
-Checks available: against the `H_*` line Lutz's files publish in their own
-headers (fully independent, and present in the single-complex files); against
-Polymake; with `--deep`, against integral homology re-derived here through the
-simplified subquotient and its Smith form; and with `--field`, against the
-cohomology ring over `QQ` and `GF(2)`.
-
-As shipped, the whole catalogue passes: **197/197** against Polymake,
-**195/195** against the independent integral oracle (two complexes too large at
-the default cutoff), and **12/12** against the published headers — with one
-deliberate exception. `SU2_SO3` is reported as differing from its header, which
-is the known case where that header contradicts the facet list in its own file;
-Polymake sides against the header too.
-
-`scripts/run_tables.jl` prints homology alongside each cup product table by
-default (`--no-homology` to suppress). Homology is computed first and in its own
-`try`, so a ring that exceeds the time budget still leaves the groups printed —
-which is the only output available for the six `heavy` entries.
+See [Correctness](#correctness) for what each check compares and what the whole
+corpus currently reports.
 
 ### Cycle representatives are deliberately not stored
 
@@ -533,6 +518,100 @@ entries); such records say so and still carry every basis and representative.
   false on cochains and only becomes true on cohomology, so this is a real
   end-to-end test rather than a tautology. `FAILED` means a bug, not an
   interesting space.
+
+---
+
+## Correctness
+
+Homology and cohomology are computed here by two unrelated routes — a chain
+complex and ranks on one side, OSCAR's `DGAlgCohRing` over a cochain complex on
+the other. That makes them worth checking against each other, and against
+outside authorities. This section records what is checked, what the corpus
+currently reports, and what is *not* guaranteed.
+
+### The cross-check: H_* against H^*, over ten rings
+
+`scripts/verify_homology.jl --cross` computes both sides for every space and
+compares them. What is compared depends on the ring:
+
+* **over a field** — `dim H_d == dim H^d`;
+* **over `ZZ`** — universal coefficients: the free rank of `H^d` matches that of
+  `H_d`, and the **torsion** of `H^d` matches that of `H_(d-1)`. The degree
+  shift is exactly where the two constructions differ, so this is the only check
+  that exercises torsion across both code paths.
+
+The ring grid spans characteristic 0, prime fields, and prime-power fields at
+several characteristics:
+
+| | rings |
+|---|---|
+| characteristic 0 | `ZZ`, `QQ` |
+| prime order | `GF(2)`, `GF(3)`, `GF(5)`, `GF(7)` |
+| prime power order | `GF(4) = F_2^2`, `GF(8) = F_2^3`, `GF(9) = F_3^2`, `GF(25) = F_5^2` |
+
+**Result over the whole corpus: 197 spaces × 10 rings = 1970 comparisons, zero
+disagreements.**
+
+### The other checks
+
+| check | scope | result |
+|---|---|---|
+| OSCAR/Polymake integral homology | every space | 197 / 197 agree |
+| Independent integral homology, re-derived here (`--deep`) | 195 of 197 (two too large) | 195 / 195 agree |
+| The `H_*` line Lutz's files publish in their own headers | the single-complex files | 12 / 13 agree — see below |
+| Cup product laws: unit, graded commutativity (`check_ring`) | every ring record | all pass |
+| Euler characteristic against the f-vector | every space | all pass |
+| Test suite | offline / online | 243 / 279 pass |
+
+### What is *not* independent
+
+**Over `ZZ`, agreement with `Oscar.homology` is definitional, not evidence.**
+Integral Smith normal form does not scale — `snf` of `RP^5`'s third boundary
+matrix (2277 × 1174) did not finish in four minutes — so the `ZZ` path delegates
+to Polymake. Comparing the two therefore compares Polymake with itself. It still
+catches packing mistakes, and `--deep` re-derives integral homology here
+independently for complexes small enough to afford it, but the honest
+independent checks over `ZZ` are the published headers and the universal-
+coefficients cross-check above.
+
+### One source disagrees with itself
+
+`SU2_SO3` is reported as differing from its published header. Its file states
+`H_* = (Z,0,Z,Z,0,Z)`, the homology of `S^2 x S^3`, but reproduces the f-vector
+`(13,78,286,533,468,156)` exactly — and Polymake, the chain complex here, and
+the cup product machinery all give `(Z,0,Z/2,0,0,Z)`, the Wu manifold
+`SU(3)/SO(3)`. Three independent computations side against the header, so the
+catalogue lists it as the Wu manifold and the test suite pins both results.
+
+### Bugs these checks caught
+
+Worth recording, because each was found by a check rather than by reading:
+
+* **`NotIConnected(5,2)` came out as `Z^7` instead of `Z^6`.** The first
+  homology implementation presented the *unsimplified* subquotient, and OSCAR
+  returned 19 relation rows where the image of the sixth boundary map has rank
+  20 — one relation silently dropped. The f-vector forces Euler characteristic
+  −5, which 7 violates, and the complex is known to be a wedge of `(5−2)! = 6`
+  five-spheres. Switching to ranks, done for speed, removed the bug; the
+  cohomology side was never affected because it has always presented the
+  simplified complex.
+* **`scripts/run_tables.jl` failed on every space.**
+  `simplicial_cohomology_ring(::SpaceEntry, R)` called `e.build()` on a struct
+  whose field is `recipe`. It shipped broken and is now covered by a test.
+* **`scripts/regenerate_sage.jl` claimed more than it did.** Its output said
+  "f-vector and homology match" while comparing only the f-vector. It now reads
+  `MANIFEST.tsv`, which carries `f_vector` and `integral_homology` columns, so
+  the claim is true.
+
+### Reproducing
+
+```bash
+julia test/runtests.jl --online                         # 279 checks
+julia scripts/verify_homology.jl --deep                # cheap pass + integral oracle
+julia scripts/verify_homology.jl --cross                # the ten-ring cross-check
+julia scripts/fetch_sources.jl                         # 157 input hashes
+julia scripts/regenerate_sage.jl                       # 32 Sage models
+```
 
 ---
 

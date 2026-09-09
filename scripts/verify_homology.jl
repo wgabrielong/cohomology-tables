@@ -3,10 +3,21 @@
 Check every homology computation against independent authorities.
 
     julia scripts/verify_homology.jl                 # the whole computable catalogue
-    julia scripts/verify_homology.jl --field         # + cross-check against H^*
+    julia scripts/verify_homology.jl --cross         # + cross-check against H^*
+    julia scripts/verify_homology.jl --cross --rings ZZ,QQ,GF2,GF4
     julia scripts/verify_homology.jl --deep          # + an independent integral check
     julia scripts/verify_homology.jl --only K3 --only T^3
     julia scripts/verify_homology.jl --all           # include the six heavy entries
+    julia scripts/verify_homology.jl --field --batch 3/10   # one slice of ten
+
+`--batch k/n` splits the catalogue into `n` contiguous slices and runs the `k`-th
+(1-based). The slices partition the entry list exactly, so running all `n` covers
+everything once. Useful with `--field`, which is the expensive pass: it builds
+the whole cup product ring over each field, so a slice per process keeps any one
+slow entry from stalling the rest and makes the run resumable.
+
+`--time-limit` bounds each individual computation, so a single space that will
+not finish is reported and skipped rather than blocking its slice.
 
 The default pass is cheap: it needs one integral homology per entry. `--field`
 computes the cup product ring over QQ and GF(2) as well, which is far more
@@ -21,10 +32,20 @@ Three checks. Note what is and is not independent:
     per-entry homology. The notation differs from ours (`Z_2` for `Z/2`,
     `(Z_2)^3 * Z_4` for a product) and is parsed before comparing.
 
-  * **The cohomology ring** -- over a field, `dim H_d` must equal `dim H^d`.
-    The cup product side is built from a *cochain* complex through OSCAR's
-    `DGAlgCohRing`, so this genuinely cross-checks two code paths. This is the
-    strongest automatic check available over `QQ` and `GF(p)`.
+  * **The cohomology ring** (`--cross`) -- the cup product side is built from a
+    *cochain* complex through OSCAR's `DGAlgCohRing`, so comparing against it
+    genuinely cross-checks two independent code paths. What is compared depends
+    on the ring, and both cases are handled by `check_homology`:
+
+      - over a field, `dim H_d == dim H^d`;
+      - over `ZZ`, universal coefficients -- the free rank of `H^d` matches that
+        of `H_d`, and the *torsion* of `H^d` matches that of `H_(d-1)`. This is
+        the only check here that exercises torsion across both code paths, and
+        the degree shift is exactly where the two constructions differ.
+
+    The default grid spans characteristic 0, prime fields, and prime-power
+    fields at several characteristics: `ZZ`, `QQ`, `GF(2)`, `GF(3)`, `GF(5)`,
+    `GF(7)`, `GF(4)`, `GF(8)`, `GF(9)`, `GF(25)`.
 
   * **Euler characteristic** -- the alternating sum of ranks against the
     alternating sum of the f-vector.
@@ -138,13 +159,47 @@ function published(name::AbstractString)
   return [parse_lutz_degree(p) for p in parts]
 end
 
+"""
+`ZZ`, `QQ`, or `GFq` for any prime power `q` -- `GF4`, `GF8`, `GF9`, `GF25` give
+the prime-power fields, which OSCAR builds directly from the order.
+"""
+function parse_ring(t::AbstractString)
+  t = strip(t)
+  t == "ZZ" && return ZZ
+  t == "QQ" && return QQ
+  m = match(r"^GF(\d+)$", t)
+  isnothing(m) && error("unrecognised ring \"$t\" (try ZZ, QQ, GF2, GF4, GF25)")
+  return GF(parse(Int, m.captures[1]))
+end
+
 function main(args)
   only = [args[i + 1] for i in eachindex(args) if args[i] == "--only"]
   entries = catalogue(; heavy = ("--all" in args) || !isempty(only))
   isempty(only) || (entries = filter(e -> e.name in only, entries))
 
+  b = findfirst(==("--batch"), args)
+  if !isnothing(b)
+    spec = split(args[b + 1], "/")
+    length(spec) == 2 || error("--batch wants k/n, e.g. --batch 3/10")
+    k, n = parse(Int, spec[1]), parse(Int, spec[2])
+    1 <= k <= n || error("--batch k/n needs 1 <= k <= n")
+    # Contiguous slices that partition the list exactly, so running 1..n through
+    # n covers every entry once and none twice.
+    lo = div((k - 1) * length(entries), n) + 1
+    hi = div(k * length(entries), n)
+    entries = entries[lo:hi]
+    println("batch $k of $n: entries $lo..$hi of $(length(catalogue(; heavy = false)))")
+  end
+
   deep = "--deep" in args
-  field = "--field" in args
+  cross = ("--cross" in args) || ("--field" in args)
+  rings = let i = findfirst(==("--rings"), args)
+    isnothing(i) ? Any[ZZ, QQ, GF(2), GF(3), GF(5), GF(7), GF(4), GF(8), GF(9), GF(25)] :
+      Any[parse_ring(t) for t in split(args[i + 1], ",")]
+  end
+  tl = let i = findfirst(==("--time-limit"), args)
+    isnothing(i) ? DEFAULT_TIME_LIMIT : parse(Float64, args[i + 1])
+  end
   maxf = let i = findfirst(==("--max-facets"), args)
     isnothing(i) ? 200 : parse(Int, args[i + 1])
   end
@@ -170,16 +225,18 @@ function main(args)
     agree_pm ? (ok_pm += 1) : push!(bad_pm, "$(e.name): ours $mine vs Polymake $pm")
 
     # The strongest independent check, but it needs the whole cup product ring
-    # over each field, so it is opt-in.
-    field && for F in (QQ, GF(2))
+    # over every ring in the grid, so it is opt-in.
+    cross && for R in rings
       try
-        hd = [length(homology_group(simplicial_homology(e.name, K, F), d)) for d in 0:dim(K)]
-        X = simplicial_cohomology_ring(e.name, K, F)
-        cd = [length(graded_basis(X, d)) for d in 0:top_degree(X)]
-        hd == cd ? (ok_field += 1) :
-          push!(bad_field, "$(e.name) over $(ring_symbol(F)): H_* $hd vs H^* $cd")
+        H = simplicial_homology(e.name, K, R; time_limit = tl)
+        X = simplicial_cohomology_ring(e.name, K, R; time_limit = tl)
+        # check_homology picks the right comparison: dimensions over a field,
+        # universal coefficients (including torsion) over ZZ.
+        probs = check_homology(H; cohomology = X)
+        isempty(probs) ? (ok_field += 1) :
+          push!(bad_field, "$(e.name) over $(ring_symbol(R)): $(join(probs, "; "))")
       catch err
-        push!(bad_field, "$(e.name) over $(ring_symbol(F)): $(first(sprint(showerror, err), 80))")
+        push!(bad_field, "$(e.name) over $(ring_symbol(R)): $(first(sprint(showerror, err), 90))")
       end
     end
 
@@ -219,13 +276,14 @@ function main(args)
 
   println("\n", "=" ^ 72)
   println("Polymake packing: $ok_pm agree, $(length(bad_pm)) disagree  (definitional over ZZ)")
-  field && println("Field dims vs H^*: $ok_field agree, $(length(bad_field)) disagree  (independent)")
+  cross && println("H_* vs H^*:       $ok_field agree, $(length(bad_field)) disagree  ",
+                   "(independent, over ", join([ring_symbol(R) for R in rings], " "), ")")
   deep && println("Independent ZZ:   $ok_deep agree, $(length(bad_deep)) disagree, $skipped_deep too large")
   println("Published header: $ok_pub agree, $(length(bad_pub)) disagree, ",
           "$(length(unparsed)) not parsed, $(length(nopub)) state none")
   println("build/compute failures: $(length(failed))")
   for (label, list) in [("MISMATCH vs Polymake (a bug here)", bad_pm),
-                        ("field dimensions disagree with cohomology (a bug here)", bad_field),
+                        ("homology disagrees with cohomology (a bug here)", bad_field),
                         ("independent integral homology disagrees (a bug here)", bad_deep),
                         ("differs from published header", bad_pub),
                         ("header notation not parsed", unparsed),
