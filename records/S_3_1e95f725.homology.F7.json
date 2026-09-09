@@ -1,0 +1,54 @@
+{
+  "coefficients": "F_7",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 3,
+    "f_vector": [5, 10, 10, 5],
+    "facets_sha256": "128ebeebd4b4f727d8e4273c75a1d7ffc05d7dff4c1d5ce08d0b398ebb383536",
+    "n_facets": 5,
+    "n_vertices": 5
+  },
+  "consistency_checks": [],
+  "euler_characteristic": 0,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "F_7",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 1,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": ["a3"],
+    "degree": 3,
+    "group": "F_7",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "built-in",
+  "ranks": [1, 0, 0, 1],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "invocation": "sphere(3)",
+    "kind": "builtin",
+    "note": "constructed by this package; see src/spaces.jl"
+  },
+  "space": "S^3",
+  "topological_type": "3-sphere"
+}

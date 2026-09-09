@@ -1,0 +1,49 @@
+{
+  "coefficients": "F_3",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 2,
+    "f_vector": [5, 10, 6],
+    "facets_sha256": "5dc2dde8e87e2b6e9ade2861fbf6bbc43bcadb00d7861e562a2b39f8e10fcdda",
+    "n_facets": 6,
+    "n_vertices": 5
+  },
+  "consistency_checks": [],
+  "euler_characteristic": 1,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "F_3",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 1,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Sage",
+  "ranks": [1, 0, 0],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "invocation": "simplicial_complexes.SumComplex(5,[0,1,3])",
+    "kind": "sage",
+    "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
+    "reproducible_labelling": true,
+    "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
+  },
+  "space": "SumComplex(5,[0,1,3])",
+  "topological_type": "sum complex of Linial–Meshulam–Rosenthal"
+}

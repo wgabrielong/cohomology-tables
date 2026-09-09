@@ -1,0 +1,50 @@
+{
+  "coefficients": "F_7",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 2,
+    "f_vector": [12, 39, 26],
+    "facets_sha256": "a5ab3124e861e4c94704c66b6b7ce92e23a0415797e74a6b1dc24fd6ed3e7154",
+    "n_facets": 26,
+    "n_vertices": 12
+  },
+  "consistency_checks": [],
+  "euler_characteristic": -1,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "F_7",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": ["a1_1", "a1_2"],
+    "degree": 1,
+    "group": "F_7^2",
+    "invariant_factors": ["0", "0"],
+    "rank": 2,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Sage",
+  "ranks": [1, 2, 0],
+  "reproducible_labelling": false,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "invocation": "simplicial_complexes.SurfaceOfGenus(3, orientable=False)",
+    "kind": "sage",
+    "labelling_caveat": "simplicial_complexes.SurfaceOfGenus(3, orientable=False) returns a differently labelled complex on each Sage process. The facets_sha256 below is the labelling this record was computed from and will not generally be reproduced; the cohomology ring is unaffected, being a topological invariant, but the cocycle representatives belong to that labelling. regenerate_sage.jl checks isomorphism invariants for these entries instead of the hash.",
+    "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
+    "reproducible_labelling": false,
+    "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
+  },
+  "space": "N_3",
+  "topological_type": "non-orientable surface of genus 3"
+}

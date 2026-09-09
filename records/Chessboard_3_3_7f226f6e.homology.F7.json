@@ -1,0 +1,49 @@
+{
+  "coefficients": "F_7",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 2,
+    "f_vector": [9, 18, 6],
+    "facets_sha256": "36c6de34c4992f487ed1c5b9e5253e17268bdce5c50c048ad3a8648d036a1c6b",
+    "n_facets": 6,
+    "n_vertices": 9
+  },
+  "consistency_checks": [],
+  "euler_characteristic": -3,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "F_7",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": ["a1_1", "a1_2", "a1_3", "a1_4"],
+    "degree": 1,
+    "group": "F_7^4",
+    "invariant_factors": ["0", "0", "0", "0"],
+    "rank": 4,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Sage",
+  "ranks": [1, 4, 0],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "invocation": "simplicial_complexes.ChessboardComplex(3,3)",
+    "kind": "sage",
+    "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
+    "reproducible_labelling": true,
+    "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
+  },
+  "space": "Chessboard(3,3)",
+  "topological_type": "chessboard complex"
+}

@@ -1,0 +1,57 @@
+{
+  "coefficients": "F_7",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 3,
+    "f_vector": [17, 124, 214, 107],
+    "facets_sha256": "d52d76b2b749424b8222d23e52d7953337f7c9ece2c4646a77c85cdef598e502",
+    "n_facets": 107,
+    "n_vertices": 17
+  },
+  "consistency_checks": [],
+  "euler_characteristic": 0,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "F_7",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 1,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": ["a3"],
+    "degree": 3,
+    "group": "F_7",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Lutz/3-manifolds",
+  "ranks": [1, 0, 0, 1],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "catalog": "flat_3manifolds",
+    "date_accessed": "2026-09-08",
+    "kind": "lutz",
+    "label": "G6",
+    "note": "fetch with scripts/fetch_sources.jl; not redistributed here",
+    "url": "https://www3.math.tu-berlin.de/IfM/Nachrufe/Frank_Lutz/stellar/library_of_triangulations/flat_3manifolds.txt"
+  },
+  "space": "G6",
+  "topological_type": "flat 3-manifold"
+}

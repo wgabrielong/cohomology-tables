@@ -23,7 +23,7 @@ using .CohomologyTables
 
 const MANIFEST_HEADER = ["space", "kind", "call", "file", "label",
                          "sage_version", "url", "date_accessed", "reproducible",
-                         "facets_sha256"]
+                         "facets_sha256", "f_vector", "integral_homology"]
 
 function parse_coeffs(s)
   s == "ZZ" && return Any[ZZ]
@@ -43,9 +43,20 @@ function manifest_row(e::SpaceEntry, K, date)
   r = e.recipe
   url = r.kind == "lutz" ? lutz_url(r.file) :
         r.kind == "arxiv" ? "https://arxiv.org/abs/$(r.call)" : ""
+  # f-vector and integral homology are invariants of the space, not of a
+  # labelling, which is what makes them the right thing for
+  # scripts/regenerate_sage.jl to check a relabelled complex against. Homology
+  # goes in a try: on the largest entries the Polymake call is not worth waiting
+  # for, and an empty column degrades to "f-vector only" there.
+  homology = try
+    join(integral_homology_symbols(K), ",")
+  catch
+    ""
+  end
   return [e.name, r.kind, r.call, r.file, r.label,
           r.kind == "sage" ? sage_version() : "",
-          url, something(date, ""), string(is_reproducible(e)), facets_sha256(K)]
+          url, something(date, ""), string(is_reproducible(e)), facets_sha256(K),
+          join(collect(Int, f_vector(K)), ","), homology]
 end
 
 function main(args)
@@ -90,15 +101,19 @@ function main(args)
   # Merge rather than overwrite: a `--only` run must not drop the rows for every
   # other space, since the verification scripts read this file as the whole
   # picture.
+  # Old rows are read by header intersection rather than by position, so adding
+  # a column does not silently discard every space that this run did not touch.
   path = joinpath(outdir, "MANIFEST.tsv")
   merged = Dict{String,Vector{String}}()
   if isfile(path)
     old = readlines(path)
-    if !isempty(old) && split(old[1], '\t') == MANIFEST_HEADER
+    if !isempty(old)
+      old_header = String.(split(old[1], '\t'))
       for l in old[2:end]
         isempty(strip(l)) && continue
         cols = String.(split(l, '\t'))
-        merged[cols[1]] = cols
+        by_name = Dict(zip(old_header, cols))
+        merged[cols[1]] = [get(by_name, h, "") for h in MANIFEST_HEADER]
       end
     end
   end

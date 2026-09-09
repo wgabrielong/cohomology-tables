@@ -1,0 +1,57 @@
+{
+  "coefficients": "F_7",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 3,
+    "f_vector": [19, 155, 272, 136],
+    "facets_sha256": "808f3476f3010a6a8381223098fd53faea6985fd72985342966054572b6c8961",
+    "n_facets": 136,
+    "n_vertices": 19
+  },
+  "consistency_checks": [],
+  "euler_characteristic": 0,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "F_7",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 1,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": ["a3"],
+    "degree": 3,
+    "group": "F_7",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Lutz/3-manifolds",
+  "ranks": [1, 0, 0, 1],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "catalog": "spherical_3manifolds",
+    "date_accessed": "2026-09-08",
+    "kind": "lutz",
+    "label": "L_10_1",
+    "note": "fetch with scripts/fetch_sources.jl; not redistributed here",
+    "url": "https://www3.math.tu-berlin.de/IfM/Nachrufe/Frank_Lutz/stellar/library_of_triangulations/spherical_3manifolds.txt"
+  },
+  "space": "L(10,1)",
+  "topological_type": "spherical 3-manifold"
+}

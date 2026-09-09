@@ -1,0 +1,50 @@
+{
+  "coefficients": "F_5",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 2,
+    "f_vector": [159, 3354, 3196],
+    "facets_sha256": "863933ce3f7605f444691f1220293d1cf01d27fbb7861ee06e88faff5c9a8ed3",
+    "n_facets": 3196,
+    "n_vertices": 159
+  },
+  "consistency_checks": [],
+  "euler_characteristic": 1,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "F_5",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 1,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Lutz/library",
+  "ranks": [1, 0, 0],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "catalog": "HMT_32",
+    "date_accessed": "2026-09-08",
+    "kind": "lutz",
+    "label": null,
+    "note": "fetch with scripts/fetch_sources.jl; not redistributed here",
+    "url": "https://www3.math.tu-berlin.de/IfM/Nachrufe/Frank_Lutz/stellar/library_of_triangulations/HMT_32.txt"
+  },
+  "space": "HMT_32",
+  "topological_type": "Hadamard matrix torsion 2-complex"
+}

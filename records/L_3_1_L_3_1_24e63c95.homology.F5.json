@@ -1,0 +1,57 @@
+{
+  "coefficients": "F_5",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 3,
+    "f_vector": [16, 115, 198, 99],
+    "facets_sha256": "45e4b58fa5f04956dce97c3f0d596412cff580689b46d77e334687516785a1cd",
+    "n_facets": 99,
+    "n_vertices": 16
+  },
+  "consistency_checks": [],
+  "euler_characteristic": 0,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "F_5",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 1,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": ["a3"],
+    "degree": 3,
+    "group": "F_5",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Lutz/3-manifolds",
+  "ranks": [1, 0, 0, 1],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "catalog": "connected_sums_3d",
+    "date_accessed": "2026-09-08",
+    "kind": "lutz",
+    "label": "L_3_1#-L_3_1",
+    "note": "fetch with scripts/fetch_sources.jl; not redistributed here",
+    "url": "https://www3.math.tu-berlin.de/IfM/Nachrufe/Frank_Lutz/stellar/library_of_triangulations/connected_sums_3d.txt"
+  },
+  "space": "L_3_1#-L_3_1",
+  "topological_type": "connected sum of 3-manifolds"
+}

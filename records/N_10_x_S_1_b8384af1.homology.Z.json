@@ -1,0 +1,57 @@
+{
+  "coefficients": "Z",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 3,
+    "f_vector": [26, 296, 540, 270],
+    "facets_sha256": "c89166968c3e5f72150bd02a2f5eddc0382e5871afe4b67aa90e7d18652a58c9",
+    "n_facets": 270,
+    "n_vertices": 26
+  },
+  "consistency_checks": [],
+  "euler_characteristic": 0,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "Z",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": ["a1_1", "a1_2", "a1_3", "a1_4", "a1_5", "a1_6", "a1_7", "a1_8", "a1_9", "a1_10", "a1_11"],
+    "degree": 1,
+    "group": "Z^10 + Z/2",
+    "invariant_factors": ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "2"],
+    "rank": 10,
+    "torsion": ["2"]
+  }, {
+    "basis_labels": ["a2_1", "a2_2", "a2_3", "a2_4", "a2_5", "a2_6", "a2_7", "a2_8", "a2_9", "a2_10"],
+    "degree": 2,
+    "group": "Z^9 + Z/2",
+    "invariant_factors": ["0", "0", "0", "0", "0", "0", "0", "0", "0", "2"],
+    "rank": 9,
+    "torsion": ["2"]
+  }, {
+    "basis_labels": [],
+    "degree": 3,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Lutz/3-manifolds",
+  "ranks": [1, 10, 9, 0],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "catalog": "H2xR_spaces",
+    "date_accessed": "2026-09-08",
+    "kind": "lutz",
+    "label": "n_g10xS1",
+    "note": "fetch with scripts/fetch_sources.jl; not redistributed here",
+    "url": "https://www3.math.tu-berlin.de/IfM/Nachrufe/Frank_Lutz/stellar/library_of_triangulations/H2xR_spaces.txt"
+  },
+  "space": "N_10 x S^1",
+  "topological_type": "H^2 x R 3-manifold"
+}

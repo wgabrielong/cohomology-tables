@@ -8,6 +8,7 @@ Print cohomology rings and cup product multiplication tables for the catalogue.
     julia scripts/run_tables.jl --provenance Sage      # one source only
     julia scripts/run_tables.jl --coeffs GF7           # override coefficients
     julia scripts/run_tables.jl --time-limit 120 --out tables.txt
+    julia scripts/run_tables.jl --no-homology            # cup products only
 
 Nothing is stored in the repo: models are built by Sage or downloaded from the
 Manifold Page on first use and cached outside it (see `cache_dir()`).
@@ -28,10 +29,23 @@ function parse_coeffs(s)
   error("unrecognised --coeffs $s (try ZZ, QQ, GF2, GF7)")
 end
 
-function run_all(io::IO, entries; time_limit = DEFAULT_TIME_LIMIT, coeffs = nothing)
+function run_all(io::IO, entries; time_limit = DEFAULT_TIME_LIMIT, coeffs = nothing,
+                 homology::Bool = true)
   for e in entries
     for R in (isnothing(coeffs) ? e.coeffs : coeffs)
       t0 = time()
+      # Homology first and in its own try: it is much cheaper than the cup
+      # product, so a ring that times out still leaves the groups printed.
+      if homology
+        try
+          H = simplicial_homology(e, R; time_limit = time_limit)
+          print_homology(io, H; note = "$(e.type) -- $(e.provenance)")
+        catch err
+          println(io, "$(e.name) homology over $(ring_symbol(R)) SKIPPED: ",
+                  sprint(showerror, err))
+          println(io)
+        end
+      end
       try
         X = simplicial_cohomology_ring(e, R; time_limit = time_limit)
         print_report(io, X; note = "$(e.type) -- $(e.provenance)" *
@@ -64,14 +78,15 @@ function main(args)
   isnothing(p) || (entries = filter(e -> e.provenance == args[p + 1], entries))
   c = findfirst(==("--coeffs"), args)
   coeffs = isnothing(c) ? nothing : parse_coeffs(args[c + 1])
+  hom = !("--no-homology" in args)
   j = findfirst(==("--time-limit"), args)
   tl = isnothing(j) ? DEFAULT_TIME_LIMIT : parse(Float64, args[j + 1])
   i = findfirst(==("--out"), args)
   if isnothing(i)
-    run_all(stdout, entries; time_limit = tl, coeffs = coeffs)
+    run_all(stdout, entries; time_limit = tl, coeffs = coeffs, homology = hom)
   else
     open(args[i + 1], "w") do io
-      run_all(io, entries; time_limit = tl, coeffs = coeffs)
+      run_all(io, entries; time_limit = tl, coeffs = coeffs, homology = hom)
     end
     @info "wrote $(args[i + 1])"
   end

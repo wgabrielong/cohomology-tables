@@ -32,7 +32,10 @@ using SHA
 
 include("sources.jl")
 include("spaces.jl")
+include("canonical.jl")
+include("chain_complex.jl")
 include("ring_tables.jl")
+include("homology_tables.jl")
 include("report.jl")
 include("records.jl")
 
@@ -51,11 +54,18 @@ export
   graded_basis, basis_indices, top_degree,
   class_coords, cup, cup_power,
   Deadline, TimeLimitExceeded, DEFAULT_TIME_LIMIT, check_deadline, no_deadline,
+  # the chain complex and homology
+  SimplicialChainComplex, SimplicialHomology, HomologyGroup,
+  simplicial_homology, homology_group, homology_ranks, free_rank, torsion_orders,
+  cycle_representative, integral_invariant_factors, integral_homology_symbols,
   # reporting
-  cup_product_table, identify_ring, check_ring, print_report,
+  cup_product_table, identify_ring, check_ring, print_report, print_homology,
+  check_homology,
   format_combination, group_symbol, ring_symbol, class_label,
   # generated records
   canonical_facets, canonical_form, facets_sha256, ring_record, json_string,
-  record_filename, record_prefix, write_record, CANONICAL_FORM_ID, RECORD_SCHEMA_ID
+  record_filename, record_prefix, write_record, homology_record,
+  write_homology_record, CANONICAL_FORM_ID, RECORD_SCHEMA_ID,
+  HOMOLOGY_RECORD_SCHEMA_ID
 
 end # module

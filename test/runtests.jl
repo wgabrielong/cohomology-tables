@@ -26,6 +26,17 @@ groups(X) = [group_symbol(X.coeff_ring, graded_basis(X, d).orders) for d in 0:to
 "Dimensions of `H^*` over a field."
 dims(X) = [length(graded_basis(X, d)) for d in 0:top_degree(X)]
 
+"The list of homology groups, as strings."
+hgroups(H) = [group_symbol(H.coeff_ring, homology_group(H, d).orders) for d in 0:top_degree(H)]
+
+"Dimensions of `H_*` over a field."
+hdims(H) = [length(homology_group(H, d)) for d in 0:top_degree(H)]
+
+"Models built in this repo, so the offline set needs no Sage and no network."
+const OFFLINE_MODELS = vcat(["point" => point_space()],
+                            ["S^$n" => sphere(n) for n in 0:4],
+                            ["RP^$n" => kuehnel_real_projective_space(n) for n in 2:3])
+
 @testset "CohomologyTables" begin
 
   @testset "the point" begin
@@ -127,6 +138,115 @@ dims(X) = [length(graded_basis(X, d)) for d in 0:top_degree(X)]
     @test !startswith(record_prefix("Sigma_4 x S^1"), record_prefix("Sigma_4"))
   end
 
+  @testset "homology: textbook values" begin
+    @test hgroups(simplicial_homology("point", point_space(), ZZ)) == ["Z"]
+    for n in 1:4
+      X = simplicial_homology("S^$n", sphere(n), ZZ)
+      @test hgroups(X) == ["Z"; fill("0", n - 1); "Z"]
+    end
+    # H_*(RP^n; Z) has its torsion in ODD degrees -- the universal-coefficients
+    # shift away from H^*, where it sits in even ones.
+    @test hgroups(simplicial_homology("RP^2", kuehnel_real_projective_space(2), ZZ)) ==
+          ["Z", "Z/2", "0"]
+    @test hgroups(simplicial_homology("RP^3", kuehnel_real_projective_space(3), ZZ)) ==
+          ["Z", "Z/2", "0", "Z"]
+    # over F_2 every degree survives
+    @test hdims(simplicial_homology("RP^3", kuehnel_real_projective_space(3), GF(2))) ==
+          fill(1, 4)
+  end
+
+  @testset "homology: independent integral oracle" begin
+    # Oscar.homology is Polymake -- a code path with nothing in common with the
+    # chain complex here, which is what makes it an oracle rather than a mirror.
+    for (nm, K) in OFFLINE_MODELS
+      X = simplicial_homology(nm, K, ZZ)
+      @test hgroups(X) == integral_homology_symbols(K)
+    end
+  end
+
+  @testset "homology: agreement with cohomology" begin
+    for (nm, K) in OFFLINE_MODELS, F in (QQ, GF(2), GF(3))
+      # over a field, dim H_d == dim H^d
+      @test hdims(simplicial_homology(nm, K, F)) ==
+            dims(simplicial_cohomology_ring(nm, K, F))
+    end
+    for (nm, K) in OFFLINE_MODELS
+      # over ZZ, universal coefficients: free ranks agree in the same degree,
+      # torsion of H^d is the torsion of H_(d-1)
+      H = simplicial_homology(nm, K, ZZ)
+      X = simplicial_cohomology_ring(nm, K, ZZ)
+      for d in 0:top_degree(H)
+        @test free_rank(homology_group(H, d)) ==
+              count(is_zero, graded_basis(X, d).orders)
+        want = d == 0 ? Any[] : torsion_orders(homology_group(H, d - 1))
+        @test sort(string.(filter(!is_zero, graded_basis(X, d).orders))) ==
+              sort(string.(want))
+      end
+      @test isempty(check_homology(H; cohomology = X))
+    end
+  end
+
+  @testset "homology: Euler characteristic and checks" begin
+    for (nm, K) in OFFLINE_MODELS, R in (ZZ, QQ, GF(2))
+      H = simplicial_homology(nm, K, R)
+      @test isempty(check_homology(H))
+      ranks = homology_ranks(H)
+      @test sum((-1)^d * ranks[d + 1] for d in 0:top_degree(H); init = 0) ==
+            sum((-1)^d * Int(f_vector(K)[d + 1]) for d in 0:dim(K); init = 0)
+    end
+  end
+
+  @testset "homology records carry no facets" begin
+    # The provenance rule this feature exists under: for a closed orientable
+    # manifold the top-degree cycle is supported on EVERY facet, so no
+    # representative is ever serialised. See docs/PROVENANCE.md.
+    for nm in ["S^2", "RP^2"]
+      e = find_space(nm)
+      K = nm == "S^2" ? sphere(2) : kuehnel_real_projective_space(2)
+      text = json_string(homology_record(e, simplicial_homology(nm, K, ZZ)))
+      @test !occursin("\"face\"", text)
+      @test !occursin("cycle_repr", text)
+      @test !occursin("\"facets\"", text)
+      # `_json` prints arrays as `[0, 1, 2]` with spaces, so a canonical facet
+      # string "0,1,2" cannot appear incidentally.
+      @test !any(occursin(join(f, ","), text) for f in canonical_facets(K))
+    end
+    # ... but a representative is still computable locally, and for S^2 it is
+    # supported on all four facets -- which is exactly why it is not stored.
+    @test length(cycle_representative(simplicial_homology("S^2", sphere(2), ZZ), 2, 1)) ==
+          length(facets(sphere(2)))
+  end
+
+  @testset "homology record shape and filenames" begin
+    e = find_space("S^2")
+    rec = homology_record(e, simplicial_homology("S^2", sphere(2), ZZ))
+    @test rec["schema"] == HOMOLOGY_RECORD_SCHEMA_ID
+    @test rec["complex"]["facets_sha256"] == facets_sha256(sphere(2))
+    @test rec["ranks"] == [1, 0, 1]
+    @test rec["euler_characteristic"] == 2
+    @test isempty(rec["consistency_checks"])
+    @test !haskey(rec, "vertex_order_convention")   # homology is order-independent
+    # the kind token keeps the two families apart without renaming ring records
+    @test record_filename("S^2", ZZ) != record_filename("S^2", ZZ; kind = "homology")
+    @test endswith(record_filename("S^2", ZZ; kind = "homology"), ".homology.Z.json")
+    @test allunique([record_filename(n, ZZ; kind = k)
+                     for n in catalogue_names() for k in ("", "homology")])
+  end
+
+  @testset "homology: time budget" begin
+    @test simplicial_homology("S^4", sphere(4), ZZ; time_limit = 600) isa SimplicialHomology
+    @test_throws TimeLimitExceeded simplicial_homology(
+      "S^4", sphere(4), ZZ; deadline = Deadline(time() - 1000, 1.0))
+  end
+
+  @testset "SpaceEntry entry points" begin
+    # Regression: this threw `FieldError: type SpaceEntry has no field 'build'`,
+    # which made scripts/run_tables.jl fail on every space.
+    e = find_space("S^2")
+    @test simplicial_cohomology_ring(e, ZZ) isa CohomologyRing
+    @test simplicial_homology(e, ZZ) isa SimplicialHomology
+  end
+
   @testset "catalogue integrity" begin
     C = catalogue()
     @test length(C) > 200
@@ -188,6 +308,32 @@ dims(X) = [length(graded_basis(X, d)) for d in 0:top_degree(X)]
       KM = catalogue_space("M(Z/5,2)")
       @test dims(simplicial_cohomology_ring("M", KM, GF(5))) == [1, 0, 1, 1]
       @test dims(simplicial_cohomology_ring("M", KM, GF(7))) == [1, 0, 0, 0]
+    end
+
+    @testset "homology of catalogue spaces" begin
+      @test hgroups(simplicial_homology("T^2", catalogue_space("T^2"), ZZ)) ==
+            ["Z", "Z^2", "Z"]
+      @test hgroups(simplicial_homology("Klein", catalogue_space("Klein bottle"), ZZ)) ==
+            ["Z", "Z + Z/2", "0"]
+      # torsion in odd degrees, unlike H^*
+      @test hgroups(simplicial_homology("RP^4", catalogue_space("RP^4"), ZZ)) ==
+            ["Z", "Z/2", "0", "Z/2", "0"]
+      @test hgroups(simplicial_homology("L(3,1)", catalogue_space("L(3,1)"), ZZ)) ==
+            ["Z", "Z/3", "0", "Z"]
+      @test hgroups(simplicial_homology("T^3", catalogue_space("T^3"), ZZ)) ==
+            ["Z", "Z^3", "Z^3", "Z"]
+      @test hgroups(simplicial_homology("K3", catalogue_space("K3"), ZZ)) ==
+            ["Z", "0", "Z^22", "0", "Z"]
+      # the Weber-Seifert space has H_1 = (Z/5)^3
+      @test hgroups(simplicial_homology("WS", catalogue_space("Weber-Seifert space"), ZZ))[2] ==
+            "Z/5 + Z/5 + Z/5"
+      # M(Z/5,2): the torsion is invisible over F_7 and shows over F_5
+      KM = catalogue_space("M(Z/5,2)")
+      @test hdims(simplicial_homology("M", KM, GF(7))) == [1, 0, 0, 0]
+      @test hdims(simplicial_homology("M", KM, GF(5))) == [1, 0, 1, 1]
+      # the Wu manifold, independently of the cup product machinery
+      @test hgroups(simplicial_homology("Wu", catalogue_space("Wu manifold"), ZZ)) ==
+            ["Z", "0", "Z/2", "0", "0", "Z"]
     end
 
     @testset "Manifold Page models" begin

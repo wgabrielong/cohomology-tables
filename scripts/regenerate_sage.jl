@@ -26,22 +26,25 @@ function read_manifest(path)
   return [Dict(zip(header, split(l, '\t'))) for l in lines[2:end] if !isempty(strip(l))]
 end
 
-records_dir(manifest_path) = dirname(manifest_path)
-
 """
 For an entry whose Sage constructor does not reproduce its vertex labelling,
-compare what is invariant under relabelling -- the f-vector and the integral
-homology -- against the record. A difference here is a real failure: it means
+compare what *is* invariant under relabelling -- the f-vector and the integral
+homology -- against the manifest. A difference here is a real failure: it means
 Sage is now building a different space, not merely a different numbering.
+
+Read from the manifest rather than by scanning `records/`: a space has more than
+one record (a ring record per coefficient ring, and a homology record per ring),
+so picking one by filename prefix was ambiguous.
 """
-function check_invariants(name, K, dir)
-  files = filter(f -> startswith(f, record_prefix(name)), readdir(dir))
-  isempty(files) && return false
-  text = read(joinpath(dir, first(files)), String)
-  m = match(r"\"f_vector\":\s*\[([^\]]*)\]", text)
-  isnothing(m) && return false
-  recorded = parse.(Int, strip.(split(m.captures[1], ",")))
-  return collect(Int, f_vector(K)) == recorded
+function check_invariants(K, row)
+  want_f = get(row, "f_vector", "")
+  isempty(want_f) && return (false, "no recorded f-vector")
+  join(collect(Int, f_vector(K)), ",") == want_f || return (false, "f-vector differs")
+  want_h = get(row, "integral_homology", "")
+  isempty(want_h) && return (true, "f-vector matches; no recorded homology")
+  join(integral_homology_symbols(K), ",") == want_h ||
+    return (false, "integral homology differs")
+  return (true, "f-vector and homology match")
 end
 
 function main(args)
@@ -65,10 +68,10 @@ function main(args)
       elseif get(r, "reproducible", "true") == "false"
         # This constructor does not reproduce its labelling; check what is
         # actually invariant instead, and still fail if that differs.
-        inv_ok = check_invariants(name, K, records_dir(path))
-        inv_ok ? (ok += 1) : push!(bad, "$name: isomorphism invariants differ")
+        inv_ok, why = check_invariants(K, r)
+        inv_ok ? (ok += 1) : push!(bad, "$name: $why")
         println(inv_ok ? "  ok (iso)  " : "  MISMATCH  ", rpad(name, 24),
-                inv_ok ? "relabelled by Sage; f-vector and homology match" : "")
+                inv_ok ? "relabelled by Sage; $why" : why)
       else
         push!(bad, "$name (simplicial_complexes.$(r["call"])): expected $want, got $got")
         println("  MISMATCH  ", name)

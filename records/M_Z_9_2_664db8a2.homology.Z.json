@@ -1,0 +1,56 @@
+{
+  "coefficients": "Z",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 3,
+    "f_vector": [23, 123, 223, 122],
+    "facets_sha256": "abaaa54589e044a1e59d5d728b149fb3491395bfacb159c767113d6a91f3da73",
+    "n_facets": 122,
+    "n_vertices": 23
+  },
+  "consistency_checks": [],
+  "euler_characteristic": 1,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "Z",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 1,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": ["a2"],
+    "degree": 2,
+    "group": "Z/9",
+    "invariant_factors": ["9"],
+    "rank": 0,
+    "torsion": ["9"]
+  }, {
+    "basis_labels": [],
+    "degree": 3,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Sage",
+  "ranks": [1, 0, 0, 0],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "invocation": "simplicial_complexes.MooreSpace(9).suspension(1)",
+    "kind": "sage",
+    "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
+    "reproducible_labelling": true,
+    "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
+  },
+  "space": "M(Z/9,2)",
+  "topological_type": "Moore space with H_2 = Z/9"
+}

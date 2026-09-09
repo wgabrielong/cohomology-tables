@@ -1,0 +1,71 @@
+{
+  "coefficients": "Z",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 5,
+    "f_vector": [24, 273, 1174, 2277, 2028, 676],
+    "facets_sha256": "baf6bf4e63cd131542d877a3e13a7282d5c10d6d5d89c70c7cc6f5967b7c9406",
+    "n_facets": 676,
+    "n_vertices": 24
+  },
+  "consistency_checks": [],
+  "euler_characteristic": 0,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "Z",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": ["a1"],
+    "degree": 1,
+    "group": "Z/2",
+    "invariant_factors": ["2"],
+    "rank": 0,
+    "torsion": ["2"]
+  }, {
+    "basis_labels": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": ["a3"],
+    "degree": 3,
+    "group": "Z/2",
+    "invariant_factors": ["2"],
+    "rank": 0,
+    "torsion": ["2"]
+  }, {
+    "basis_labels": [],
+    "degree": 4,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": ["a5"],
+    "degree": 5,
+    "group": "Z",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Lutz/library",
+  "ranks": [1, 0, 0, 0, 0, 1],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "catalog": "RP5_24",
+    "date_accessed": "2026-09-08",
+    "kind": "lutz",
+    "label": null,
+    "note": "fetch with scripts/fetch_sources.jl; not redistributed here",
+    "url": "https://www3.math.tu-berlin.de/IfM/Nachrufe/Frank_Lutz/stellar/library_of_triangulations/RP5_24.txt"
+  },
+  "space": "RP^5",
+  "topological_type": "real projective 5-space"
+}

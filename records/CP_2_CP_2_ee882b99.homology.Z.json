@@ -1,0 +1,64 @@
+{
+  "coefficients": "Z",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 4,
+    "f_vector": [12, 57, 148, 165, 66],
+    "facets_sha256": "24585a8caf0e0bd9be08f46cbad92594fef2c5461e8ec8eebb5e154842d7a0b6",
+    "n_facets": 66,
+    "n_vertices": 12
+  },
+  "consistency_checks": [],
+  "euler_characteristic": 4,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "Z",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 1,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": ["a2_1", "a2_2"],
+    "degree": 2,
+    "group": "Z^2",
+    "invariant_factors": ["0", "0"],
+    "rank": 2,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 3,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": ["a4"],
+    "degree": 4,
+    "group": "Z",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Lutz/further",
+  "ranks": [1, 0, 2, 0, 1],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "catalog": "small_4_manifolds",
+    "date_accessed": "2026-09-08",
+    "kind": "lutz",
+    "label": "CP^2#CP^2",
+    "note": "fetch with scripts/fetch_sources.jl; not redistributed here",
+    "url": "https://www3.math.tu-berlin.de/IfM/Nachrufe/Frank_Lutz/stellar/library_of_triangulations/small_4_manifolds.txt"
+  },
+  "space": "CP^2#CP^2",
+  "topological_type": "4-manifold"
+}

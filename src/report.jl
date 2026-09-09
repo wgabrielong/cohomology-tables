@@ -252,3 +252,132 @@ function print_report(io::IO, X::CohomologyRing; note::AbstractString = "",
 end
 
 print_report(X::CohomologyRing; kwargs...) = print_report(stdout, X; kwargs...)
+
+### -------------------------------------------------------------------------
+### Homology
+### -------------------------------------------------------------------------
+#
+# Kept separate from `print_report` rather than folded into it. That function is
+# about the ring -- the multiplication table, the presentation, the unit and
+# commutativity laws -- and its `max_table` early return would have to be
+# threaded around a homology block. A standalone reporter also works for spaces
+# whose cup product never finishes, which is exactly where homology is the only
+# thing on offer.
+
+"""
+    check_homology(X; cohomology = nothing) -> Vector{String}
+
+Violated identities (empty means all good):
+
+* the Euler characteristic from the ranks matches the one from the f-vector;
+* over `ZZ`, agreement with `Oscar.homology`. Note this one is *definitional*
+  rather than independent: `simplicial_homology` delegates to Polymake over
+  `ZZ`, because integral Smith normal form does not scale. It still catches
+  packing errors. `scripts/verify_homology.jl --deep` has a genuinely
+  independent integral check for complexes small enough to afford it;
+* over a field, `dim H_d == dim H^d`, when `cohomology` is supplied. This one
+  *is* independent -- the cup product side comes from a cochain complex through
+  `DGAlgCohRing` -- and is the strongest automatic check here;
+* over `ZZ`, universal coefficients, when `cohomology` is supplied: the free
+  rank of `H^d` equals that of `H_d`, and the torsion of `H^d` equals that of
+  `H_(d-1)`.
+
+Every one is a theorem, so a failure means a bug here or upstream, not an
+interesting space.
+"""
+function check_homology(X::SimplicialHomology;
+                        cohomology::Union{Nothing,CohomologyRing} = nothing)
+  problems = String[]
+  K, R = X.complex, X.coeff_ring
+  top = top_degree(X)
+
+  chi_h = sum((-1)^d * free_rank(homology_group(X, d)) for d in 0:top; init = 0)
+  chi_f = sum((-1)^d * Int(f_vector(K)[d + 1]) for d in 0:top; init = 0)
+  chi_h == chi_f || push!(problems,
+    "Euler characteristic from ranks is $chi_h but the f-vector gives $chi_f")
+
+  if R === ZZ
+    want = integral_invariant_factors(K)
+    for d in 0:top
+      got = sort(string.(torsion_orders(homology_group(X, d))))
+      wnt = sort(string.(filter(!is_zero, want[d + 1])))
+      rk = free_rank(homology_group(X, d))
+      wrk = count(is_zero, want[d + 1])
+      (got == wnt && rk == wrk) || push!(problems,
+        "H_$d disagrees with Oscar.homology: got rank $rk torsion $got, " *
+        "Polymake gives rank $wrk torsion $wnt")
+    end
+  end
+
+  if !isnothing(cohomology)
+    ctop = top_degree(cohomology)
+    if R isa Oscar.AbstractAlgebra.Field
+      for d in 0:min(top, ctop)
+        nh = length(homology_group(X, d))
+        nc = length(graded_basis(cohomology, d))
+        nh == nc || push!(problems,
+          "over a field dim H_$d must equal dim H^$d, but got $nh and $nc")
+      end
+    elseif R === ZZ
+      for d in 0:min(top, ctop)
+        fh = free_rank(homology_group(X, d))
+        fc = count(is_zero, graded_basis(cohomology, d).orders)
+        fh == fc || push!(problems,
+          "universal coefficients: free rank of H^$d is $fc but of H_$d is $fh")
+        th = sort(string.(d == 0 ? Any[] : torsion_orders(homology_group(X, d - 1))))
+        tc = sort(string.(filter(!is_zero, graded_basis(cohomology, d).orders)))
+        th == tc || push!(problems,
+          "universal coefficients: torsion of H^$d is $tc but of H_$(d-1) is $th")
+      end
+    end
+  end
+  return problems
+end
+
+"""
+    print_homology(io, X; note, checks, banner)
+
+The homology groups degree by degree, the Betti numbers, the Euler
+characteristic and the consistency checks. `banner = false` omits the `===`
+header, for printing under a cup product report.
+"""
+function print_homology(io::IO, X::SimplicialHomology; note::AbstractString = "",
+                        checks::Bool = true, banner::Bool = true)
+  K = X.complex
+  sym = ring_symbol(X.coeff_ring)
+  if banner
+    title = "$(X.name)   homology with coefficients in $sym"
+    println(io, "=" ^ max(72, length(title)))
+    println(io, title)
+    isempty(note) || println(io, "  ($note)")
+    println(io, "=" ^ max(72, length(title)))
+    println(io, "simplicial model: dim = $(dim(K)), f-vector = $(f_vector(K))")
+    println(io)
+  end
+
+  println(io, "homology groups")
+  for d in 0:top_degree(X)
+    g = homology_group(X, d)
+    labels = isempty(g.labels) ? "" : "   basis: " * join(g.labels, ", ")
+    println(io, "  H_$d = ", rpad(group_symbol(X.coeff_ring, g.orders), 20), labels)
+  end
+  ranks = homology_ranks(X)
+  println(io, "ranks: ", ranks, "   Euler characteristic: ",
+          sum((-1)^d * ranks[d + 1] for d in 0:top_degree(X); init = 0))
+
+  if checks
+    problems = check_homology(X)
+    if isempty(problems)
+      println(io, "checks: Euler characteristic and the integral oracle agree")
+    else
+      println(io, "checks: FAILED")
+      for p in problems
+        println(io, "  - ", p)
+      end
+    end
+  end
+  println(io)
+  return nothing
+end
+
+print_homology(X::SimplicialHomology; kwargs...) = print_homology(stdout, X; kwargs...)

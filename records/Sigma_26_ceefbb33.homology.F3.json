@@ -1,0 +1,49 @@
+{
+  "coefficients": "F_3",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 2,
+    "f_vector": [60, 330, 220],
+    "facets_sha256": "1e27f16141ccc023a3195a67225006f143926d77f9eee5087a8429557b923673",
+    "n_facets": 220,
+    "n_vertices": 60
+  },
+  "consistency_checks": [],
+  "euler_characteristic": -50,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "F_3",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": ["a1_1", "a1_2", "a1_3", "a1_4", "a1_5", "a1_6", "a1_7", "a1_8", "a1_9", "a1_10", "a1_11", "a1_12", "a1_13", "a1_14", "a1_15", "a1_16", "a1_17", "a1_18", "a1_19", "a1_20", "a1_21", "a1_22", "a1_23", "a1_24", "a1_25", "a1_26", "a1_27", "a1_28", "a1_29", "a1_30", "a1_31", "a1_32", "a1_33", "a1_34", "a1_35", "a1_36", "a1_37", "a1_38", "a1_39", "a1_40", "a1_41", "a1_42", "a1_43", "a1_44", "a1_45", "a1_46", "a1_47", "a1_48", "a1_49", "a1_50", "a1_51", "a1_52"],
+    "degree": 1,
+    "group": "F_3^52",
+    "invariant_factors": ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+    "rank": 52,
+    "torsion": []
+  }, {
+    "basis_labels": ["a2"],
+    "degree": 2,
+    "group": "F_3",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Sage",
+  "ranks": [1, 52, 1],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "invocation": "simplicial_complexes.FareyMap(11)",
+    "kind": "sage",
+    "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
+    "reproducible_labelling": true,
+    "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
+  },
+  "space": "Sigma_26",
+  "topological_type": "orientable surface of genus 26"
+}

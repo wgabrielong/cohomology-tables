@@ -1,0 +1,64 @@
+{
+  "coefficients": "F_7",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 4,
+    "f_vector": [13, 67, 188, 215, 86],
+    "facets_sha256": "342a9f76df3030711c77c876abba02eb09409f922cf2856ae546a67398c72369",
+    "n_facets": 86,
+    "n_vertices": 13
+  },
+  "consistency_checks": [],
+  "euler_characteristic": 5,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "F_7",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 1,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": ["a2_1", "a2_2", "a2_3"],
+    "degree": 2,
+    "group": "F_7^3",
+    "invariant_factors": ["0", "0", "0"],
+    "rank": 3,
+    "torsion": []
+  }, {
+    "basis_labels": [],
+    "degree": 3,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": ["a4"],
+    "degree": 4,
+    "group": "F_7",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Lutz/further",
+  "ranks": [1, 0, 3, 0, 1],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "catalog": "small_4_manifolds",
+    "date_accessed": "2026-09-08",
+    "kind": "lutz",
+    "label": "CP^2#(S^2xS^2)",
+    "note": "fetch with scripts/fetch_sources.jl; not redistributed here",
+    "url": "https://www3.math.tu-berlin.de/IfM/Nachrufe/Frank_Lutz/stellar/library_of_triangulations/small_4_manifolds.txt"
+  },
+  "space": "CP^2#(S^2xS^2)",
+  "topological_type": "4-manifold"
+}

@@ -1,0 +1,57 @@
+{
+  "coefficients": "Z",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 3,
+    "f_vector": [19, 152, 266, 133],
+    "facets_sha256": "f260e2271b108896a81e60326744e088782a3cbf7e3c7454b73de6194690b27c",
+    "n_facets": 133,
+    "n_vertices": 19
+  },
+  "consistency_checks": [],
+  "euler_characteristic": 0,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "Z",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": ["a1"],
+    "degree": 1,
+    "group": "Z/35",
+    "invariant_factors": ["35"],
+    "rank": 0,
+    "torsion": ["35"]
+  }, {
+    "basis_labels": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": [],
+    "rank": 0,
+    "torsion": []
+  }, {
+    "basis_labels": ["a3"],
+    "degree": 3,
+    "group": "Z",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Lutz/3-manifolds",
+  "ranks": [1, 0, 0, 1],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "catalog": "hyperbolic_3manifolds",
+    "date_accessed": "2026-09-08",
+    "kind": "lutz",
+    "label": "or_1.54356891_a",
+    "note": "fetch with scripts/fetch_sources.jl; not redistributed here",
+    "url": "https://www3.math.tu-berlin.de/IfM/Nachrufe/Frank_Lutz/stellar/library_of_triangulations/hyperbolic_3manifolds.txt"
+  },
+  "space": "hyperbolic vol 1.54356891_a",
+  "topological_type": "hyperbolic 3-manifold"
+}

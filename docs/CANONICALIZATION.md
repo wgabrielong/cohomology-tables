@@ -50,6 +50,11 @@ meaningful together with the order that produced them. Every record therefore
 carries a `vertex_order_convention` field naming this document, and the
 representatives it lists are expressed in canonical 0-based labels.
 
+Homology is different: `H_*(K; R)` does not depend on the vertex order at all,
+and homology records store no representatives, so they carry no
+`vertex_order_convention` field. The canonical form still governs their
+`facets_sha256`.
+
 ## When the hash is not reproducible
 
 The scheme assumes replaying a recipe rebuilds the *same labelled* complex. That
@@ -64,10 +69,11 @@ evidence.
 `is_reproducible(recipe)` reports this, `records/MANIFEST.tsv` carries it in the
 `reproducible` column, and affected records set `reproducible_labelling: false`
 and explain it in `source.labelling_caveat`. For those entries
-`scripts/regenerate_sage.jl` compares f-vector and homology, which are invariant
-under relabelling, instead of the hash — and still fails if *those* differ,
-since that would mean Sage is building a different space rather than a different
-numbering.
+`scripts/regenerate_sage.jl` compares f-vector and integral homology, which are
+invariant under relabelling, instead of the hash — and still fails if *those*
+differ, since that would mean Sage is building a different space rather than a
+different numbering. Both invariants live in `MANIFEST.tsv`, in the `f_vector`
+and `integral_homology` columns.
 
 The cohomology ring is unaffected: it is a topological invariant. What is tied
 to the labelling is the cocycle representatives, which belong to the particular

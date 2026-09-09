@@ -1,0 +1,42 @@
+{
+  "coefficients": "F_2",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 1,
+    "f_vector": [10, 15],
+    "facets_sha256": "aec5b5c24ef0587f4acd9ae424d49cbcee157abc060f1674d6719e8633251bcb",
+    "n_facets": 15,
+    "n_vertices": 10
+  },
+  "consistency_checks": [],
+  "euler_characteristic": -5,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "F_2",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": ["a1_1", "a1_2", "a1_3", "a1_4", "a1_5", "a1_6"],
+    "degree": 1,
+    "group": "F_2^6",
+    "invariant_factors": ["0", "0", "0", "0", "0", "0"],
+    "rank": 6,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Sage",
+  "ranks": [1, 6],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "invocation": "simplicial_complexes.MatchingComplex(5)",
+    "kind": "sage",
+    "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
+    "reproducible_labelling": true,
+    "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
+  },
+  "space": "Matching(5)",
+  "topological_type": "matching complex on 5 vertices"
+}

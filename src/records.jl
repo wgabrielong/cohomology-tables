@@ -19,8 +19,11 @@ The canonicalisation rule is fixed and documented in docs/CANONICALIZATION.md;
 "Identifier for the canonicalisation rule; bump if the rule ever changes."
 const CANONICAL_FORM_ID = "cohomology-tables/canonical-facets/1"
 
-"Identifier for the record schema."
+"Identifier for the cup product ring record schema."
 const RECORD_SCHEMA_ID = "cohomology-tables/ring-record/1"
+
+"Identifier for the homology record schema."
+const HOMOLOGY_RECORD_SCHEMA_ID = "cohomology-tables/homology-record/1"
 
 """
     canonical_facets(K) -> Vector{Vector{Int}}
@@ -163,14 +166,7 @@ function ring_record(e::SpaceEntry, X::CohomologyRing;
   rec["topological_type"] = e.type
   rec["provenance"] = e.provenance
   rec["source"] = _source_block(e, date_accessed)
-  rec["complex"] = Dict{String,Any}(
-    "n_vertices" => n_vertices(K),
-    "n_facets" => length(facets(K)),
-    "dimension" => dim(K),
-    "f_vector" => collect(Int, f_vector(K)),
-    "canonicalization" => CANONICAL_FORM_ID,
-    "facets_sha256" => facets_sha256(K),
-  )
+  rec["complex"] = _complex_block(K)
   rec["coefficients"] = ring_symbol(X.coeff_ring)
   rec["vertex_order_convention"] =
     "Alexander-Whitney cup product with respect to the ascending order of the " *
@@ -187,6 +183,16 @@ function ring_record(e::SpaceEntry, X::CohomologyRing;
   rec["consistency_checks"] = check_ring(X)
   return rec
 end
+
+"The input fingerprint, shared by both record kinds."
+_complex_block(K::SimplicialComplex) = Dict{String,Any}(
+  "n_vertices" => n_vertices(K),
+  "n_facets" => length(facets(K)),
+  "dimension" => dim(K),
+  "f_vector" => collect(Int, f_vector(K)),
+  "canonicalization" => CANONICAL_FORM_ID,
+  "facets_sha256" => facets_sha256(K),
+)
 
 function _source_block(e::SpaceEntry, date_accessed)
   r = e.recipe
@@ -294,9 +300,9 @@ Space names contain `#`, `^`, `(` and `)`, so everything outside `[A-Za-z0-9]`
 becomes `_`; a short digest of the original name is appended so that distinct
 spaces cannot collide after that flattening.
 """
-function record_filename(name::AbstractString, R)
+function record_filename(name::AbstractString, R; kind::AbstractString = "")
   coeff = replace(ring_symbol(R), r"[^A-Za-z0-9]+" => "")
-  return "$(record_prefix(name))$(coeff).json"
+  return "$(record_prefix(name; kind = kind))$(coeff).json"
 end
 
 """
@@ -308,11 +314,16 @@ space: `"<slug>_<digest>."`.
 Matching records by slug alone is wrong -- `Sigma_4` is a prefix of
 `Sigma_4_x_S_1` -- so the eight-hex digest of the untruncated name is part of the
 prefix and makes it unambiguous.
+
+`kind` selects a record family: `""` is the cup product ring record (so existing
+filenames are unchanged) and `"homology"` gives `<slug>_<digest>.homology.<coeff>.json`.
+`record_prefix(name)` with no kind still matches every record for a space.
 """
-function record_prefix(name::AbstractString)
+function record_prefix(name::AbstractString; kind::AbstractString = "")
   slug = strip(replace(name, r"[^A-Za-z0-9]+" => "_"), '_')
   isempty(slug) && (slug = "space")
-  return "$(slug)_$(first(bytes2hex(SHA.sha256(name)), 8))."
+  base = "$(slug)_$(first(bytes2hex(SHA.sha256(name)), 8))."
+  return isempty(kind) ? base : "$(base)$(kind)."
 end
 
 """
@@ -328,6 +339,78 @@ function write_record(dir::AbstractString, e::SpaceEntry, X::CohomologyRing;
   open(path, "w") do io
     print(io, json_string(ring_record(e, X; date_accessed = date_accessed,
                                       max_basis = max_basis)))
+  end
+  return path
+end
+
+### -------------------------------------------------------------------------
+### Homology records
+### -------------------------------------------------------------------------
+
+"""
+    homology_record(entry, X::SimplicialHomology; date_accessed) -> Dict
+
+The record for one space and one coefficient ring on the homology side: the
+rebuild recipe, the input fingerprint, and the groups in invariant-factor form.
+
+Deliberately absent, and not available behind any flag:
+
+* **cycle representatives.** For a closed orientable `n`-manifold the
+  fundamental class is supported on every `n`-facet with an orientation sign, so
+  a top-degree representative *is* the facet list -- measured `S^2` 4/4, `T^2`
+  14/14, `RP^3` 40/40, `CP^2` 36/36. Emitting them would redistribute the input
+  this repository does not ship. Use `cycle_representative(X, d, j)` locally
+  instead. See docs/PROVENANCE.md.
+* **`vertex_order_convention`.** Homology groups do not depend on the vertex
+  order, and nothing order-dependent is emitted, so the field would be noise.
+  The canonical form still governs `facets_sha256`.
+"""
+function homology_record(e::SpaceEntry, X::SimplicialHomology;
+                         date_accessed::Union{Nothing,AbstractString} = nothing)
+  K = X.complex
+  rec = Dict{String,Any}()
+  rec["schema"] = HOMOLOGY_RECORD_SCHEMA_ID
+  rec["space"] = e.name
+  rec["topological_type"] = e.type
+  rec["provenance"] = e.provenance
+  rec["source"] = _source_block(e, date_accessed)
+  rec["complex"] = _complex_block(K)
+  rec["coefficients"] = ring_symbol(X.coeff_ring)
+  rec["homology"] = [_homology_degree_block(X, d) for d in 0:top_degree(X)]
+  rec["ranks"] = homology_ranks(X)
+  rec["euler_characteristic"] =
+    sum((-1)^d * homology_ranks(X)[d + 1] for d in 0:top_degree(X); init = 0)
+  rec["reproducible_labelling"] = is_reproducible(e.recipe)
+  rec["consistency_checks"] = check_homology(X)
+  rec["note"] = "No cycle representatives are stored: for a closed orientable " *
+                "manifold the top-degree one is supported on every facet. See " *
+                "docs/PROVENANCE.md."
+  return rec
+end
+
+function _homology_degree_block(X::SimplicialHomology, d::Int)
+  g = homology_group(X, d)
+  return Dict{String,Any}(
+    "degree" => d,
+    "group" => group_symbol(X.coeff_ring, g.orders),
+    "invariant_factors" => [string(m) for m in g.orders],
+    "basis_labels" => g.labels,
+    "rank" => free_rank(g),
+    "torsion" => [string(m) for m in torsion_orders(g)],
+  )
+end
+
+"""
+    write_homology_record(dir, entry, X; date_accessed) -> String
+
+Write the homology record for `entry`/`X` into `dir` and return the path.
+"""
+function write_homology_record(dir::AbstractString, e::SpaceEntry, X::SimplicialHomology;
+                               date_accessed::Union{Nothing,AbstractString} = nothing)
+  isdir(dir) || mkpath(dir)
+  path = joinpath(dir, record_filename(e.name, X.coeff_ring; kind = "homology"))
+  open(path, "w") do io
+    print(io, json_string(homology_record(e, X; date_accessed = date_accessed)))
   end
   return path
 end

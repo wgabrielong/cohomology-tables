@@ -1,0 +1,57 @@
+{
+  "coefficients": "F_3",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 3,
+    "f_vector": [19, 166, 294, 147],
+    "facets_sha256": "108d4422ee9568fe977f1db9f04741084366f850c52cb227fd1026878abcd51d",
+    "n_facets": 147,
+    "n_vertices": 19
+  },
+  "consistency_checks": [],
+  "euler_characteristic": 0,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "F_3",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": ["a1_1", "a1_2", "a1_3", "a1_4", "a1_5", "a1_6", "a1_7", "a1_8", "a1_9", "a1_10"],
+    "degree": 1,
+    "group": "F_3^10",
+    "invariant_factors": ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+    "rank": 10,
+    "torsion": []
+  }, {
+    "basis_labels": ["a2_1", "a2_2", "a2_3", "a2_4", "a2_5", "a2_6", "a2_7", "a2_8", "a2_9", "a2_10"],
+    "degree": 2,
+    "group": "F_3^10",
+    "invariant_factors": ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+    "rank": 10,
+    "torsion": []
+  }, {
+    "basis_labels": ["a3"],
+    "degree": 3,
+    "group": "F_3",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Lutz/3-manifolds",
+  "ranks": [1, 10, 10, 1],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "catalog": "connected_sums_3d",
+    "date_accessed": "2026-09-08",
+    "kind": "lutz",
+    "label": "(S^2xS^1)#10",
+    "note": "fetch with scripts/fetch_sources.jl; not redistributed here",
+    "url": "https://www3.math.tu-berlin.de/IfM/Nachrufe/Frank_Lutz/stellar/library_of_triangulations/connected_sums_3d.txt"
+  },
+  "space": "(S^2xS^1)#10",
+  "topological_type": "connected sum of 3-manifolds"
+}

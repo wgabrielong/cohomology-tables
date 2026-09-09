@@ -1,0 +1,57 @@
+{
+  "coefficients": "F_3",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 3,
+    "f_vector": [15, 105, 180, 90],
+    "facets_sha256": "a72d05fe91bb7e32c22a8699f442da9ab8e0ff54e886cac2f9873570a70026ff",
+    "n_facets": 90,
+    "n_vertices": 15
+  },
+  "consistency_checks": [],
+  "euler_characteristic": 0,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "F_3",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": ["a1_1", "a1_2", "a1_3"],
+    "degree": 1,
+    "group": "F_3^3",
+    "invariant_factors": ["0", "0", "0"],
+    "rank": 3,
+    "torsion": []
+  }, {
+    "basis_labels": ["a2_1", "a2_2", "a2_3"],
+    "degree": 2,
+    "group": "F_3^3",
+    "invariant_factors": ["0", "0", "0"],
+    "rank": 3,
+    "torsion": []
+  }, {
+    "basis_labels": ["a3"],
+    "degree": 3,
+    "group": "F_3",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Lutz/3-manifolds",
+  "ranks": [1, 3, 3, 1],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "catalog": "flat_3manifolds",
+    "date_accessed": "2026-09-08",
+    "kind": "lutz",
+    "label": "T^3",
+    "note": "fetch with scripts/fetch_sources.jl; not redistributed here",
+    "url": "https://www3.math.tu-berlin.de/IfM/Nachrufe/Frank_Lutz/stellar/library_of_triangulations/flat_3manifolds.txt"
+  },
+  "space": "T^3",
+  "topological_type": "flat 3-manifold"
+}

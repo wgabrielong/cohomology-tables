@@ -1,0 +1,50 @@
+{
+  "coefficients": "F_7",
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 2,
+    "f_vector": [21, 147, 98],
+    "facets_sha256": "2f4e8a2070ca536cb278afce8011822b14ca5fd8477889dc57ea2c09e38f32f0",
+    "n_facets": 98,
+    "n_vertices": 21
+  },
+  "consistency_checks": [],
+  "euler_characteristic": -28,
+  "homology": [{
+    "basis_labels": ["a0"],
+    "degree": 0,
+    "group": "F_7",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }, {
+    "basis_labels": ["a1_1", "a1_2", "a1_3", "a1_4", "a1_5", "a1_6", "a1_7", "a1_8", "a1_9", "a1_10", "a1_11", "a1_12", "a1_13", "a1_14", "a1_15", "a1_16", "a1_17", "a1_18", "a1_19", "a1_20", "a1_21", "a1_22", "a1_23", "a1_24", "a1_25", "a1_26", "a1_27", "a1_28", "a1_29", "a1_30"],
+    "degree": 1,
+    "group": "F_7^30",
+    "invariant_factors": ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+    "rank": 30,
+    "torsion": []
+  }, {
+    "basis_labels": ["a2"],
+    "degree": 2,
+    "group": "F_7",
+    "invariant_factors": ["0"],
+    "rank": 1,
+    "torsion": []
+  }],
+  "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
+  "provenance": "Lutz/library",
+  "ranks": [1, 30, 1],
+  "reproducible_labelling": true,
+  "schema": "cohomology-tables/homology-record/1",
+  "source": {
+    "catalog": "regular_2_21_23_1",
+    "date_accessed": "2026-09-08",
+    "kind": "lutz",
+    "label": null,
+    "note": "fetch with scripts/fetch_sources.jl; not redistributed here",
+    "url": "https://www3.math.tu-berlin.de/IfM/Nachrufe/Frank_Lutz/stellar/library_of_triangulations/regular_2_21_23_1.txt"
+  },
+  "space": "Sigma_15",
+  "topological_type": "orientable surface of genus 15"
+}

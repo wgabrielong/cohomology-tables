@@ -17,7 +17,7 @@ precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 Wern Juin Gabriel Ong"
 SPDX-License-Identifier = "GPL-3.0-or-later"
 
-# Computed cohomology ring records. These contain no upstream facet lists --
+# Computed cohomology ring and homology records. These contain no facet lists --
 # only a rebuild recipe, a hash of the input, and results computed here.
 [[annotations]]
 path = ["records/**"]
