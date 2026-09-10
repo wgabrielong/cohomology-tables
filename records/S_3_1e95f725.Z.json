@@ -53,6 +53,7 @@
   },
   "consistency_checks": [],
   "provenance": "built-in",
+  "reproducible_labelling": true,
   "ring_presentation": "Z[x3]/(x3^2),  |x3| = 3",
   "schema": "cohomology-tables/ring-record/1",
   "source": {

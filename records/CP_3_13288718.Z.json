@@ -716,6 +716,7 @@
   },
   "consistency_checks": [],
   "provenance": "arXiv",
+  "reproducible_labelling": true,
   "ring_presentation": "Z[x2]/(x2^4),  |x2| = 2",
   "schema": "cohomology-tables/ring-record/1",
   "source": {

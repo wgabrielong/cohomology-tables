@@ -362,6 +362,7 @@
   },
   "consistency_checks": [],
   "provenance": "Lutz/library",
+  "reproducible_labelling": true,
   "ring_presentation": null,
   "schema": "cohomology-tables/ring-record/1",
   "source": {

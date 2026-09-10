@@ -4,7 +4,7 @@
     "basis_labels": ["1"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [7]
+      "face": [0]
     }, {
       "coefficient": "1",
       "face": [8]
@@ -13,49 +13,10 @@
       "face": [14]
     }, {
       "coefficient": "1",
-      "face": [17]
-    }, {
-      "coefficient": "1",
-      "face": [20]
-    }, {
-      "coefficient": "1",
-      "face": [2]
-    }, {
-      "coefficient": "1",
-      "face": [15]
-    }, {
-      "coefficient": "1",
       "face": [18]
     }, {
       "coefficient": "1",
-      "face": [5]
-    }, {
-      "coefficient": "1",
-      "face": [12]
-    }, {
-      "coefficient": "1",
       "face": [19]
-    }, {
-      "coefficient": "1",
-      "face": [0]
-    }, {
-      "coefficient": "1",
-      "face": [1]
-    }, {
-      "coefficient": "1",
-      "face": [3]
-    }, {
-      "coefficient": "1",
-      "face": [6]
-    }, {
-      "coefficient": "1",
-      "face": [11]
-    }, {
-      "coefficient": "1",
-      "face": [13]
-    }, {
-      "coefficient": "1",
-      "face": [9]
     }, {
       "coefficient": "1",
       "face": [4]
@@ -64,7 +25,46 @@
       "face": [10]
     }, {
       "coefficient": "1",
+      "face": [17]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [11]
+    }, {
+      "coefficient": "1",
+      "face": [20]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [7]
+    }, {
+      "coefficient": "1",
+      "face": [6]
+    }, {
+      "coefficient": "1",
+      "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [9]
+    }, {
+      "coefficient": "1",
       "face": [16]
+    }, {
+      "coefficient": "1",
+      "face": [13]
+    }, {
+      "coefficient": "1",
+      "face": [15]
+    }, {
+      "coefficient": "1",
+      "face": [12]
     }]],
     "degree": 0,
     "group": "Z",
@@ -91,7 +91,7 @@
     "basis_labels": ["x4"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [2, 6, 13, 18, 20]
+      "face": [0, 2, 11, 18, 20]
     }]],
     "degree": 4,
     "group": "Z/7",
@@ -107,12 +107,14 @@
   },
   "consistency_checks": [],
   "provenance": "Sage",
+  "reproducible_labelling": true,
   "ring_presentation": "Z[x4]/(7*x4, x4^2),  |x4| = 4",
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.MooreSpace(7).suspension(2)",
     "kind": "sage",
     "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
+    "reproducible_labelling": true,
     "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
   },
   "space": "M(Z/7,3)",

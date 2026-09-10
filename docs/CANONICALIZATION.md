@@ -79,6 +79,27 @@ The cohomology ring is unaffected: it is a topological invariant. What is tied
 to the labelling is the cocycle representatives, which belong to the particular
 numbering the record was computed from.
 
+## When the record is not reproducible, but the hash is
+
+A stable hash is not enough to make a record byte-stable. Regenerating the whole
+ring corpus reproduces 198 of the 228 records exactly. Of the 30 that do not,
+18 are the surface records above, where the labelling itself moves. The other 12
+are the Moore spaces — `M(Z/3,1)`, `M(Z/4,1)`, `M(Z/5,2)`, `M(Z/7,3)`,
+`M(Z/8,4)` and `M(Z/9,2)`, each over two coefficient rings.
+
+For those the input is provably identical: `facets_sha256`, the f-vector, every
+cohomology group and the ring presentation agree run to run. What differs is the
+chosen **cocycle representative** — two runs of the same code on the same
+complex select different, equally valid representatives of the same class. The
+selection underneath is not deterministic, and re-running is enough to see it:
+two fresh processes computing `M(Z/9,2)` over `ZZ` disagree on the
+representatives while agreeing on everything else.
+
+Nothing mathematical is at stake — a representative is a choice, not an
+invariant — but two consequences follow. A record's representatives are not a
+fingerprint and must not be diffed as one; and `reproducible_labelling: true`
+means the *labelling* replays, not that the file will.
+
 ## Worked example
 
 The boundary of the tetrahedron, `S^2`, as built by `sphere(2)`:

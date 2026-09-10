@@ -3620,12 +3620,14 @@
   },
   "consistency_checks": [],
   "provenance": "Sage",
+  "reproducible_labelling": true,
   "ring_presentation": null,
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.FareyMap(11)",
     "kind": "sage",
     "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
+    "reproducible_labelling": true,
     "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
   },
   "space": "Sigma_26",

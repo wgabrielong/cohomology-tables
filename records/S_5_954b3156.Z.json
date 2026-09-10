@@ -71,6 +71,7 @@
   },
   "consistency_checks": [],
   "provenance": "built-in",
+  "reproducible_labelling": true,
   "ring_presentation": "Z[x5]/(x5^2),  |x5| = 5",
   "schema": "cohomology-tables/ring-record/1",
   "source": {

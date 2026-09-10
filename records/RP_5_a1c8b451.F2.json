@@ -1118,6 +1118,7 @@
   },
   "consistency_checks": [],
   "provenance": "Lutz/library",
+  "reproducible_labelling": true,
   "ring_presentation": "F_2[x1]/(x1^6),  |x1| = 1",
   "schema": "cohomology-tables/ring-record/1",
   "source": {

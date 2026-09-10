@@ -4,58 +4,7 @@
     "basis_labels": ["1"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [3]
-    }, {
-      "coefficient": "1",
-      "face": [6]
-    }, {
-      "coefficient": "1",
-      "face": [7]
-    }, {
-      "coefficient": "1",
-      "face": [21]
-    }, {
-      "coefficient": "1",
       "face": [0]
-    }, {
-      "coefficient": "1",
-      "face": [4]
-    }, {
-      "coefficient": "1",
-      "face": [12]
-    }, {
-      "coefficient": "1",
-      "face": [2]
-    }, {
-      "coefficient": "1",
-      "face": [20]
-    }, {
-      "coefficient": "1",
-      "face": [22]
-    }, {
-      "coefficient": "1",
-      "face": [8]
-    }, {
-      "coefficient": "1",
-      "face": [16]
-    }, {
-      "coefficient": "1",
-      "face": [5]
-    }, {
-      "coefficient": "1",
-      "face": [13]
-    }, {
-      "coefficient": "1",
-      "face": [1]
-    }, {
-      "coefficient": "1",
-      "face": [9]
-    }, {
-      "coefficient": "1",
-      "face": [18]
-    }, {
-      "coefficient": "1",
-      "face": [14]
     }, {
       "coefficient": "1",
       "face": [11]
@@ -64,13 +13,64 @@
       "face": [19]
     }, {
       "coefficient": "1",
-      "face": [17]
+      "face": [22]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [9]
+    }, {
+      "coefficient": "1",
+      "face": [10]
+    }, {
+      "coefficient": "1",
+      "face": [21]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [18]
+    }, {
+      "coefficient": "1",
+      "face": [7]
+    }, {
+      "coefficient": "1",
+      "face": [8]
+    }, {
+      "coefficient": "1",
+      "face": [16]
+    }, {
+      "coefficient": "1",
+      "face": [12]
+    }, {
+      "coefficient": "1",
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [13]
     }, {
       "coefficient": "1",
       "face": [15]
     }, {
       "coefficient": "1",
-      "face": [10]
+      "face": [6]
+    }, {
+      "coefficient": "1",
+      "face": [14]
+    }, {
+      "coefficient": "1",
+      "face": [20]
+    }, {
+      "coefficient": "1",
+      "face": [17]
     }]],
     "degree": 0,
     "group": "Z",
@@ -91,7 +91,7 @@
     "basis_labels": ["x3"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [8, 9, 17, 22]
+      "face": [5, 6, 14, 22]
     }]],
     "degree": 3,
     "group": "Z/9",
@@ -107,12 +107,14 @@
   },
   "consistency_checks": [],
   "provenance": "Sage",
+  "reproducible_labelling": true,
   "ring_presentation": "Z[x3]/(9*x3, x3^2),  |x3| = 3",
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.MooreSpace(9).suspension(1)",
     "kind": "sage",
     "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
+    "reproducible_labelling": true,
     "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
   },
   "space": "M(Z/9,2)",

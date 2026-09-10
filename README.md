@@ -482,6 +482,14 @@ checked against f-vector and homology instead â€” invariants under relabelling â
 and still fail if those differ. The ring is unaffected; only the cocycle
 representatives are tied to a labelling.
 
+Re-exporting is not byte-stable everywhere. Regenerating the ring corpus
+reproduces 198 of the 228 records exactly; 18 of the rest are those surfaces,
+and the other 12 are the six Moore spaces over two rings each. For the Moore
+spaces the hash, the groups and the presentation are identical run to run and
+only the chosen cocycle representative moves, a choice rather than an invariant.
+Treat a record's representatives as one valid answer, not as a fingerprint. See
+[docs/CANONICALIZATION.md](docs/CANONICALIZATION.md#when-the-record-is-not-reproducible-but-the-hash-is).
+
 `MANIFEST.tsv` also carries `f_vector` and `integral_homology` columns. Those
 are invariants of the space rather than of a labelling, which is what lets
 `regenerate_sage.jl` check the nine non-reproducible surfaces meaningfully.

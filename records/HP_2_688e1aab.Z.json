@@ -1277,12 +1277,14 @@
   },
   "consistency_checks": [],
   "provenance": "Sage",
+  "reproducible_labelling": true,
   "ring_presentation": "Z[x4]/(x4^3),  |x4| = 4",
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.QuaternionicProjectivePlane()",
     "kind": "sage",
     "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
+    "reproducible_labelling": true,
     "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
   },
   "space": "HP^2",
