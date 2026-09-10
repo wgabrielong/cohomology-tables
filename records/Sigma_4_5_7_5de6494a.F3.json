@@ -1,0 +1,156 @@
+{
+  "coefficients": "F_3",
+  "cohomology": [{
+    "basis_labels": ["1"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [0]
+    }, {
+      "coefficient": "1",
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [6]
+    }, {
+      "coefficient": "1",
+      "face": [7]
+    }, {
+      "coefficient": "1",
+      "face": [8]
+    }, {
+      "coefficient": "1",
+      "face": [9]
+    }, {
+      "coefficient": "1",
+      "face": [10]
+    }, {
+      "coefficient": "1",
+      "face": [11]
+    }, {
+      "coefficient": "1",
+      "face": [12]
+    }, {
+      "coefficient": "1",
+      "face": [13]
+    }, {
+      "coefficient": "1",
+      "face": [14]
+    }, {
+      "coefficient": "1",
+      "face": [15]
+    }, {
+      "coefficient": "1",
+      "face": [16]
+    }, {
+      "coefficient": "1",
+      "face": [17]
+    }, {
+      "coefficient": "1",
+      "face": [18]
+    }, {
+      "coefficient": "1",
+      "face": [19]
+    }]],
+    "degree": 0,
+    "group": "F_3",
+    "invariant_factors": ["0"]
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 1,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": ["x3"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [12, 16, 18, 19]
+    }]],
+    "degree": 3,
+    "group": "F_3",
+    "invariant_factors": ["0"]
+  }],
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 3,
+    "f_vector": [20, 177, 314, 157],
+    "facets_sha256": "6ab3ca241ea677a60b33ff20d68a8cdc8c605aba33b82d16bbf575c5cb6f9018",
+    "n_facets": 157,
+    "n_vertices": 20
+  },
+  "consistency_checks": [],
+  "provenance": "Lutz/3-manifolds",
+  "reproducible_labelling": true,
+  "ring_presentation": "F_3[x3]/(x3^2),  |x3| = 3",
+  "schema": "cohomology-tables/ring-record/1",
+  "source": {
+    "catalog": "homology_3spheres",
+    "date_accessed": "2026-09-08",
+    "kind": "lutz",
+    "label": "Sigma_4_5_7",
+    "note": "fetch with scripts/fetch_sources.jl; not redistributed here",
+    "url": "https://www3.math.tu-berlin.de/IfM/Nachrufe/Frank_Lutz/stellar/library_of_triangulations/homology_3spheres.txt"
+  },
+  "space": "Sigma(4,5,7)",
+  "structure_constants": [{
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 0
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 3,
+      "index": 1,
+      "label": "x3"
+    },
+    "coefficients": ["1"],
+    "product_degree": 3
+  }, {
+    "a": {
+      "degree": 3,
+      "index": 1,
+      "label": "x3"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 3
+  }],
+  "structure_constants_complete": true,
+  "topological_type": "Brieskorn homology 3-sphere",
+  "vertex_order_convention": "Alexander-Whitney cup product with respect to the ascending order of the canonical 0-based vertex labels; see docs/CANONICALIZATION.md"
+}

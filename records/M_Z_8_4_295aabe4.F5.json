@@ -1,0 +1,153 @@
+{
+  "coefficients": "F_5",
+  "cohomology": [{
+    "basis_labels": ["1"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [0]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [16]
+    }, {
+      "coefficient": "1",
+      "face": [19]
+    }, {
+      "coefficient": "1",
+      "face": [22]
+    }, {
+      "coefficient": "1",
+      "face": [23]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [7]
+    }, {
+      "coefficient": "1",
+      "face": [8]
+    }, {
+      "coefficient": "1",
+      "face": [15]
+    }, {
+      "coefficient": "1",
+      "face": [21]
+    }, {
+      "coefficient": "1",
+      "face": [24]
+    }, {
+      "coefficient": "1",
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [12]
+    }, {
+      "coefficient": "1",
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [6]
+    }, {
+      "coefficient": "1",
+      "face": [20]
+    }, {
+      "coefficient": "1",
+      "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [13]
+    }, {
+      "coefficient": "1",
+      "face": [9]
+    }, {
+      "coefficient": "1",
+      "face": [10]
+    }, {
+      "coefficient": "1",
+      "face": [18]
+    }, {
+      "coefficient": "1",
+      "face": [14]
+    }, {
+      "coefficient": "1",
+      "face": [11]
+    }, {
+      "coefficient": "1",
+      "face": [17]
+    }]],
+    "degree": 0,
+    "group": "F_5",
+    "invariant_factors": ["0"]
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 1,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 3,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 4,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 5,
+    "group": "0",
+    "invariant_factors": []
+  }],
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 5,
+    "f_vector": [25, 198, 722, 1340, 1224, 432],
+    "facets_sha256": "5ce9c634e80ea7143e598665dc63569e0270470953209ea2b70f6fcaaecdfb48",
+    "n_facets": 432,
+    "n_vertices": 25
+  },
+  "consistency_checks": [],
+  "provenance": "Sage",
+  "reproducible_labelling": true,
+  "ring_presentation": "F_5",
+  "schema": "cohomology-tables/ring-record/1",
+  "source": {
+    "invocation": "simplicial_complexes.MooreSpace(8).suspension(3)",
+    "kind": "sage",
+    "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
+    "reproducible_labelling": true,
+    "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
+  },
+  "space": "M(Z/8,4)",
+  "structure_constants": [{
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 0
+  }],
+  "structure_constants_complete": true,
+  "topological_type": "Moore space with H_4 = Z/8",
+  "vertex_order_convention": "Alexander-Whitney cup product with respect to the ascending order of the canonical 0-based vertex labels; see docs/CANONICALIZATION.md"
+}

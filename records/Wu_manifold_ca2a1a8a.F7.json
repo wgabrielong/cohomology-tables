@@ -1,0 +1,147 @@
+{
+  "coefficients": "F_7",
+  "cohomology": [{
+    "basis_labels": ["1"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [0]
+    }, {
+      "coefficient": "1",
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [7]
+    }, {
+      "coefficient": "1",
+      "face": [8]
+    }, {
+      "coefficient": "1",
+      "face": [6]
+    }, {
+      "coefficient": "1",
+      "face": [12]
+    }, {
+      "coefficient": "1",
+      "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [9]
+    }, {
+      "coefficient": "1",
+      "face": [11]
+    }, {
+      "coefficient": "1",
+      "face": [10]
+    }]],
+    "degree": 0,
+    "group": "F_7",
+    "invariant_factors": ["0"]
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 1,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 3,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 4,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": ["x5"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [5, 6, 7, 8, 9, 12]
+    }]],
+    "degree": 5,
+    "group": "F_7",
+    "invariant_factors": ["0"]
+  }],
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 5,
+    "f_vector": [13, 78, 286, 533, 468, 156],
+    "facets_sha256": "f5830897e4857540e467550d1904adac5af01239373c73d5b6ec57373302e263",
+    "n_facets": 156,
+    "n_vertices": 13
+  },
+  "consistency_checks": [],
+  "provenance": "Lutz/library",
+  "reproducible_labelling": true,
+  "ring_presentation": "F_7[x5]/(x5^2),  |x5| = 5",
+  "schema": "cohomology-tables/ring-record/1",
+  "source": {
+    "catalog": "SU2_SO3",
+    "date_accessed": "2026-09-08",
+    "kind": "lutz",
+    "label": null,
+    "note": "fetch with scripts/fetch_sources.jl; not redistributed here",
+    "url": "https://www3.math.tu-berlin.de/IfM/Nachrufe/Frank_Lutz/stellar/library_of_triangulations/SU2_SO3.txt"
+  },
+  "space": "Wu manifold",
+  "structure_constants": [{
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 0
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 5,
+      "index": 1,
+      "label": "x5"
+    },
+    "coefficients": ["1"],
+    "product_degree": 5
+  }, {
+    "a": {
+      "degree": 5,
+      "index": 1,
+      "label": "x5"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 5
+  }],
+  "structure_constants_complete": true,
+  "topological_type": "SU(3)/SO(3)",
+  "vertex_order_convention": "Alexander-Whitney cup product with respect to the ascending order of the canonical 0-based vertex labels; see docs/CANONICALIZATION.md"
+}

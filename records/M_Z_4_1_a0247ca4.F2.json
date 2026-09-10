@@ -4,37 +4,37 @@
     "basis_labels": ["1"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [4]
-    }, {
-      "coefficient": "1",
-      "face": [5]
-    }, {
-      "coefficient": "1",
-      "face": [8]
-    }, {
-      "coefficient": "1",
-      "face": [2]
-    }, {
-      "coefficient": "1",
-      "face": [9]
-    }, {
-      "coefficient": "1",
-      "face": [1]
-    }, {
-      "coefficient": "1",
       "face": [0]
-    }, {
-      "coefficient": "1",
-      "face": [7]
     }, {
       "coefficient": "1",
       "face": [3]
     }, {
       "coefficient": "1",
+      "face": [10]
+    }, {
+      "coefficient": "1",
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [8]
+    }, {
+      "coefficient": "1",
+      "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [7]
+    }, {
+      "coefficient": "1",
       "face": [6]
     }, {
       "coefficient": "1",
-      "face": [10]
+      "face": [9]
     }]],
     "degree": 0,
     "group": "F_2",
@@ -43,37 +43,46 @@
     "basis_labels": ["x1"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [2, 4]
-    }, {
-      "coefficient": "1",
-      "face": [2, 8]
-    }, {
-      "coefficient": "1",
-      "face": [1, 4]
+      "face": [0, 2]
     }, {
       "coefficient": "1",
       "face": [0, 8]
     }, {
       "coefficient": "1",
-      "face": [0, 1]
-    }, {
-      "coefficient": "1",
-      "face": [1, 6]
-    }, {
-      "coefficient": "1",
-      "face": [0, 5]
-    }, {
-      "coefficient": "1",
-      "face": [0, 3]
-    }, {
-      "coefficient": "1",
-      "face": [3, 10]
-    }, {
-      "coefficient": "1",
-      "face": [6, 10]
+      "face": [2, 7]
     }, {
       "coefficient": "1",
       "face": [2, 6]
+    }, {
+      "coefficient": "1",
+      "face": [2, 10]
+    }, {
+      "coefficient": "1",
+      "face": [0, 6]
+    }, {
+      "coefficient": "1",
+      "face": [6, 9]
+    }, {
+      "coefficient": "1",
+      "face": [2, 9]
+    }, {
+      "coefficient": "1",
+      "face": [5, 9]
+    }, {
+      "coefficient": "1",
+      "face": [3, 4]
+    }, {
+      "coefficient": "1",
+      "face": [3, 7]
+    }, {
+      "coefficient": "1",
+      "face": [4, 5]
+    }, {
+      "coefficient": "1",
+      "face": [5, 8]
+    }, {
+      "coefficient": "1",
+      "face": [1, 6]
     }]],
     "degree": 1,
     "group": "F_2",
@@ -82,7 +91,7 @@
     "basis_labels": ["x2"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [0, 4, 7]
+      "face": [0, 1, 6]
     }]],
     "degree": 2,
     "group": "F_2",

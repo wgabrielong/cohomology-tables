@@ -1,0 +1,141 @@
+{
+  "coefficients": "F_5",
+  "cohomology": [{
+    "basis_labels": ["1"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [0]
+    }, {
+      "coefficient": "1",
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [6]
+    }, {
+      "coefficient": "1",
+      "face": [7]
+    }, {
+      "coefficient": "1",
+      "face": [8]
+    }, {
+      "coefficient": "1",
+      "face": [9]
+    }, {
+      "coefficient": "1",
+      "face": [10]
+    }, {
+      "coefficient": "1",
+      "face": [11]
+    }, {
+      "coefficient": "1",
+      "face": [12]
+    }, {
+      "coefficient": "1",
+      "face": [13]
+    }, {
+      "coefficient": "1",
+      "face": [14]
+    }]],
+    "degree": 0,
+    "group": "F_5",
+    "invariant_factors": ["0"]
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 1,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": ["x3"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [8, 10, 12, 13]
+    }]],
+    "degree": 3,
+    "group": "F_5",
+    "invariant_factors": ["0"]
+  }],
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 3,
+    "f_vector": [15, 104, 178, 89],
+    "facets_sha256": "60f2b3bfee5c5c7da7618d3e7092c65abd428c2f50ccfef8ee6028a34dd6a522",
+    "n_facets": 89,
+    "n_vertices": 15
+  },
+  "consistency_checks": [],
+  "provenance": "Lutz/3-manifolds",
+  "reproducible_labelling": true,
+  "ring_presentation": "F_5[x3]/(x3^2),  |x3| = 3",
+  "schema": "cohomology-tables/ring-record/1",
+  "source": {
+    "catalog": "spherical_3manifolds",
+    "date_accessed": "2026-09-08",
+    "kind": "lutz",
+    "label": "P_4",
+    "note": "fetch with scripts/fetch_sources.jl; not redistributed here",
+    "url": "https://www3.math.tu-berlin.de/IfM/Nachrufe/Frank_Lutz/stellar/library_of_triangulations/spherical_3manifolds.txt"
+  },
+  "space": "P_4",
+  "structure_constants": [{
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 0
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 3,
+      "index": 1,
+      "label": "x3"
+    },
+    "coefficients": ["1"],
+    "product_degree": 3
+  }, {
+    "a": {
+      "degree": 3,
+      "index": 1,
+      "label": "x3"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 3
+  }],
+  "structure_constants_complete": true,
+  "topological_type": "spherical 3-manifold",
+  "vertex_order_convention": "Alexander-Whitney cup product with respect to the ascending order of the canonical 0-based vertex labels; see docs/CANONICALIZATION.md"
+}

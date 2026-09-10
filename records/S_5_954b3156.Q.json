@@ -1,0 +1,126 @@
+{
+  "coefficients": "Q",
+  "cohomology": [{
+    "basis_labels": ["1"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [6]
+    }, {
+      "coefficient": "1",
+      "face": [0]
+    }]],
+    "degree": 0,
+    "group": "Q",
+    "invariant_factors": ["0"]
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 1,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 3,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 4,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": ["x5"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [0, 1, 2, 3, 4, 5]
+    }]],
+    "degree": 5,
+    "group": "Q",
+    "invariant_factors": ["0"]
+  }],
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 5,
+    "f_vector": [7, 21, 35, 35, 21, 7],
+    "facets_sha256": "51f8a3b74dfaa20d0899cb4aea52a8151408aabb518ebf7c4f9795368c21ae46",
+    "n_facets": 7,
+    "n_vertices": 7
+  },
+  "consistency_checks": [],
+  "provenance": "built-in",
+  "reproducible_labelling": true,
+  "ring_presentation": "Q[x5]/(x5^2),  |x5| = 5",
+  "schema": "cohomology-tables/ring-record/1",
+  "source": {
+    "invocation": "sphere(5)",
+    "kind": "builtin",
+    "note": "constructed by this package; see src/spaces.jl"
+  },
+  "space": "S^5",
+  "structure_constants": [{
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 0
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 5,
+      "index": 1,
+      "label": "x5"
+    },
+    "coefficients": ["1"],
+    "product_degree": 5
+  }, {
+    "a": {
+      "degree": 5,
+      "index": 1,
+      "label": "x5"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 5
+  }],
+  "structure_constants_complete": true,
+  "topological_type": "5-sphere",
+  "vertex_order_convention": "Alexander-Whitney cup product with respect to the ascending order of the canonical 0-based vertex labels; see docs/CANONICALIZATION.md"
+}

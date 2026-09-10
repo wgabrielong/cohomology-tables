@@ -1,0 +1,143 @@
+{
+  "coefficients": "F_3",
+  "cohomology": [{
+    "basis_labels": ["1"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [11]
+    }, {
+      "coefficient": "1",
+      "face": [14]
+    }, {
+      "coefficient": "1",
+      "face": [15]
+    }, {
+      "coefficient": "1",
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [6]
+    }, {
+      "coefficient": "1",
+      "face": [7]
+    }, {
+      "coefficient": "1",
+      "face": [0]
+    }, {
+      "coefficient": "1",
+      "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [13]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [9]
+    }, {
+      "coefficient": "1",
+      "face": [8]
+    }, {
+      "coefficient": "1",
+      "face": [10]
+    }, {
+      "coefficient": "1",
+      "face": [12]
+    }]],
+    "degree": 0,
+    "group": "F_3",
+    "invariant_factors": ["0"]
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 1,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": []
+  }, {
+    "basis_labels": ["x3"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [1, 2, 3, 12]
+    }]],
+    "degree": 3,
+    "group": "F_3",
+    "invariant_factors": ["0"]
+  }],
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 3,
+    "f_vector": [16, 106, 180, 90],
+    "facets_sha256": "dead5e613d09d04a8b236077b27e073823a3c1261dc42ef03e885715afb48e69",
+    "n_facets": 90,
+    "n_vertices": 16
+  },
+  "consistency_checks": [],
+  "provenance": "Sage",
+  "reproducible_labelling": true,
+  "ring_presentation": "F_3[x3]/(x3^2),  |x3| = 3",
+  "schema": "cohomology-tables/ring-record/1",
+  "source": {
+    "invocation": "simplicial_complexes.PoincareHomologyThreeSphere()",
+    "kind": "sage",
+    "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
+    "reproducible_labelling": true,
+    "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
+  },
+  "space": "Poincare sphere",
+  "structure_constants": [{
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 0
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 3,
+      "index": 1,
+      "label": "x3"
+    },
+    "coefficients": ["1"],
+    "product_degree": 3
+  }, {
+    "a": {
+      "degree": 3,
+      "index": 1,
+      "label": "x3"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 3
+  }],
+  "structure_constants_complete": true,
+  "topological_type": "Poincaré homology 3-sphere = Sigma(2,3,5)",
+  "vertex_order_convention": "Alexander-Whitney cup product with respect to the ascending order of the canonical 0-based vertex labels; see docs/CANONICALIZATION.md"
+}

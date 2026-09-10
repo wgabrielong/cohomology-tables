@@ -171,7 +171,9 @@ This matters more than it might seem. `RP^n` over `ZZ` is almost all torsion and
 its table looks nearly empty; over `GF(2)` it is `F_2[x]/(x^(n+1))`. Rule of
 thumb: `GF(2)` for real projective spaces and anything with 2-torsion, `ZZ` or
 `QQ` for spheres and complex projective spaces, `GF(p)` to see `p`-torsion. Each
-catalogue entry carries a suggested `coeffs` list. Over a field coordinates are
+catalogue entry carries a suggested `coeffs` list, which is a starting point for
+interactive work rather than a limit on what is available: the shipped records
+cover all six rings for every computable space. Over a field coordinates are
 unique; over `ZZ` they are canonical modulo the order of each summand.
 
 ---
@@ -460,15 +462,16 @@ hash.
 
 There are two record families, distinguished by a token in the filename:
 `<slug>_<digest>.<coeff>.json` holds a cup product ring, and
-`<slug>_<digest>.homology.<coeff>.json` holds homology. Homology records are
-generated over a fixed grid — `ZZ`, `QQ`, `GF(2)`, `GF(3)`, `GF(5)`, `GF(7)` —
-and carry groups, invariant factors, Betti numbers and torsion, with **no
+`<slug>_<digest>.homology.<coeff>.json` holds homology. Both are generated over
+the same fixed grid — `ZZ`, `QQ`, `GF(2)`, `GF(3)`, `GF(5)`, `GF(7)`. Homology
+records carry groups, invariant factors, Betti numbers and torsion, with **no
 representatives** and no `vertex_order_convention` (homology does not depend on
-the vertex order). As shipped that is 242 ring records and 1182 homology
-records, about 19 MB.
+the vertex order). As shipped that is 1182 of each, 2364 records over 197
+spaces, about 40 MB.
 
 ```bash
 julia scripts/export_records.jl                  # ring records + MANIFEST.tsv
+julia scripts/export_records.jl --entry-coeffs   # only each entry's own rings
 julia scripts/export_homology.jl                 # homology records
 julia scripts/export_records.jl --only K3 --coeffs GF7
 julia scripts/fetch_sources.jl                   # re-fetch Lutz sources, verify hashes
@@ -509,6 +512,76 @@ vertex labels can be tuples or residues and the Alexander–Whitney product depe
 on the vertex order. Structure constants are quadratic in the basis, so they are
 omitted above 40 basis classes (`rand2_n25` would otherwise need ~227,000
 entries); such records say so and still carry every basis and representative.
+
+---
+
+## Coverage and completeness
+
+What is actually computed, and what is not.
+
+| | spaces | ring + cup products | homology |
+|---|---:|---|---|
+| catalogue, computable | **197** | all six rings | all six rings |
+| catalogue, marked `heavy` | **6** | none | none |
+| **total** | **203** | | |
+
+For the 197 computable entries the corpus is uniform: every space has a
+cohomology ring **and** homology over `ZZ`, `QQ`, `GF(2)`, `GF(3)`, `GF(5)` and
+`GF(7)` — 1182 records of each kind. There are no partial spaces and no ring
+left to a single coefficient ring.
+
+Three qualifications on what a ring record contains:
+
+* **Multiplication tables: 1155 of 1182 are complete.** The 27 exceptions are
+  records whose basis exceeds the `max_basis = 40` cutoff, where the table would
+  be quadratically large: `rand2_n25` (476 classes, so 226 576 products, all six
+  rings), `HMT_32` over `GF(2)` (63), `Hom_C6_compl_K5_small` (60, all six),
+  `Sigma_26` (54, all six), `(S^2xS^1)#20` (42, all six) and
+  `(S^2twistS^1)#20` (41–42). Those records still carry the graded groups and
+  the cocycle representatives; only the structure constants are dropped, and
+  `cup(X, (p,i), (q,j))` computes any single product locally.
+* **A closed-form presentation is stored for 372 of 1182.** `ring_presentation`
+  is filled in only when `identify_ring` recognises the shape — a truncated
+  polynomial algebra, an exterior algebra and a few others. Elsewhere it is
+  `null`, and the ring is given by its structure constants rather than by a
+  named quotient. The table is the primary content; the presentation is a
+  convenience where it happens to be derivable.
+* **Torsion-free spaces carry redundancy.** Where `H^*(K;ZZ)` is torsion-free
+  the other five rings follow from it by universal coefficients, so those
+  records confirm rather than extend. The genuinely new information is
+  concentrated where torsion meets a characteristic dividing it — `RP^n` over
+  `GF(2)`, the Moore spaces over their own prime, `HMT_32` over `GF(2)`.
+
+### The six that are missing
+
+`PG64`, `PG128`, `AG_5_3`, `Hom_C5_K5`, `Hom_C6_compl_K5` and
+`Hom_n9_655_compl_K4` have **no records of either kind**, and no `MANIFEST.tsv`
+row. They are in `catalogue()` because they are legitimate spaces, not because
+they finish.
+
+The label is about the **cohomology ring**, which is where they were measured
+not to finish, and it should not be read as covering homology. Over finite
+fields three of the six are comfortably tractable, measured on the reference
+machine at a one-hour cap per computation:
+
+| space | vertices | facets | faces | GF(2) | GF(3) | GF(5) | GF(7) |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `PG128` | 127 | 5334 | 13462 | 25 s | 24 s | 24 s | 23 s |
+| `PG64` | 2017 | 6510 | 18292 | 47 s | 44 s | 44 s | 45 s |
+| `Hom_n9_655_compl_K4` | 3096 | 19008 | 82224 | 949 s | 825 s | 888 s | 865 s |
+
+```
+PG128                H_* = F_2, F_2^2542, F_2   |   F_p, F_p^2541, 0   (p = 3,5,7)
+PG64                 H_* = F_p, F_p^1240, F_p                (all four p)
+Hom_n9_655_compl_K4  H_* = F_p, F_p^13, F_p^13, F_p          (all four p)
+```
+
+`AG_5_3` exceeded the hour over `GF(2)` at 22 GB resident: its boundary matrix
+is 147015 x 29647 and is held densely, so this is a memory wall rather than an
+algorithmic one. `Hom_C5_K5` (856 240 faces) and `Hom_C6_compl_K5` (313 620)
+are larger still and were not attempted. Nothing above is in `records/` — these
+numbers are measurements, not shipped data, and no ring, `ZZ` or `QQ` result
+exists for any of the six.
 
 ---
 
@@ -570,6 +643,7 @@ disagreements.**
 | Independent integral homology, re-derived here (`--deep`) | 195 of 197 (two too large) | 195 / 195 agree |
 | The `H_*` line Lutz's files publish in their own headers | the single-complex files | 12 / 13 agree — see below |
 | Cup product laws: unit, graded commutativity (`check_ring`) | every ring record | all pass |
+| Universal coefficients: `dim H^d(K;F)` against the integral homology | every space, `QQ` and the four fields | 3965 / 3965 agree |
 | Euler characteristic against the f-vector | every space | all pass |
 | Test suite | offline / online | 243 / 279 pass |
 

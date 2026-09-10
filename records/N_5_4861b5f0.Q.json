@@ -1,0 +1,405 @@
+{
+  "coefficients": "Q",
+  "cohomology": [{
+    "basis_labels": ["1"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [0]
+    }, {
+      "coefficient": "1",
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [6]
+    }, {
+      "coefficient": "1",
+      "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [7]
+    }, {
+      "coefficient": "1",
+      "face": [9]
+    }, {
+      "coefficient": "1",
+      "face": [11]
+    }, {
+      "coefficient": "1",
+      "face": [16]
+    }, {
+      "coefficient": "1",
+      "face": [17]
+    }, {
+      "coefficient": "1",
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [8]
+    }, {
+      "coefficient": "1",
+      "face": [10]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [12]
+    }, {
+      "coefficient": "1",
+      "face": [14]
+    }, {
+      "coefficient": "1",
+      "face": [13]
+    }, {
+      "coefficient": "1",
+      "face": [15]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }]],
+    "degree": 0,
+    "group": "Q",
+    "invariant_factors": ["0"]
+  }, {
+    "basis_labels": ["x1_1", "x1_2", "x1_3", "x1_4"],
+    "cocycle_representatives": [[{
+      "coefficient": "-1",
+      "face": [5, 8]
+    }, {
+      "coefficient": "-1",
+      "face": [7, 8]
+    }, {
+      "coefficient": "-1",
+      "face": [3, 10]
+    }, {
+      "coefficient": "-1",
+      "face": [6, 10]
+    }, {
+      "coefficient": "1",
+      "face": [2, 6]
+    }, {
+      "coefficient": "1",
+      "face": [5, 6]
+    }, {
+      "coefficient": "1",
+      "face": [2, 15]
+    }, {
+      "coefficient": "1",
+      "face": [2, 17]
+    }, {
+      "coefficient": "-1",
+      "face": [1, 2]
+    }, {
+      "coefficient": "1",
+      "face": [2, 11]
+    }, {
+      "coefficient": "-1",
+      "face": [3, 8]
+    }, {
+      "coefficient": "-1",
+      "face": [0, 2]
+    }, {
+      "coefficient": "1",
+      "face": [2, 7]
+    }, {
+      "coefficient": "1",
+      "face": [2, 16]
+    }], [{
+      "coefficient": "-1",
+      "face": [0, 11]
+    }, {
+      "coefficient": "-1",
+      "face": [6, 11]
+    }, {
+      "coefficient": "1",
+      "face": [2, 15]
+    }, {
+      "coefficient": "-1",
+      "face": [15, 17]
+    }, {
+      "coefficient": "1",
+      "face": [1, 2]
+    }, {
+      "coefficient": "-1",
+      "face": [2, 11]
+    }, {
+      "coefficient": "-1",
+      "face": [0, 2]
+    }, {
+      "coefficient": "-1",
+      "face": [0, 7]
+    }, {
+      "coefficient": "1",
+      "face": [1, 15]
+    }, {
+      "coefficient": "1",
+      "face": [1, 16]
+    }], [{
+      "coefficient": "1",
+      "face": [4, 5]
+    }, {
+      "coefficient": "-1",
+      "face": [5, 10]
+    }, {
+      "coefficient": "1",
+      "face": [0, 11]
+    }, {
+      "coefficient": "1",
+      "face": [6, 11]
+    }, {
+      "coefficient": "-1",
+      "face": [5, 8]
+    }, {
+      "coefficient": "-1",
+      "face": [7, 8]
+    }, {
+      "coefficient": "1",
+      "face": [4, 12]
+    }, {
+      "coefficient": "-1",
+      "face": [12, 13]
+    }, {
+      "coefficient": "-1",
+      "face": [2, 6]
+    }, {
+      "coefficient": "-1",
+      "face": [5, 6]
+    }, {
+      "coefficient": "1",
+      "face": [3, 5]
+    }, {
+      "coefficient": "1",
+      "face": [0, 7]
+    }, {
+      "coefficient": "1",
+      "face": [2, 7]
+    }, {
+      "coefficient": "1",
+      "face": [3, 14]
+    }, {
+      "coefficient": "1",
+      "face": [4, 14]
+    }, {
+      "coefficient": "-1",
+      "face": [5, 13]
+    }, {
+      "coefficient": "1",
+      "face": [13, 14]
+    }, {
+      "coefficient": "1",
+      "face": [3, 12]
+    }], [{
+      "coefficient": "-2",
+      "face": [4, 5]
+    }, {
+      "coefficient": "2",
+      "face": [5, 10]
+    }, {
+      "coefficient": "-1",
+      "face": [0, 11]
+    }, {
+      "coefficient": "-1",
+      "face": [6, 11]
+    }, {
+      "coefficient": "1",
+      "face": [5, 8]
+    }, {
+      "coefficient": "1",
+      "face": [7, 8]
+    }, {
+      "coefficient": "1",
+      "face": [3, 10]
+    }, {
+      "coefficient": "1",
+      "face": [6, 10]
+    }, {
+      "coefficient": "-1",
+      "face": [4, 12]
+    }, {
+      "coefficient": "1",
+      "face": [12, 13]
+    }, {
+      "coefficient": "1",
+      "face": [2, 6]
+    }, {
+      "coefficient": "1",
+      "face": [5, 6]
+    }, {
+      "coefficient": "1",
+      "face": [3, 8]
+    }, {
+      "coefficient": "-1",
+      "face": [0, 7]
+    }, {
+      "coefficient": "-1",
+      "face": [2, 7]
+    }, {
+      "coefficient": "-1",
+      "face": [3, 14]
+    }, {
+      "coefficient": "-1",
+      "face": [4, 14]
+    }, {
+      "coefficient": "2",
+      "face": [5, 13]
+    }, {
+      "coefficient": "-2",
+      "face": [13, 14]
+    }, {
+      "coefficient": "1",
+      "face": [3, 13]
+    }]],
+    "degree": 1,
+    "group": "Q^4",
+    "invariant_factors": ["0", "0", "0", "0"]
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": []
+  }],
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 2,
+    "f_vector": [18, 63, 42],
+    "facets_sha256": "5fb1e9803d1d956ca5353c1e6670794a13a5b0e6a5d4d552c51376f34e4a765d",
+    "n_facets": 42,
+    "n_vertices": 18
+  },
+  "consistency_checks": [],
+  "provenance": "Sage",
+  "reproducible_labelling": false,
+  "ring_presentation": null,
+  "schema": "cohomology-tables/ring-record/1",
+  "source": {
+    "invocation": "simplicial_complexes.SurfaceOfGenus(5, orientable=False)",
+    "kind": "sage",
+    "labelling_caveat": "simplicial_complexes.SurfaceOfGenus(5, orientable=False) returns a differently labelled complex on each Sage process. The facets_sha256 below is the labelling this record was computed from and will not generally be reproduced; the cohomology ring is unaffected, being a topological invariant, but the cocycle representatives belong to that labelling. regenerate_sage.jl checks isomorphism invariants for these entries instead of the hash.",
+    "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
+    "reproducible_labelling": false,
+    "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
+  },
+  "space": "N_5",
+  "structure_constants": [{
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 0
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 1,
+      "index": 1,
+      "label": "x1_1"
+    },
+    "coefficients": ["1", "0", "0", "0"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 1,
+      "index": 2,
+      "label": "x1_2"
+    },
+    "coefficients": ["0", "1", "0", "0"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 1,
+      "index": 3,
+      "label": "x1_3"
+    },
+    "coefficients": ["0", "0", "1", "0"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 1,
+      "index": 4,
+      "label": "x1_4"
+    },
+    "coefficients": ["0", "0", "0", "1"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 1,
+      "label": "x1_1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1", "0", "0", "0"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 2,
+      "label": "x1_2"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["0", "1", "0", "0"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 3,
+      "label": "x1_3"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["0", "0", "1", "0"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 4,
+      "label": "x1_4"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["0", "0", "0", "1"],
+    "product_degree": 1
+  }],
+  "structure_constants_complete": true,
+  "topological_type": "non-orientable surface of genus 5",
+  "vertex_order_convention": "Alexander-Whitney cup product with respect to the ascending order of the canonical 0-based vertex labels; see docs/CANONICALIZATION.md"
+}

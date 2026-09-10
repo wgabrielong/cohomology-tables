@@ -1,0 +1,143 @@
+{
+  "coefficients": "F_5",
+  "cohomology": [{
+    "basis_labels": ["1"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [7]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [0]
+    }, {
+      "coefficient": "1",
+      "face": [6]
+    }]],
+    "degree": 0,
+    "group": "F_5",
+    "invariant_factors": ["0"]
+  }, {
+    "basis_labels": ["x1"],
+    "cocycle_representatives": [[{
+      "coefficient": "4",
+      "face": [0, 5]
+    }, {
+      "coefficient": "4",
+      "face": [2, 5]
+    }, {
+      "coefficient": "1",
+      "face": [1, 7]
+    }, {
+      "coefficient": "1",
+      "face": [5, 7]
+    }, {
+      "coefficient": "1",
+      "face": [5, 6]
+    }, {
+      "coefficient": "4",
+      "face": [0, 1]
+    }, {
+      "coefficient": "1",
+      "face": [1, 6]
+    }, {
+      "coefficient": "1",
+      "face": [2, 6]
+    }, {
+      "coefficient": "1",
+      "face": [4, 6]
+    }, {
+      "coefficient": "1",
+      "face": [1, 4]
+    }, {
+      "coefficient": "1",
+      "face": [3, 6]
+    }]],
+    "degree": 1,
+    "group": "F_5",
+    "invariant_factors": ["0"]
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 2,
+    "group": "0",
+    "invariant_factors": []
+  }],
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 2,
+    "f_vector": [8, 24, 16],
+    "facets_sha256": "ab5cc0284d39d4f3133aadceac2ac52140d143fb9e1f406e6b0bf5bcd8f7d80f",
+    "n_facets": 16,
+    "n_vertices": 8
+  },
+  "consistency_checks": [],
+  "provenance": "Sage",
+  "reproducible_labelling": true,
+  "ring_presentation": null,
+  "schema": "cohomology-tables/ring-record/1",
+  "source": {
+    "invocation": "simplicial_complexes.KleinBottle()",
+    "kind": "sage",
+    "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
+    "reproducible_labelling": true,
+    "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
+  },
+  "space": "Klein bottle",
+  "structure_constants": [{
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 0
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 1,
+      "index": 1,
+      "label": "x1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 1,
+      "label": "x1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 1
+  }],
+  "structure_constants_complete": true,
+  "topological_type": "Klein bottle",
+  "vertex_order_convention": "Alexander-Whitney cup product with respect to the ascending order of the canonical 0-based vertex labels; see docs/CANONICALIZATION.md"
+}

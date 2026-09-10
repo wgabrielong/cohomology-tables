@@ -7,13 +7,37 @@
       "face": [0]
     }, {
       "coefficient": "1",
-      "face": [13]
+      "face": [6]
+    }, {
+      "coefficient": "1",
+      "face": [7]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [12]
     }, {
       "coefficient": "1",
       "face": [14]
     }, {
       "coefficient": "1",
-      "face": [3]
+      "face": [8]
+    }, {
+      "coefficient": "1",
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [13]
+    }, {
+      "coefficient": "1",
+      "face": [5]
     }, {
       "coefficient": "1",
       "face": [9]
@@ -22,31 +46,7 @@
       "face": [11]
     }, {
       "coefficient": "1",
-      "face": [12]
-    }, {
-      "coefficient": "1",
-      "face": [4]
-    }, {
-      "coefficient": "1",
       "face": [10]
-    }, {
-      "coefficient": "1",
-      "face": [1]
-    }, {
-      "coefficient": "1",
-      "face": [5]
-    }, {
-      "coefficient": "1",
-      "face": [6]
-    }, {
-      "coefficient": "1",
-      "face": [8]
-    }, {
-      "coefficient": "1",
-      "face": [2]
-    }, {
-      "coefficient": "1",
-      "face": [7]
     }]],
     "degree": 0,
     "group": "F_2",
@@ -55,94 +55,91 @@
     "basis_labels": ["x1_1", "x1_2", "x1_3", "x1_4"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [2, 5]
+      "face": [2, 7]
     }, {
       "coefficient": "1",
-      "face": [2, 8]
+      "face": [7, 8]
     }, {
       "coefficient": "1",
-      "face": [0, 5]
-    }, {
-      "coefficient": "1",
-      "face": [6, 8]
+      "face": [4, 6]
     }, {
       "coefficient": "1",
       "face": [4, 7]
     }, {
       "coefficient": "1",
-      "face": [5, 7]
+      "face": [0, 8]
     }, {
       "coefficient": "1",
-      "face": [0, 6]
-    }, {
-      "coefficient": "1",
-      "face": [4, 6]
+      "face": [4, 8]
     }], [{
       "coefficient": "1",
-      "face": [3, 4]
-    }, {
-      "coefficient": "1",
-      "face": [4, 10]
-    }, {
-      "coefficient": "1",
-      "face": [0, 3]
-    }, {
-      "coefficient": "1",
-      "face": [3, 7]
+      "face": [2, 5]
     }, {
       "coefficient": "1",
       "face": [3, 5]
     }, {
       "coefficient": "1",
-      "face": [3, 6]
+      "face": [0, 3]
     }, {
       "coefficient": "1",
       "face": [0, 11]
     }, {
       "coefficient": "1",
       "face": [10, 11]
+    }, {
+      "coefficient": "1",
+      "face": [1, 4]
+    }, {
+      "coefficient": "1",
+      "face": [1, 5]
+    }, {
+      "coefficient": "1",
+      "face": [1, 3]
+    }, {
+      "coefficient": "1",
+      "face": [1, 10]
     }], [{
-      "coefficient": "1",
-      "face": [1, 14]
-    }, {
-      "coefficient": "1",
-      "face": [12, 14]
-    }, {
       "coefficient": "1",
       "face": [2, 5]
     }, {
       "coefficient": "1",
-      "face": [2, 8]
-    }, {
-      "coefficient": "1",
-      "face": [0, 2]
-    }, {
-      "coefficient": "1",
-      "face": [2, 12]
-    }, {
-      "coefficient": "1",
-      "face": [6, 8]
-    }, {
-      "coefficient": "1",
-      "face": [0, 1]
-    }, {
-      "coefficient": "1",
-      "face": [0, 8]
-    }], [{
-      "coefficient": "1",
       "face": [3, 5]
     }, {
       "coefficient": "1",
-      "face": [3, 6]
+      "face": [0, 3]
     }, {
       "coefficient": "1",
-      "face": [4, 5]
+      "face": [3, 11]
     }, {
       "coefficient": "1",
-      "face": [4, 7]
+      "face": [3, 9]
     }, {
       "coefficient": "1",
-      "face": [6, 7]
+      "face": [1, 4]
+    }, {
+      "coefficient": "1",
+      "face": [1, 5]
+    }, {
+      "coefficient": "1",
+      "face": [1, 3]
+    }, {
+      "coefficient": "1",
+      "face": [3, 10]
+    }], [{
+      "coefficient": "1",
+      "face": [0, 14]
+    }, {
+      "coefficient": "1",
+      "face": [1, 14]
+    }, {
+      "coefficient": "1",
+      "face": [1, 12]
+    }, {
+      "coefficient": "1",
+      "face": [0, 13]
+    }, {
+      "coefficient": "1",
+      "face": [12, 13]
     }]],
     "degree": 1,
     "group": "F_2^4",
@@ -151,7 +148,7 @@
     "basis_labels": ["x2"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [4, 6, 7]
+      "face": [1, 12, 13]
     }]],
     "degree": 2,
     "group": "F_2",
@@ -161,7 +158,7 @@
     "canonicalization": "cohomology-tables/canonical-facets/1",
     "dimension": 2,
     "f_vector": [15, 51, 34],
-    "facets_sha256": "8aad0f415fecd7e6a4f42b17c8db08e9264068f41ed6b97f8df5b9a505e8283a",
+    "facets_sha256": "d2c46692903de4335d981cb9649a488ddf7d107aa850fdea7ff24a0880b97a86",
     "n_facets": 34,
     "n_vertices": 15
   },
@@ -278,21 +275,8 @@
     },
     "b": {
       "degree": 1,
-      "index": 3,
-      "label": "x1_3"
-    },
-    "coefficients": ["1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
       "index": 1,
       "label": "x1_1"
-    },
-    "b": {
-      "degree": 1,
-      "index": 4,
-      "label": "x1_4"
     },
     "coefficients": ["1"],
     "product_degree": 2
@@ -317,8 +301,8 @@
     },
     "b": {
       "degree": 1,
-      "index": 2,
-      "label": "x1_2"
+      "index": 3,
+      "label": "x1_3"
     },
     "coefficients": ["1"],
     "product_degree": 2
@@ -343,8 +327,21 @@
     },
     "b": {
       "degree": 1,
-      "index": 1,
-      "label": "x1_1"
+      "index": 2,
+      "label": "x1_2"
+    },
+    "coefficients": ["1"],
+    "product_degree": 2
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 3,
+      "label": "x1_3"
+    },
+    "b": {
+      "degree": 1,
+      "index": 3,
+      "label": "x1_3"
     },
     "coefficients": ["1"],
     "product_degree": 2
@@ -361,19 +358,6 @@
     },
     "coefficients": ["0", "0", "0", "1"],
     "product_degree": 1
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 4,
-      "label": "x1_4"
-    },
-    "b": {
-      "degree": 1,
-      "index": 1,
-      "label": "x1_1"
-    },
-    "coefficients": ["1"],
-    "product_degree": 2
   }, {
     "a": {
       "degree": 1,

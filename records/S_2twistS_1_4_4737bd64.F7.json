@@ -1,0 +1,624 @@
+{
+  "coefficients": "F_7",
+  "cohomology": [{
+    "basis_labels": ["1"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [0]
+    }, {
+      "coefficient": "1",
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [6]
+    }, {
+      "coefficient": "1",
+      "face": [7]
+    }, {
+      "coefficient": "1",
+      "face": [8]
+    }, {
+      "coefficient": "1",
+      "face": [9]
+    }, {
+      "coefficient": "1",
+      "face": [10]
+    }, {
+      "coefficient": "1",
+      "face": [11]
+    }, {
+      "coefficient": "1",
+      "face": [12]
+    }, {
+      "coefficient": "1",
+      "face": [13]
+    }]],
+    "degree": 0,
+    "group": "F_7",
+    "invariant_factors": ["0"]
+  }, {
+    "basis_labels": ["x1_1", "x1_2", "x1_3", "x1_4"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [2, 9]
+    }, {
+      "coefficient": "1",
+      "face": [3, 9]
+    }, {
+      "coefficient": "1",
+      "face": [4, 9]
+    }, {
+      "coefficient": "1",
+      "face": [2, 13]
+    }, {
+      "coefficient": "1",
+      "face": [3, 13]
+    }, {
+      "coefficient": "1",
+      "face": [2, 10]
+    }, {
+      "coefficient": "1",
+      "face": [3, 10]
+    }, {
+      "coefficient": "6",
+      "face": [10, 12]
+    }, {
+      "coefficient": "6",
+      "face": [9, 12]
+    }, {
+      "coefficient": "1",
+      "face": [3, 8]
+    }], [{
+      "coefficient": "1",
+      "face": [1, 7]
+    }, {
+      "coefficient": "1",
+      "face": [2, 7]
+    }, {
+      "coefficient": "1",
+      "face": [3, 7]
+    }, {
+      "coefficient": "1",
+      "face": [1, 6]
+    }, {
+      "coefficient": "1",
+      "face": [2, 6]
+    }, {
+      "coefficient": "6",
+      "face": [6, 12]
+    }, {
+      "coefficient": "6",
+      "face": [7, 12]
+    }, {
+      "coefficient": "1",
+      "face": [1, 5]
+    }, {
+      "coefficient": "6",
+      "face": [5, 12]
+    }, {
+      "coefficient": "6",
+      "face": [11, 12]
+    }, {
+      "coefficient": "1",
+      "face": [12, 13]
+    }], [{
+      "coefficient": "6",
+      "face": [1, 7]
+    }, {
+      "coefficient": "6",
+      "face": [2, 7]
+    }, {
+      "coefficient": "6",
+      "face": [3, 7]
+    }, {
+      "coefficient": "6",
+      "face": [1, 6]
+    }, {
+      "coefficient": "6",
+      "face": [2, 6]
+    }, {
+      "coefficient": "1",
+      "face": [6, 12]
+    }, {
+      "coefficient": "1",
+      "face": [7, 12]
+    }, {
+      "coefficient": "6",
+      "face": [1, 5]
+    }, {
+      "coefficient": "1",
+      "face": [5, 12]
+    }, {
+      "coefficient": "1",
+      "face": [4, 13]
+    }, {
+      "coefficient": "1",
+      "face": [5, 13]
+    }, {
+      "coefficient": "1",
+      "face": [6, 13]
+    }, {
+      "coefficient": "1",
+      "face": [7, 13]
+    }, {
+      "coefficient": "1",
+      "face": [5, 10]
+    }, {
+      "coefficient": "1",
+      "face": [6, 10]
+    }, {
+      "coefficient": "1",
+      "face": [5, 11]
+    }, {
+      "coefficient": "1",
+      "face": [6, 11]
+    }, {
+      "coefficient": "1",
+      "face": [5, 9]
+    }], [{
+      "coefficient": "6",
+      "face": [1, 7]
+    }, {
+      "coefficient": "6",
+      "face": [2, 7]
+    }, {
+      "coefficient": "6",
+      "face": [3, 7]
+    }, {
+      "coefficient": "6",
+      "face": [1, 6]
+    }, {
+      "coefficient": "6",
+      "face": [2, 6]
+    }, {
+      "coefficient": "1",
+      "face": [6, 12]
+    }, {
+      "coefficient": "6",
+      "face": [1, 8]
+    }, {
+      "coefficient": "6",
+      "face": [2, 8]
+    }, {
+      "coefficient": "1",
+      "face": [8, 11]
+    }, {
+      "coefficient": "1",
+      "face": [8, 12]
+    }, {
+      "coefficient": "1",
+      "face": [7, 12]
+    }, {
+      "coefficient": "6",
+      "face": [4, 8]
+    }, {
+      "coefficient": "6",
+      "face": [1, 10]
+    }, {
+      "coefficient": "6",
+      "face": [4, 10]
+    }, {
+      "coefficient": "1",
+      "face": [10, 11]
+    }, {
+      "coefficient": "6",
+      "face": [1, 5]
+    }, {
+      "coefficient": "1",
+      "face": [5, 12]
+    }, {
+      "coefficient": "1",
+      "face": [8, 13]
+    }, {
+      "coefficient": "1",
+      "face": [10, 13]
+    }, {
+      "coefficient": "1",
+      "face": [2, 13]
+    }, {
+      "coefficient": "1",
+      "face": [3, 13]
+    }, {
+      "coefficient": "1",
+      "face": [9, 13]
+    }, {
+      "coefficient": "1",
+      "face": [4, 13]
+    }, {
+      "coefficient": "1",
+      "face": [5, 13]
+    }, {
+      "coefficient": "1",
+      "face": [6, 13]
+    }, {
+      "coefficient": "1",
+      "face": [7, 13]
+    }, {
+      "coefficient": "1",
+      "face": [5, 11]
+    }, {
+      "coefficient": "1",
+      "face": [6, 11]
+    }, {
+      "coefficient": "1",
+      "face": [9, 11]
+    }, {
+      "coefficient": "1",
+      "face": [7, 11]
+    }]],
+    "degree": 1,
+    "group": "F_7^4",
+    "invariant_factors": ["0", "0", "0", "0"]
+  }, {
+    "basis_labels": ["x2_1", "x2_2", "x2_3"],
+    "cocycle_representatives": [[{
+      "coefficient": "6",
+      "face": [2, 3, 12]
+    }, {
+      "coefficient": "6",
+      "face": [2, 7, 12]
+    }, {
+      "coefficient": "1",
+      "face": [3, 10, 12]
+    }, {
+      "coefficient": "6",
+      "face": [6, 7, 12]
+    }, {
+      "coefficient": "6",
+      "face": [3, 8, 10]
+    }, {
+      "coefficient": "6",
+      "face": [3, 9, 10]
+    }, {
+      "coefficient": "6",
+      "face": [3, 8, 13]
+    }, {
+      "coefficient": "1",
+      "face": [8, 9, 13]
+    }, {
+      "coefficient": "6",
+      "face": [5, 11, 13]
+    }, {
+      "coefficient": "6",
+      "face": [9, 11, 13]
+    }, {
+      "coefficient": "1",
+      "face": [11, 12, 13]
+    }, {
+      "coefficient": "1",
+      "face": [6, 12, 13]
+    }], [{
+      "coefficient": "6",
+      "face": [2, 3, 4]
+    }, {
+      "coefficient": "6",
+      "face": [3, 4, 5]
+    }, {
+      "coefficient": "6",
+      "face": [3, 4, 9]
+    }, {
+      "coefficient": "6",
+      "face": [4, 5, 6]
+    }, {
+      "coefficient": "1",
+      "face": [3, 9, 12]
+    }, {
+      "coefficient": "1",
+      "face": [3, 8, 10]
+    }, {
+      "coefficient": "1",
+      "face": [3, 9, 10]
+    }, {
+      "coefficient": "1",
+      "face": [3, 8, 13]
+    }, {
+      "coefficient": "6",
+      "face": [8, 9, 13]
+    }, {
+      "coefficient": "6",
+      "face": [5, 6, 13]
+    }, {
+      "coefficient": "1",
+      "face": [6, 10, 13]
+    }, {
+      "coefficient": "1",
+      "face": [5, 11, 13]
+    }, {
+      "coefficient": "1",
+      "face": [9, 11, 13]
+    }, {
+      "coefficient": "6",
+      "face": [11, 12, 13]
+    }, {
+      "coefficient": "1",
+      "face": [6, 11, 13]
+    }], [{
+      "coefficient": "6",
+      "face": [1, 5, 7]
+    }, {
+      "coefficient": "1",
+      "face": [5, 6, 7]
+    }, {
+      "coefficient": "6",
+      "face": [5, 7, 12]
+    }, {
+      "coefficient": "6",
+      "face": [2, 3, 12]
+    }, {
+      "coefficient": "6",
+      "face": [2, 7, 12]
+    }, {
+      "coefficient": "1",
+      "face": [3, 10, 12]
+    }, {
+      "coefficient": "6",
+      "face": [6, 7, 12]
+    }, {
+      "coefficient": "6",
+      "face": [3, 8, 10]
+    }, {
+      "coefficient": "6",
+      "face": [3, 9, 10]
+    }, {
+      "coefficient": "6",
+      "face": [3, 8, 13]
+    }, {
+      "coefficient": "1",
+      "face": [8, 9, 13]
+    }, {
+      "coefficient": "1",
+      "face": [6, 7, 8]
+    }, {
+      "coefficient": "6",
+      "face": [7, 12, 13]
+    }, {
+      "coefficient": "1",
+      "face": [7, 8, 9]
+    }, {
+      "coefficient": "1",
+      "face": [8, 9, 11]
+    }]],
+    "degree": 2,
+    "group": "F_7^3",
+    "invariant_factors": ["0", "0", "0"]
+  }, {
+    "basis_labels": [],
+    "cocycle_representatives": [],
+    "degree": 3,
+    "group": "0",
+    "invariant_factors": []
+  }],
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 3,
+    "f_vector": [14, 86, 144, 72],
+    "facets_sha256": "bb2521f82a0d07941af393d38403146d2e3d42037eb4aeb666907354337d83f6",
+    "n_facets": 72,
+    "n_vertices": 14
+  },
+  "consistency_checks": [],
+  "provenance": "Lutz/3-manifolds",
+  "reproducible_labelling": true,
+  "ring_presentation": null,
+  "schema": "cohomology-tables/ring-record/1",
+  "source": {
+    "catalog": "connected_sums_3d",
+    "date_accessed": "2026-09-08",
+    "kind": "lutz",
+    "label": "(S^2twistS^1)#4",
+    "note": "fetch with scripts/fetch_sources.jl; not redistributed here",
+    "url": "https://www3.math.tu-berlin.de/IfM/Nachrufe/Frank_Lutz/stellar/library_of_triangulations/connected_sums_3d.txt"
+  },
+  "space": "(S^2twistS^1)#4",
+  "structure_constants": [{
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1"],
+    "product_degree": 0
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 1,
+      "index": 1,
+      "label": "x1_1"
+    },
+    "coefficients": ["1", "0", "0", "0"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 1,
+      "index": 2,
+      "label": "x1_2"
+    },
+    "coefficients": ["0", "1", "0", "0"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 1,
+      "index": 3,
+      "label": "x1_3"
+    },
+    "coefficients": ["0", "0", "1", "0"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 1,
+      "index": 4,
+      "label": "x1_4"
+    },
+    "coefficients": ["0", "0", "0", "1"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 2,
+      "index": 1,
+      "label": "x2_1"
+    },
+    "coefficients": ["1", "0", "0"],
+    "product_degree": 2
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 2,
+      "index": 2,
+      "label": "x2_2"
+    },
+    "coefficients": ["0", "1", "0"],
+    "product_degree": 2
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "b": {
+      "degree": 2,
+      "index": 3,
+      "label": "x2_3"
+    },
+    "coefficients": ["0", "0", "1"],
+    "product_degree": 2
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 1,
+      "label": "x1_1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1", "0", "0", "0"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 2,
+      "label": "x1_2"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["0", "1", "0", "0"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 3,
+      "label": "x1_3"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["0", "0", "1", "0"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 4,
+      "label": "x1_4"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["0", "0", "0", "1"],
+    "product_degree": 1
+  }, {
+    "a": {
+      "degree": 2,
+      "index": 1,
+      "label": "x2_1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["1", "0", "0"],
+    "product_degree": 2
+  }, {
+    "a": {
+      "degree": 2,
+      "index": 2,
+      "label": "x2_2"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["0", "1", "0"],
+    "product_degree": 2
+  }, {
+    "a": {
+      "degree": 2,
+      "index": 3,
+      "label": "x2_3"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "1"
+    },
+    "coefficients": ["0", "0", "1"],
+    "product_degree": 2
+  }],
+  "structure_constants_complete": true,
+  "topological_type": "connected sum of 3-manifolds",
+  "vertex_order_convention": "Alexander-Whitney cup product with respect to the ascending order of the canonical 0-based vertex labels; see docs/CANONICALIZATION.md"
+}

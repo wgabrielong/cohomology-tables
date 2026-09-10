@@ -1,0 +1,65 @@
+{
+  "coefficients": "F_2",
+  "cohomology": [{
+    "basis_labels": ["x0_1", "x0_2"],
+    "cocycle_representatives": [[{
+      "coefficient": "1",
+      "face": [1]
+    }], [{
+      "coefficient": "1",
+      "face": [0]
+    }]],
+    "degree": 0,
+    "group": "F_2^2",
+    "invariant_factors": ["0", "0"]
+  }],
+  "complex": {
+    "canonicalization": "cohomology-tables/canonical-facets/1",
+    "dimension": 0,
+    "f_vector": [2],
+    "facets_sha256": "1e9987e996a1c529f61f4339797481b7b1138b15f18a44e06dde45eabbc67921",
+    "n_facets": 2,
+    "n_vertices": 2
+  },
+  "consistency_checks": [],
+  "provenance": "built-in",
+  "reproducible_labelling": true,
+  "ring_presentation": null,
+  "schema": "cohomology-tables/ring-record/1",
+  "source": {
+    "invocation": "sphere(0)",
+    "kind": "builtin",
+    "note": "constructed by this package; see src/spaces.jl"
+  },
+  "space": "S^0",
+  "structure_constants": [{
+    "a": {
+      "degree": 0,
+      "index": 1,
+      "label": "x0_1"
+    },
+    "b": {
+      "degree": 0,
+      "index": 1,
+      "label": "x0_1"
+    },
+    "coefficients": ["1", "0"],
+    "product_degree": 0
+  }, {
+    "a": {
+      "degree": 0,
+      "index": 2,
+      "label": "x0_2"
+    },
+    "b": {
+      "degree": 0,
+      "index": 2,
+      "label": "x0_2"
+    },
+    "coefficients": ["0", "1"],
+    "product_degree": 0
+  }],
+  "structure_constants_complete": true,
+  "topological_type": "0-sphere",
+  "vertex_order_convention": "Alexander-Whitney cup product with respect to the ascending order of the canonical 0-based vertex labels; see docs/CANONICALIZATION.md"
+}

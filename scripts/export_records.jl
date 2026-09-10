@@ -2,7 +2,8 @@
 #=
 Generate the ring records under records/.
 
-    julia scripts/export_records.jl                       # everything computable
+    julia scripts/export_records.jl                       # every space, six rings
+    julia scripts/export_records.jl --entry-coeffs        # each entry's own rings
     julia scripts/export_records.jl --only K3 --only S^3
     julia scripts/export_records.jl --coeffs GF7 --out records
     julia scripts/export_records.jl --manifest-only    # rebuild MANIFEST.tsv alone
@@ -24,6 +25,12 @@ using .CohomologyTables
 const MANIFEST_HEADER = ["space", "kind", "call", "file", "label",
                          "sage_version", "url", "date_accessed", "reproducible",
                          "facets_sha256", "f_vector", "integral_homology"]
+
+# The shipped corpus covers every space over this grid, matching
+# scripts/export_homology.jl, so a plain run reproduces what is in records/.
+# `--entry-coeffs` falls back to each entry's own `coeffs` field, which is the
+# smaller set worth looking at interactively.
+const DEFAULT_GRID = Any[ZZ, QQ, GF(2), GF(3), GF(5), GF(7)]
 
 function parse_coeffs(s)
   s == "ZZ" && return Any[ZZ]
@@ -67,7 +74,8 @@ function main(args)
   entries = catalogue(; heavy = ("--all" in args) || !isempty(only))
   isempty(only) || (entries = filter(e -> e.name in only, entries))
   c = findfirst(==("--coeffs"), args)
-  coeffs = isnothing(c) ? nothing : parse_coeffs(args[c + 1])
+  coeffs = !isnothing(c) ? parse_coeffs(args[c + 1]) :
+           "--entry-coeffs" in args ? nothing : DEFAULT_GRID
   j = findfirst(==("--time-limit"), args)
   tl = isnothing(j) ? DEFAULT_TIME_LIMIT : parse(Float64, args[j + 1])
 
