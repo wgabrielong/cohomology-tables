@@ -11,10 +11,11 @@ It also computes **homology** `H_*(K; R)` over `ZZ`, `QQ` and `GF(p)`.
 
 It ships with a catalogue of **203 spaces**, one simplicial model per
 topological type, drawn from SageMath's example catalogue, Frank Lutz's Manifold
-Page and the literature, and with computed records for all of them: cup product
-rings, and homology over six coefficient rings. **No triangulations are stored
-in this repository** — models are built by Sage or downloaded on first use and
-cached outside the repo.
+Page and the literature. For the 197 that are computable it publishes **2364
+JSON records** — a cup product ring and a homology group for every space over
+each of `ZZ`, `QQ`, `GF(2)`, `GF(3)`, `GF(5)` and `GF(7)`. **No triangulations
+are stored in this repository** — models are built by Sage or downloaded on
+first use and cached outside the repo.
 
 ```julia
 julia> X = simplicial_cohomology_ring("K3_16", lutz("K3_16"), GF(7));
@@ -47,9 +48,23 @@ ring structure: F_2[x1]/(x1^5),  |x1| = 1
 checks: unit law and graded commutativity hold
 ```
 
+**Contents.** [Installation](#installation) ·
+[Coverage](#coverage-the-catalogue-of-spaces) ·
+[Completeness](#completeness-of-the-computations) ·
+[Correctness](#correctness) · [Computing a space](#computing-a-space) ·
+[Homology](#homology) ·
+[Your own complex](#using-your-own-simplicial-complex) ·
+[Records](#generated-records) · [Reading the output](#reading-the-output) ·
+[Time budget](#time-budget) ·
+[What OSCAR provides](#what-oscar-provides-and-what-this-repo-adds) ·
+[Limitations](#known-limitations) · [Layout](#layout) ·
+[API](#api-reference) · [Licensing](#licensing) · [Sources](#sources)
+
 ---
 
-## Requirements
+## Installation
+
+### Prerequisites
 
 * **Julia 1.10+ and OSCAR 1.8+** (developed against Julia 1.12 / OSCAR 1.8.2).
   The cohomology-ring code lives in OSCAR's
@@ -66,21 +81,398 @@ checks: unit law and graded commutativity hold
   never inside the repo — so it happens once. Override with
   `COHOMOLOGY_TABLES_CACHE`; `clear_cache()` empties it.
 
+### Getting it
+
 ```bash
 git clone https://github.com/wgabrielong/cohomology-tables
 cd cohomology-tables
+```
+
+If OSCAR is already in your default Julia environment, every command in this
+README works as written. Otherwise install the dependencies once and add
+`--project=.` to each command:
+
+```bash
+julia --project=. -e 'using Pkg; Pkg.instantiate()'
+```
+
+### Checking it works
+
+```bash
 julia scripts/run_tables.jl --list      # the catalogue; no network, no Sage
 julia test/runtests.jl                  # offline checks; no network, no Sage
 julia test/runtests.jl --online         # + Sage and Manifold Page checks
 ```
 
-The 1409 records under `records/` are committed — 227 cup product rings and 1182
-homology records — so every computed result can be read with neither Sage nor a
-network connection. Both are only needed to rebuild a complex and recompute.
+The first line should print 203 entries, the second should report 4974 passing
+checks. Neither needs Sage or a network connection: the 2364 records under
+`records/` are committed — 1182 cup product rings and 1182 homology records — so
+every computed result can be read straight from the repository. Sage and the
+network are needed only to rebuild a complex and recompute from it.
 
-If OSCAR is already in your default environment, every command works as written.
-Otherwise run `julia --project=. -e 'using Pkg; Pkg.instantiate()'` once and add
-`--project=.` to each command.
+### Using it from Julia
+
+```julia
+julia> include("src/CohomologyTables.jl"); using .CohomologyTables
+julia> using Oscar
+julia> print_report(simplicial_cohomology_ring("RP^4", catalogue_space("RP^4"), GF(2)))
+```
+
+[Computing a space](#computing-a-space) covers this in full.
+
+---
+
+## Coverage: the catalogue of spaces
+
+The catalogue holds **203 entries**, one simplicial model per topological type.
+This section is about which spaces are present; what is *computed* for them is
+the subject of [Completeness](#completeness-of-the-computations).
+
+Where several sources offer the same space the catalogue keeps one — preferring
+a small model with no external dependency — and names the alternatives in the
+entry's `note`. `catalogue_table()` prints the list; `find_space(name)` returns
+one entry.
+
+Provenance labels: **built-in** (constructed here), **Sage** (a local SageMath),
+**Lutz/library** (the Benedetti–Lutz Library of Triangulations),
+**Lutz/further** (the Further Examples page), **Lutz/3-manifolds** (the
+geometric 3-manifold catalogues), **arXiv** (read from a paper's source).
+
+### Spheres, projective spaces and other classics
+
+| space | topological type | provenance |
+|---|---|---|
+| `point` | one-point space | built-in |
+| `S^0` … `S^6` | `n`-sphere | built-in |
+| `RP^2` | real projective plane | Sage |
+| `RP^3` | real projective 3-space | Sage |
+| `RP^4` | real projective 4-space | Sage |
+| `RP^5` | real projective 5-space | Lutz/library |
+| `CP^2` | complex projective plane | Sage |
+| `CP^3` | complex projective 3-space | arXiv |
+| `HP^2` | quaternionic projective plane | Sage |
+| `Poincare sphere` | Poincaré homology 3-sphere = Σ(2,3,5) | Sage |
+| `Wu manifold` | SU(3)/SO(3) | Lutz/library |
+| `K3` | K3 surface | Sage |
+
+### Surfaces and 2-complexes
+
+| space | topological type | provenance |
+|---|---|---|
+| `T^2` | 2-torus | Sage |
+| `Klein bottle` | Klein bottle | Sage |
+| `Sigma_2` … `Sigma_6` | orientable surface of genus 2–6 | Sage |
+| `N_3` … `N_6` | non-orientable surface of genus 3–6 | Sage |
+| `Sigma_26` | orientable surface of genus 26 | Sage |
+| `Sigma_15` | orientable surface of genus 15 | Lutz/library |
+| `rand2_n25` | random 2-complex, `H_2 = Z^475` | Lutz/library |
+| `PG64` | orientable surface of genus 620 | Lutz/library |
+| `PG128` | non-orientable surface of genus 2542 | Lutz/library |
+| `AG_5_3` | orientable surface of genus 9680 | Lutz/library |
+
+### Moore spaces
+
+| space | topological type | provenance |
+|---|---|---|
+| `M(Z/3,1)`, `M(Z/4,1)` | Moore space with `H_1 = Z/q` | Sage |
+| `M(Z/5,2)`, `M(Z/9,2)` | Moore space with `H_2 = Z/q` | Sage |
+| `M(Z/7,3)` | Moore space with `H_3 = Z/7` | Sage |
+| `M(Z/8,4)` | Moore space with `H_4 = Z/8` | Sage |
+
+`M(Z/q,n)` for `n > 1` is the `(n-1)`-fold suspension of Sage's `MooreSpace(q)`.
+`M(Z/2,1)` is not listed separately: it is `RP^2`.
+
+### 3-manifolds
+
+All from Lutz's geometric 3-manifold catalogues, one per topological type.
+
+| space | topological type |
+|---|---|
+| `L(3,1)`, `L(4,1)`, `L(5,1)`, `L(5,2)`, `L(6,1)`, `L(7,1)`, `L(7,2)`, `L(8,1)`, `L(8,3)`, `L(9,1)`, `L(9,2)`, `L(10,1)`, `L(10,3)` | lens spaces |
+| `cube_space`, `octahedron_space`, `truncated_cube_space`, `P_3` … `P_10` | other spherical 3-manifolds |
+| `T^3`, `G2` … `G6`, `KxS^1`, `B2`, `B3`, `B4` | the ten flat 3-manifolds |
+| `Nil_Oo1_1` … `Nil_Oo1_5` | Nil 3-manifolds |
+| `S^2xS^1`, `S^2twistS^1`, `RP^2xS^1`, `RP^3#RP^3` | `S^2 x R` 3-manifolds |
+| `Sigma_2 x S^1` … `Sigma_5 x S^1`, `N_3 x S^1` … `N_10 x S^1` | `H^2 x R` 3-manifolds |
+| `hyperbolic vol 0.94270736` … `hyperbolic vol 1.75712603` (20) | hyperbolic 3-manifolds, keyed by volume |
+| `Sigma(2,3,7)`, `Sigma(2,5,7)`, `Sigma(3,4,5)`, `Sigma(3,4,7)`, `Sigma(3,5,7)`, `Sigma(4,5,7)` | Brieskorn homology 3-spheres |
+| `(S^2xS^1)#k` and `(S^2twistS^1)#k` for `k = 2..20`, plus `#RP^3`, `#L_3_1` and `L_3_1#±L_3_1` variants (54) | connected sums |
+| `Weber-Seifert space` | hyperbolic dodecahedral space (Lutz/library) |
+
+### 4-manifolds and higher
+
+| space | topological type | provenance |
+|---|---|---|
+| `S^3xS^1`, `S^3twistS^1`, `S^2xS^2`, `CP^2#CP^2`, `CP^2#-CP^2`, `(S^2xS^2)#(S^2xS^2)`, `CP^2#(S^2xS^2)` | 4-manifolds | Lutz/further |
+| `RP^4#K3`, `RP^4#11(S^2xS^2)` | 4-manifolds | Lutz/library |
+| `S^3xS^2`, `S^2 x Poincare sphere` | 5-manifolds | Lutz/further, Lutz/library |
+
+### Torsion and combinatorial complexes
+
+| space | topological type | provenance |
+|---|---|---|
+| `HMT_4`, `HMT_8`, `HMT_16`, `HMT_32` | Hadamard matrix torsion 2-complexes | Lutz/library |
+| `Hom_C6_compl_K5_small`, `Hom_C6_compl_K5`, `Hom_C5_K5`, `Hom_n9_655_compl_K4` | Hom complexes | Lutz/library |
+| `Chessboard(3,3)`, `Chessboard(4,4)` | chessboard complexes | Sage |
+| `Matching(5)`, `Matching(6)`, `Matching(7)` | matching complexes | Sage |
+| `NotIConnected(5,2)` | not-2-connected graphs on 5 vertices | Sage |
+| `SumComplex(5,[0,1,3])` | sum complex of Linial–Meshulam–Rosenthal | Sage |
+
+### What deduplication removed
+
+The sources hold many models of the same space, and the catalogue keeps one of
+each. They all remain reachable directly — the entry's `note` says how. For
+example `S^3` stands for Sage's `BarnetteSphere()` and `BrucknerGrunbaumSphere()`
+and Lutz's `600_cell`, `trefoil`, `nc_sphere`, `non_4_2_colorable` and the
+`_bsd` barycentric subdivisions; `point` stands for every contractible complex
+in either source, including the dunce hat, Rudin's and Ziegler's balls, Bing's
+house and the `BH_k` family; and `S^5` stands for Lutz's `non_PL_5_sphere`,
+which is a genuinely non-PL triangulation of the same topological space.
+
+The catalogue was audited by computing integral homology for every entry and
+examining each collision. Most collisions are *not* duplicates — distinct
+3-manifolds routinely share homology, and telling `CP^2#CP^2` from `S^2xS^2` is
+exactly what a cup product table is for. Five were genuine and were merged:
+`sage("FareyMap(5)")` is `S^2`, `sage("FareyMap(7)")` is `Sigma_3`,
+`sage("MooreSpace(2)")` is `RP^2`, `lutz("d2n12g6")` is `Sigma_6`, and
+`lutz("Hom_C5_K4")` is `RP^3` — its own file header states
+`Hom(C_5,K_4) = RP^3`.
+
+Lens spaces: the 3-dimensional ones are present from Lutz's spherical catalogue
+(`L(3,1)` … `L(10,3)`). SageMath has no lens space constructor, so none can be
+had from that source, and higher-dimensional lens spaces are not in the
+catalogue.
+
+---
+
+## Completeness of the computations
+
+What is actually computed, and what is not.
+
+| | spaces | ring + cup products | homology |
+|---|---:|---|---|
+| catalogue, computable | **197** | all six rings | all six rings |
+| catalogue, marked `heavy` | **6** | none | none |
+| **total** | **203** | | |
+
+For the 197 computable entries the corpus is uniform: every space has a
+cohomology ring **and** homology over `ZZ`, `QQ`, `GF(2)`, `GF(3)`, `GF(5)` and
+`GF(7)` — 1182 records of each kind. There are no partial spaces and no ring
+left to a single coefficient ring.
+
+Three qualifications on what a ring record contains:
+
+* **Multiplication tables: 1155 of 1182 are complete.** The 27 exceptions are
+  records whose basis exceeds the `max_basis = 40` cutoff, where the table would
+  be quadratically large: `rand2_n25` (476 classes, so 226 576 products, all six
+  rings), `HMT_32` over `GF(2)` (63), `Hom_C6_compl_K5_small` (60, all six),
+  `Sigma_26` (54, all six), `(S^2xS^1)#20` (42, all six) and
+  `(S^2twistS^1)#20` (41–42). Those records still carry the graded groups and
+  the cocycle representatives; only the structure constants are dropped, and
+  `cup(X, (p,i), (q,j))` computes any single product locally.
+* **A closed-form presentation is stored for 372 of 1182.** `ring_presentation`
+  is filled in only when `identify_ring` recognises the shape — a truncated
+  polynomial algebra, an exterior algebra and a few others. Elsewhere it is
+  `null`, and the ring is given by its structure constants rather than by a
+  named quotient. The table is the primary content; the presentation is a
+  convenience where it happens to be derivable.
+* **Torsion-free spaces carry redundancy.** Where `H^*(K;ZZ)` is torsion-free
+  the other five rings follow from it by universal coefficients, so those
+  records confirm rather than extend. The genuinely new information is
+  concentrated where torsion meets a characteristic dividing it — `RP^n` over
+  `GF(2)`, the Moore spaces over their own prime, `HMT_32` over `GF(2)`.
+
+### What a computation costs
+
+Seconds, measured one computation at a time on an Apple M2 Max Mac Studio
+(64 GB, Julia 1.12, OSCAR 1.8.2). `H_*` is `simplicial_homology`; `ring` is
+`simplicial_cohomology_ring` *together with its full `cup_product_table`*.
+"faces" is the number of simplices in all dimensions, `sum(f_vector(K))`.
+
+| space | vertices | facets | dim | faces | `H_*` ZZ | `H_*` GF(2) | ring ZZ | ring GF(2) | ring GF(7) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `S^2` | 4 | 4 | 2 | 14 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
+| `T^2` | 7 | 14 | 2 | 42 | 0.00 | 0.00 | 0.01 | 0.01 | 0.06 |
+| `T^3` | 15 | 90 | 3 | 390 | 0.00 | 0.01 | 0.06 | 0.04 | 0.09 |
+| `Poincare sphere` | 16 | 90 | 3 | 392 | 0.00 | 0.01 | 0.02 | 0.02 | 0.02 |
+| `RP^4` | 16 | 150 | 4 | 991 | 0.02 | 0.07 | 0.16 | 0.17 | 0.08 |
+| `K3` | 16 | 288 | 4 | 1704 | 0.00 | 0.34 | 8.4 | 3.5 | 6.2 |
+| `HP^2` | 15 | 490 | 8 | 16383 | 0.03 | 33 | 70 | 34 | 31 |
+| `CP^3` | 18 | 622 | 6 | 8884 | 0.02 | 10 | 14 | 14 | 12 |
+| `RP^5` | 24 | 676 | 5 | 6452 | 0.03 | 6.8 | 8.9 | 11 | 5.5 |
+| `Hom_C6_compl_K5_small` | 33 | 920 | 4 | 5418 | 0.01 | 4.4 | 193 | 75 | 140 |
+| `HMT_32` | 159 | 3196 | 2 | 6709 | 0.43 | 7.2 | 1039 | 57 | 6.9 |
+| `S^2 x Poincare sphere` | 64 | 3600 | 5 | 33296 | 0.20 | 149 | 482 | 255 | 226 |
+
+Two fixed overheads are excluded from those numbers: about **16 seconds** to
+start Julia and load OSCAR, and a few seconds more the first time each code path
+runs in a session while Julia compiles it — about 8 seconds for the ring, under
+a second for homology. Both are paid once per session, not once per space.
+
+What the table shows:
+
+* **Integral homology is nearly free; the integral *ring* is the expensive
+  case.** Over `ZZ` homology is delegated to Polymake, so even the largest entry
+  here finishes in a fifth of a second. The cohomology ring over `ZZ` is the
+  opposite: it is the slowest column everywhere it is not trivial, because the
+  canonical bases come from Smith normal forms rather than ranks. `HMT_32` takes
+  1039 seconds over `ZZ` against 6.9 over `GF(7)`, a factor of 150.
+* **Facet count is a poor predictor.** What matters is the total face count and
+  the size of the cohomology. `HP^2` has 490 facets — fewer than `RP^5` or
+  `HMT_32` — but dimension 8 gives it 16 383 faces, and the largest rank it has
+  to compute is that of a 4515 x 3003 matrix. `HMT_32` is the mirror image: 3196
+  facets, but a 2-complex, so only 6709 faces. Taken to the extreme, `PG128` is
+  a 2-complex on 127 vertices, which looks cheap, but `H^1` has rank 2541 and it
+  does not finish.
+* **The cup product is quadratic in the number of basis classes.**
+  `Hom_C6_compl_K5_small` is a small complex — 920 facets, 5418 faces, homology
+  in 0.01 s — but `H^2` has rank 58, so the ring carries 60 classes and the
+  table 3600 products. Its cost tracks those 60 classes rather than its 920
+  facets, and 60 is also why its record stores no structure constants: the
+  `max_basis` cutoff is 40.
+* **Coefficients matter.** `RP^4` over `GF(7)` has nothing above degree 0, so
+  there is no table to build; over `GF(2)` the same space has a class in every
+  degree. `HMT_32`, whose torsion is entirely 2-primary, takes 57 seconds over
+  `GF(2)` and 6.9 over `GF(7)`.
+
+Of the 197 computable spaces, exactly three exceeded the 300-second export
+budget over `ZZ` and were re-exported under a 30-minute budget instead:
+`HMT_32`, `S^2 x Poincare sphere` and `Hom_C6_compl_K5_small`. `HMT_32` at just
+over 17 minutes is the slowest of the 197 in any coefficient ring.
+
+### The six that are missing
+
+`PG64`, `PG128`, `AG_5_3`, `Hom_C5_K5`, `Hom_C6_compl_K5` and
+`Hom_n9_655_compl_K4` have **no records of either kind**, and no `MANIFEST.tsv`
+row. They are marked `heavy` because they were measured not to finish:
+`catalogue()` includes them, `catalogue(; heavy = false)` does not, and the
+drivers skip them unless you pass `--all` or name one with `--only`. They stay
+in the catalogue because they are legitimate spaces, not because they finish.
+
+That measurement is about the **cohomology ring**, and should not be read as
+covering homology. Over finite fields three of the six are comfortably
+tractable, measured at a one-hour cap per computation:
+
+| space | vertices | facets | faces | GF(2) | GF(3) | GF(5) | GF(7) |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `PG128` | 127 | 5334 | 13462 | 25 s | 24 s | 24 s | 23 s |
+| `PG64` | 2017 | 6510 | 18292 | 47 s | 44 s | 44 s | 45 s |
+| `Hom_n9_655_compl_K4` | 3096 | 19008 | 82224 | 949 s | 825 s | 888 s | 865 s |
+
+```
+PG128                H_* = F_2, F_2^2542, F_2   |   F_p, F_p^2541, 0   (p = 3,5,7)
+PG64                 H_* = F_p, F_p^1240, F_p                (all four p)
+Hom_n9_655_compl_K4  H_* = F_p, F_p^13, F_p^13, F_p          (all four p)
+```
+
+`AG_5_3` exceeded the hour over `GF(2)` at 22 GB resident: its boundary matrix
+is 147015 x 29647 and is held densely, so this is a memory wall rather than an
+algorithmic one. `Hom_C5_K5` (856 240 faces) and `Hom_C6_compl_K5` (313 620)
+are larger still and were not attempted. Nothing above is in `records/` — these
+numbers are measurements, not shipped data, and no ring, `ZZ` or `QQ` result
+exists for any of the six.
+
+---
+
+## Correctness
+
+Homology and cohomology are computed here by two unrelated routes — a chain
+complex and ranks on one side, OSCAR's `DGAlgCohRing` over a cochain complex on
+the other. That makes them worth checking against each other, and against
+outside authorities. This section records what is checked, what the corpus
+currently reports, and what is *not* guaranteed.
+
+### The cross-check: H_* against H^*, over ten rings
+
+`scripts/verify_homology.jl --cross` computes both sides for every space and
+compares them. What is compared depends on the ring:
+
+* **over a field** — `dim H_d == dim H^d`;
+* **over `ZZ`** — universal coefficients: the free rank of `H^d` matches that of
+  `H_d`, and the **torsion** of `H^d` matches that of `H_(d-1)`. The degree
+  shift is exactly where the two constructions differ, so this is the only check
+  that exercises torsion across both code paths.
+
+The ring grid spans characteristic 0, prime fields, and prime-power fields at
+several characteristics:
+
+| | rings |
+|---|---|
+| characteristic 0 | `ZZ`, `QQ` |
+| prime order | `GF(2)`, `GF(3)`, `GF(5)`, `GF(7)` |
+| prime power order | `GF(4) = F_2^2`, `GF(8) = F_2^3`, `GF(9) = F_3^2`, `GF(25) = F_5^2` |
+
+**Result over the whole corpus: 197 spaces × 10 rings = 1970 comparisons, zero
+disagreements.**
+
+### The other checks
+
+| check | scope | result |
+|---|---|---|
+| OSCAR/Polymake integral homology | every space | 197 / 197 agree |
+| Independent integral homology, re-derived here (`--deep`) | 195 of 197 (two too large) | 195 / 195 agree |
+| The `H_*` line Lutz's files publish in their own headers | the single-complex files | 12 / 13 agree — see below |
+| Cup product laws: unit, graded commutativity (`check_ring`) | every ring record | all pass |
+| Universal coefficients: `dim H^d(K;F)` against the integral homology | every space, `QQ` and the four fields | 3965 / 3965 agree |
+| Euler characteristic against the f-vector | every space | all pass |
+| Test suite | offline / online | 4974 / 5010 pass |
+
+### What is *not* independent
+
+**Over `ZZ`, agreement with `Oscar.homology` is definitional, not evidence.**
+Integral Smith normal form does not scale — `snf` of `RP^5`'s third boundary
+matrix (2277 × 1174) did not finish in four minutes — so the `ZZ` path delegates
+to Polymake. Comparing the two therefore compares Polymake with itself. It still
+catches packing mistakes, and `--deep` re-derives integral homology here
+independently for complexes small enough to afford it, but the honest
+independent checks over `ZZ` are the published headers and the universal-
+coefficients cross-check above.
+
+### One source disagrees with itself
+
+`SU2_SO3` is reported as differing from its published header. Its file states
+`H_* = (Z,0,Z,Z,0,Z)`, the homology of `S^2 x S^3`, but reproduces the f-vector
+`(13,78,286,533,468,156)` exactly — and Polymake, the chain complex here, and
+the cup product machinery all give `(Z,0,Z/2,0,0,Z)`, the Wu manifold
+`SU(3)/SO(3)`. Three independent computations side against the header, so the
+catalogue lists it as the Wu manifold and the test suite pins both results.
+
+### Bugs these checks caught
+
+Worth recording, because each was found by a check rather than by reading:
+
+* **`NotIConnected(5,2)` came out as `Z^7` instead of `Z^6`.** The first
+  homology implementation presented the *unsimplified* subquotient, and OSCAR
+  returned 19 relation rows where the image of the sixth boundary map has rank
+  20 — one relation silently dropped. The f-vector forces Euler characteristic
+  −5, which 7 violates, and the complex is known to be a wedge of `(5−2)! = 6`
+  five-spheres. Switching to ranks, done for speed, removed the bug; the
+  cohomology side was never affected because it has always presented the
+  simplified complex.
+* **`scripts/run_tables.jl` failed on every space.**
+  `simplicial_cohomology_ring(::SpaceEntry, R)` called `e.build()` on a struct
+  whose field is `recipe`. It shipped broken and is now covered by a test.
+* **Two ring records shipped as 0-byte files.** `write_record` opened the
+  output path before computing the JSON, so a record whose consistency checks
+  ran past the export budget truncated the file and left it there;
+  `HMT_32` and `Hom_C6_compl_K5_small` shipped that way over `ZZ`. Writes now
+  serialise first and go through a temp file and a rename, so a record is
+  either complete or absent. A test asserts every shipped record is non-empty
+  and brace-delimited.
+* **`scripts/regenerate_sage.jl` claimed more than it did.** Its output said
+  "f-vector and homology match" while comparing only the f-vector. It now reads
+  `MANIFEST.tsv`, which carries `f_vector` and `integral_homology` columns, so
+  the claim is true.
+
+### Reproducing
+
+```bash
+julia test/runtests.jl --online                         # 5010 checks
+julia scripts/verify_homology.jl --deep                # cheap pass + integral oracle
+julia scripts/verify_homology.jl --cross                # the ten-ring cross-check
+julia scripts/fetch_sources.jl                         # 157 input hashes
+julia scripts/regenerate_sage.jl                       # 32 Sage models
+```
 
 ---
 
@@ -327,125 +719,6 @@ checks that names stay unique.
 
 ---
 
-## The catalogue
-
-203 entries, one model per topological type. Where several sources offer the
-same space the catalogue keeps one — preferring a small model with no external
-dependency — and names the alternatives in the entry's `note`. `catalogue_table()`
-prints this list; `find_space(name)` returns the entry.
-
-Provenance labels: **built-in** (constructed here), **Sage** (a local SageMath),
-**Lutz/library** (the Benedetti–Lutz Library of Triangulations),
-**Lutz/further** (the Further Examples page), **Lutz/3-manifolds** (the
-geometric 3-manifold catalogues), **arXiv** (read from a paper's source).
-
-### Spheres, projective spaces and other classics
-
-| space | topological type | provenance |
-|---|---|---|
-| `point` | one-point space | built-in |
-| `S^0` … `S^6` | `n`-sphere | built-in |
-| `RP^2` | real projective plane | Sage |
-| `RP^3` | real projective 3-space | Sage |
-| `RP^4` | real projective 4-space | Sage |
-| `RP^5` | real projective 5-space | Lutz/library |
-| `CP^2` | complex projective plane | Sage |
-| `CP^3` | complex projective 3-space | arXiv |
-| `HP^2` | quaternionic projective plane | Sage |
-| `Poincare sphere` | Poincaré homology 3-sphere = Σ(2,3,5) | Sage |
-| `Wu manifold` | SU(3)/SO(3) | Lutz/library |
-| `K3` | K3 surface | Sage |
-
-### Surfaces and 2-complexes
-
-| space | topological type | provenance |
-|---|---|---|
-| `T^2` | 2-torus | Sage |
-| `Klein bottle` | Klein bottle | Sage |
-| `Sigma_2` … `Sigma_6` | orientable surface of genus 2–6 | Sage |
-| `N_3` … `N_6` | non-orientable surface of genus 3–6 | Sage |
-| `Sigma_26` | orientable surface of genus 26 | Sage |
-| `Sigma_15` | orientable surface of genus 15 | Lutz/library |
-| `rand2_n25` | random 2-complex, `H_2 = Z^475` | Lutz/library |
-| `PG64` | orientable surface of genus 620 | Lutz/library |
-| `PG128` | non-orientable surface of genus 2542 | Lutz/library |
-| `AG_5_3` | orientable surface of genus 9680 | Lutz/library |
-
-### Moore spaces
-
-| space | topological type | provenance |
-|---|---|---|
-| `M(Z/3,1)`, `M(Z/4,1)` | Moore space with `H_1 = Z/q` | Sage |
-| `M(Z/5,2)`, `M(Z/9,2)` | Moore space with `H_2 = Z/q` | Sage |
-| `M(Z/7,3)` | Moore space with `H_3 = Z/7` | Sage |
-| `M(Z/8,4)` | Moore space with `H_4 = Z/8` | Sage |
-
-`M(Z/q,n)` for `n > 1` is the `(n-1)`-fold suspension of Sage's `MooreSpace(q)`.
-`M(Z/2,1)` is not listed separately: it is `RP^2`.
-
-### 3-manifolds
-
-All from Lutz's geometric 3-manifold catalogues, one per topological type.
-
-| space | topological type |
-|---|---|
-| `L(3,1)`, `L(4,1)`, `L(5,1)`, `L(5,2)`, `L(6,1)`, `L(7,1)`, `L(7,2)`, `L(8,1)`, `L(8,3)`, `L(9,1)`, `L(9,2)`, `L(10,1)`, `L(10,3)` | lens spaces |
-| `cube_space`, `octahedron_space`, `truncated_cube_space`, `P_3` … `P_10` | other spherical 3-manifolds |
-| `T^3`, `G2` … `G6`, `KxS^1`, `B2`, `B3`, `B4` | the ten flat 3-manifolds |
-| `Nil_Oo1_1` … `Nil_Oo1_5` | Nil 3-manifolds |
-| `S^2xS^1`, `S^2twistS^1`, `RP^2xS^1`, `RP^3#RP^3` | `S^2 x R` 3-manifolds |
-| `Sigma_2 x S^1` … `Sigma_5 x S^1`, `N_3 x S^1` … `N_10 x S^1` | `H^2 x R` 3-manifolds |
-| `hyperbolic vol 0.94270736` … `hyperbolic vol 1.75712603` (20) | hyperbolic 3-manifolds, keyed by volume |
-| `Sigma(2,3,7)`, `Sigma(2,5,7)`, `Sigma(3,4,5)`, `Sigma(3,4,7)`, `Sigma(3,5,7)`, `Sigma(4,5,7)` | Brieskorn homology 3-spheres |
-| `(S^2xS^1)#k` and `(S^2twistS^1)#k` for `k = 2..20`, plus `#RP^3`, `#L_3_1` and `L_3_1#±L_3_1` variants (54) | connected sums |
-| `Weber-Seifert space` | hyperbolic dodecahedral space (Lutz/library) |
-
-### 4-manifolds and higher
-
-| space | topological type | provenance |
-|---|---|---|
-| `S^3xS^1`, `S^3twistS^1`, `S^2xS^2`, `CP^2#CP^2`, `CP^2#-CP^2`, `(S^2xS^2)#(S^2xS^2)`, `CP^2#(S^2xS^2)` | 4-manifolds | Lutz/further |
-| `RP^4#K3`, `RP^4#11(S^2xS^2)` | 4-manifolds | Lutz/library |
-| `S^3xS^2`, `S^2 x Poincare sphere` | 5-manifolds | Lutz/further, Lutz/library |
-
-### Torsion and combinatorial complexes
-
-| space | topological type | provenance |
-|---|---|---|
-| `HMT_4`, `HMT_8`, `HMT_16`, `HMT_32` | Hadamard matrix torsion 2-complexes | Lutz/library |
-| `Hom_C6_compl_K5_small`, `Hom_C6_compl_K5`, `Hom_C5_K5`, `Hom_n9_655_compl_K4` | Hom complexes | Lutz/library |
-| `Chessboard(3,3)`, `Chessboard(4,4)` | chessboard complexes | Sage |
-| `Matching(5)`, `Matching(6)`, `Matching(7)` | matching complexes | Sage |
-| `NotIConnected(5,2)` | not-2-connected graphs on 5 vertices | Sage |
-| `SumComplex(5,[0,1,3])` | sum complex of Linial–Meshulam–Rosenthal | Sage |
-
-### What deduplication removed
-
-The sources hold many models of the same space, and the catalogue keeps one of
-each. They all remain reachable directly — the entry's `note` says how. For
-example `S^3` stands for Sage's `BarnetteSphere()` and `BrucknerGrunbaumSphere()`
-and Lutz's `600_cell`, `trefoil`, `nc_sphere`, `non_4_2_colorable` and the
-`_bsd` barycentric subdivisions; `point` stands for every contractible complex
-in either source, including the dunce hat, Rudin's and Ziegler's balls, Bing's
-house and the `BH_k` family; and `S^5` stands for Lutz's `non_PL_5_sphere`,
-which is a genuinely non-PL triangulation of the same topological space.
-
-The catalogue was audited by computing integral homology for every entry and
-examining each collision. Most collisions are *not* duplicates — distinct
-3-manifolds routinely share homology, and telling `CP^2#CP^2` from `S^2xS^2` is
-exactly what a cup product table is for. Five were genuine and were merged:
-`sage("FareyMap(5)")` is `S^2`, `sage("FareyMap(7)")` is `Sigma_3`,
-`sage("MooreSpace(2)")` is `RP^2`, `lutz("d2n12g6")` is `Sigma_6`, and
-`lutz("Hom_C5_K4")` is `RP^3` — its own file header states
-`Hom(C_5,K_4) = RP^3`.
-
-Lens spaces: the 3-dimensional ones are present from Lutz's spherical catalogue
-(`L(3,1)` … `L(10,3)`). SageMath has no lens space constructor, so none can be
-had from that source, and higher-dimensional lens spaces are not in the
-catalogue.
-
----
-
 ## Generated records
 
 `records/` holds one JSON record per (space, coefficient ring): the rebuild
@@ -485,14 +758,15 @@ checked against f-vector and homology instead — invariants under relabelling �
 and still fail if those differ. The ring is unaffected; only the cocycle
 representatives are tied to a labelling.
 
-Re-exporting is not byte-stable everywhere. Regenerating the ring corpus
-reproduces 198 of the 228 records exactly; 18 of the rest are those surfaces,
-and the other 12 are the six Moore spaces over two rings each. For the Moore
-spaces the hash, the groups, the presentation and every structure constant are
-identical run to run; only the basis cocycle for the torsion class moves. Four
-of the six name the same class, the cochains differing by a coboundary; the
-other two pick the negative generator, which no structure constant sees. Treat a
-record's representatives as one valid answer, not as a fingerprint. See
+Re-exporting is not byte-stable everywhere. Two families move: those nine
+surfaces, whose labelling changes per process, and the six Moore spaces. For the
+Moore spaces the hash, the groups, the presentation and every structure constant
+are identical run to run; only the basis cocycle for the torsion class moves,
+and only intermittently. Four of the six name the same class, the cochains
+differing by a coboundary; the other two pick the negative generator, which no
+structure constant sees. Measured over the pre-expansion corpus this was 30
+records of 228; the affected families are the same across the six-ring grid.
+Treat a record's representatives as one valid answer, not as a fingerprint. See
 [docs/CANONICALIZATION.md](docs/CANONICALIZATION.md#when-the-record-is-not-reproducible-but-the-hash-is).
 
 `MANIFEST.tsv` also carries `f_vector` and `integral_homology` columns. Those
@@ -515,76 +789,6 @@ entries); such records say so and still carry every basis and representative.
 
 ---
 
-## Coverage and completeness
-
-What is actually computed, and what is not.
-
-| | spaces | ring + cup products | homology |
-|---|---:|---|---|
-| catalogue, computable | **197** | all six rings | all six rings |
-| catalogue, marked `heavy` | **6** | none | none |
-| **total** | **203** | | |
-
-For the 197 computable entries the corpus is uniform: every space has a
-cohomology ring **and** homology over `ZZ`, `QQ`, `GF(2)`, `GF(3)`, `GF(5)` and
-`GF(7)` — 1182 records of each kind. There are no partial spaces and no ring
-left to a single coefficient ring.
-
-Three qualifications on what a ring record contains:
-
-* **Multiplication tables: 1155 of 1182 are complete.** The 27 exceptions are
-  records whose basis exceeds the `max_basis = 40` cutoff, where the table would
-  be quadratically large: `rand2_n25` (476 classes, so 226 576 products, all six
-  rings), `HMT_32` over `GF(2)` (63), `Hom_C6_compl_K5_small` (60, all six),
-  `Sigma_26` (54, all six), `(S^2xS^1)#20` (42, all six) and
-  `(S^2twistS^1)#20` (41–42). Those records still carry the graded groups and
-  the cocycle representatives; only the structure constants are dropped, and
-  `cup(X, (p,i), (q,j))` computes any single product locally.
-* **A closed-form presentation is stored for 372 of 1182.** `ring_presentation`
-  is filled in only when `identify_ring` recognises the shape — a truncated
-  polynomial algebra, an exterior algebra and a few others. Elsewhere it is
-  `null`, and the ring is given by its structure constants rather than by a
-  named quotient. The table is the primary content; the presentation is a
-  convenience where it happens to be derivable.
-* **Torsion-free spaces carry redundancy.** Where `H^*(K;ZZ)` is torsion-free
-  the other five rings follow from it by universal coefficients, so those
-  records confirm rather than extend. The genuinely new information is
-  concentrated where torsion meets a characteristic dividing it — `RP^n` over
-  `GF(2)`, the Moore spaces over their own prime, `HMT_32` over `GF(2)`.
-
-### The six that are missing
-
-`PG64`, `PG128`, `AG_5_3`, `Hom_C5_K5`, `Hom_C6_compl_K5` and
-`Hom_n9_655_compl_K4` have **no records of either kind**, and no `MANIFEST.tsv`
-row. They are in `catalogue()` because they are legitimate spaces, not because
-they finish.
-
-The label is about the **cohomology ring**, which is where they were measured
-not to finish, and it should not be read as covering homology. Over finite
-fields three of the six are comfortably tractable, measured on the reference
-machine at a one-hour cap per computation:
-
-| space | vertices | facets | faces | GF(2) | GF(3) | GF(5) | GF(7) |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| `PG128` | 127 | 5334 | 13462 | 25 s | 24 s | 24 s | 23 s |
-| `PG64` | 2017 | 6510 | 18292 | 47 s | 44 s | 44 s | 45 s |
-| `Hom_n9_655_compl_K4` | 3096 | 19008 | 82224 | 949 s | 825 s | 888 s | 865 s |
-
-```
-PG128                H_* = F_2, F_2^2542, F_2   |   F_p, F_p^2541, 0   (p = 3,5,7)
-PG64                 H_* = F_p, F_p^1240, F_p                (all four p)
-Hom_n9_655_compl_K4  H_* = F_p, F_p^13, F_p^13, F_p          (all four p)
-```
-
-`AG_5_3` exceeded the hour over `GF(2)` at 22 GB resident: its boundary matrix
-is 147015 x 29647 and is held densely, so this is a memory wall rather than an
-algorithmic one. `Hom_C5_K5` (856 240 faces) and `Hom_C6_compl_K5` (313 620)
-are larger still and were not attempted. Nothing above is in `records/` — these
-numbers are measurements, not shipped data, and no ring, `ZZ` or `QQ` result
-exists for any of the six.
-
----
-
 ## Reading the output
 
 * **`H^d = Z^2 + Z/2`** — the group in invariant-factor form; `basis:` names the
@@ -601,108 +805,6 @@ exists for any of the six.
   false on cochains and only becomes true on cohomology, so this is a real
   end-to-end test rather than a tautology. `FAILED` means a bug, not an
   interesting space.
-
----
-
-## Correctness
-
-Homology and cohomology are computed here by two unrelated routes — a chain
-complex and ranks on one side, OSCAR's `DGAlgCohRing` over a cochain complex on
-the other. That makes them worth checking against each other, and against
-outside authorities. This section records what is checked, what the corpus
-currently reports, and what is *not* guaranteed.
-
-### The cross-check: H_* against H^*, over ten rings
-
-`scripts/verify_homology.jl --cross` computes both sides for every space and
-compares them. What is compared depends on the ring:
-
-* **over a field** — `dim H_d == dim H^d`;
-* **over `ZZ`** — universal coefficients: the free rank of `H^d` matches that of
-  `H_d`, and the **torsion** of `H^d` matches that of `H_(d-1)`. The degree
-  shift is exactly where the two constructions differ, so this is the only check
-  that exercises torsion across both code paths.
-
-The ring grid spans characteristic 0, prime fields, and prime-power fields at
-several characteristics:
-
-| | rings |
-|---|---|
-| characteristic 0 | `ZZ`, `QQ` |
-| prime order | `GF(2)`, `GF(3)`, `GF(5)`, `GF(7)` |
-| prime power order | `GF(4) = F_2^2`, `GF(8) = F_2^3`, `GF(9) = F_3^2`, `GF(25) = F_5^2` |
-
-**Result over the whole corpus: 197 spaces × 10 rings = 1970 comparisons, zero
-disagreements.**
-
-### The other checks
-
-| check | scope | result |
-|---|---|---|
-| OSCAR/Polymake integral homology | every space | 197 / 197 agree |
-| Independent integral homology, re-derived here (`--deep`) | 195 of 197 (two too large) | 195 / 195 agree |
-| The `H_*` line Lutz's files publish in their own headers | the single-complex files | 12 / 13 agree — see below |
-| Cup product laws: unit, graded commutativity (`check_ring`) | every ring record | all pass |
-| Universal coefficients: `dim H^d(K;F)` against the integral homology | every space, `QQ` and the four fields | 3965 / 3965 agree |
-| Euler characteristic against the f-vector | every space | all pass |
-| Test suite | offline / online | 243 / 279 pass |
-
-### What is *not* independent
-
-**Over `ZZ`, agreement with `Oscar.homology` is definitional, not evidence.**
-Integral Smith normal form does not scale — `snf` of `RP^5`'s third boundary
-matrix (2277 × 1174) did not finish in four minutes — so the `ZZ` path delegates
-to Polymake. Comparing the two therefore compares Polymake with itself. It still
-catches packing mistakes, and `--deep` re-derives integral homology here
-independently for complexes small enough to afford it, but the honest
-independent checks over `ZZ` are the published headers and the universal-
-coefficients cross-check above.
-
-### One source disagrees with itself
-
-`SU2_SO3` is reported as differing from its published header. Its file states
-`H_* = (Z,0,Z,Z,0,Z)`, the homology of `S^2 x S^3`, but reproduces the f-vector
-`(13,78,286,533,468,156)` exactly — and Polymake, the chain complex here, and
-the cup product machinery all give `(Z,0,Z/2,0,0,Z)`, the Wu manifold
-`SU(3)/SO(3)`. Three independent computations side against the header, so the
-catalogue lists it as the Wu manifold and the test suite pins both results.
-
-### Bugs these checks caught
-
-Worth recording, because each was found by a check rather than by reading:
-
-* **`NotIConnected(5,2)` came out as `Z^7` instead of `Z^6`.** The first
-  homology implementation presented the *unsimplified* subquotient, and OSCAR
-  returned 19 relation rows where the image of the sixth boundary map has rank
-  20 — one relation silently dropped. The f-vector forces Euler characteristic
-  −5, which 7 violates, and the complex is known to be a wedge of `(5−2)! = 6`
-  five-spheres. Switching to ranks, done for speed, removed the bug; the
-  cohomology side was never affected because it has always presented the
-  simplified complex.
-* **`scripts/run_tables.jl` failed on every space.**
-  `simplicial_cohomology_ring(::SpaceEntry, R)` called `e.build()` on a struct
-  whose field is `recipe`. It shipped broken and is now covered by a test.
-* **Two ring records shipped as 0-byte files.** `write_record` opened the
-  output path before computing the JSON, so a record whose consistency checks
-  ran past the export budget truncated the file and left it there;
-  `HMT_32` and `Hom_C6_compl_K5_small` shipped that way over `ZZ`. Writes now
-  serialise first and go through a temp file and a rename, so a record is
-  either complete or absent. A test asserts every shipped record is non-empty
-  and brace-delimited.
-* **`scripts/regenerate_sage.jl` claimed more than it did.** Its output said
-  "f-vector and homology match" while comparing only the f-vector. It now reads
-  `MANIFEST.tsv`, which carries `f_vector` and `integral_homology` columns, so
-  the claim is true.
-
-### Reproducing
-
-```bash
-julia test/runtests.jl --online                         # 279 checks
-julia scripts/verify_homology.jl --deep                # cheap pass + integral oracle
-julia scripts/verify_homology.jl --cross                # the ten-ring cross-check
-julia scripts/fetch_sources.jl                         # 157 input hashes
-julia scripts/regenerate_sage.jl                       # 32 Sage models
-```
 
 ---
 
@@ -739,68 +841,8 @@ A second guard: `print_report(X; max_table = 40)` skips the table when the total
 number of basis classes exceeds `max_table`, since both the table and the checks
 are quadratic in it. `PG128` would need 6.5 million products.
 
-### What a computation costs
-
-Seconds, measured one computation at a time on an Apple M2 Max Mac Studio
-(64 GB, Julia 1.12, OSCAR 1.8.2). `H_*` is `simplicial_homology`; `ring` is
-`simplicial_cohomology_ring` *together with its full `cup_product_table`*.
-"faces" is the number of simplices in all dimensions, `sum(f_vector(K))`.
-
-| space | vertices | facets | dim | faces | `H_*` ZZ | `H_*` GF(2) | ring ZZ | ring GF(2) | ring GF(7) |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| `S^2` | 4 | 4 | 2 | 14 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
-| `T^2` | 7 | 14 | 2 | 42 | 0.00 | 0.00 | 0.01 | 0.01 | 0.06 |
-| `T^3` | 15 | 90 | 3 | 390 | 0.00 | 0.01 | 0.06 | 0.04 | 0.09 |
-| `Poincare sphere` | 16 | 90 | 3 | 392 | 0.00 | 0.01 | 0.02 | 0.02 | 0.02 |
-| `RP^4` | 16 | 150 | 4 | 991 | 0.02 | 0.07 | 0.16 | 0.17 | 0.08 |
-| `K3` | 16 | 288 | 4 | 1704 | 0.00 | 0.34 | 8.4 | 3.5 | 6.2 |
-| `HP^2` | 15 | 490 | 8 | 16383 | 0.03 | 33 | 70 | 34 | 31 |
-| `CP^3` | 18 | 622 | 6 | 8884 | 0.02 | 10 | 14 | 14 | 12 |
-| `RP^5` | 24 | 676 | 5 | 6452 | 0.03 | 6.8 | 8.9 | 11 | 5.5 |
-| `Hom_C6_compl_K5_small` | 33 | 920 | 4 | 5418 | 0.01 | 4.4 | 193 | 75 | 140 |
-| `HMT_32` | 159 | 3196 | 2 | 6709 | 0.43 | 7.2 | 1039 | 57 | 6.9 |
-| `S^2 x Poincare sphere` | 64 | 3600 | 5 | 33296 | 0.20 | 149 | 482 | 255 | 226 |
-
-Two fixed overheads are excluded from those numbers: about **16 seconds** to
-start Julia and load OSCAR, and a few seconds more the first time each code path
-runs in a session while Julia compiles it — about 8 seconds for the ring, under
-a second for homology. Both are paid once per session, not once per space.
-
-What the table shows:
-
-* **Integral homology is nearly free; the integral *ring* is the expensive
-  case.** Over `ZZ` homology is delegated to Polymake, so even the largest entry
-  here finishes in a fifth of a second. The cohomology ring over `ZZ` is the
-  opposite: it is the slowest column everywhere it is not trivial, because the
-  canonical bases come from Smith normal forms rather than ranks. `HMT_32` takes
-  1039 seconds over `ZZ` against 6.9 over `GF(7)`, a factor of 150.
-* **Facet count is a poor predictor.** What matters is the total face count and
-  the size of the cohomology. `HP^2` has 490 facets — fewer than `RP^5` or
-  `HMT_32` — but dimension 8 gives it 16 383 faces, and the largest rank it has
-  to compute is that of a 4515 x 3003 matrix. `HMT_32` is the mirror image: 3196
-  facets, but a 2-complex, so only 6709 faces. Taken to the extreme, `PG128` is
-  a 2-complex on 127 vertices, which looks cheap, but `H^1` has rank 2541 and it
-  does not finish.
-* **The cup product is quadratic in the number of basis classes.**
-  `Hom_C6_compl_K5_small` is a small complex — 920 facets, 5418 faces, homology
-  in 0.01 s — but `H^2` has rank 58, so the ring carries 60 classes and the
-  table 3600 products. Its cost tracks those 60 classes rather than its 920
-  facets, and 60 is also why its record stores no structure constants: the
-  `max_basis` cutoff is 40.
-* **Coefficients matter.** `RP^4` over `GF(7)` has nothing above degree 0, so
-  there is no table to build; over `GF(2)` the same space has a class in every
-  degree. `HMT_32`, whose torsion is entirely 2-primary, takes 57 seconds over
-  `GF(2)` and 6.9 over `GF(7)`.
-
-Six entries are marked `heavy` because they were measured not to finish:
-`PG64`, `PG128`, `AG_5_3`, `Hom_C5_K5`, `Hom_C6_compl_K5` and
-`Hom_n9_655_compl_K4`. `catalogue()` includes them, `catalogue(; heavy = false)`
-does not, and the drivers skip them unless you pass `--all` or name one with
-`--only`. They stay in the catalogue because they are legitimate spaces, not
-because they will finish. Of the other 197, exactly three exceeded the
-300-second export budget over `ZZ` — the last three rows above — and they were
-re-exported under a 30-minute budget instead. `HMT_32` at just over 17 minutes
-is the slowest of the 197 in any coefficient ring.
+For what the computations actually cost, see
+[What a computation costs](#what-a-computation-costs).
 
 ---
 
