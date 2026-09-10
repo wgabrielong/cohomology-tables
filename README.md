@@ -485,9 +485,11 @@ representatives are tied to a labelling.
 Re-exporting is not byte-stable everywhere. Regenerating the ring corpus
 reproduces 198 of the 228 records exactly; 18 of the rest are those surfaces,
 and the other 12 are the six Moore spaces over two rings each. For the Moore
-spaces the hash, the groups and the presentation are identical run to run and
-only the chosen cocycle representative moves, a choice rather than an invariant.
-Treat a record's representatives as one valid answer, not as a fingerprint. See
+spaces the hash, the groups, the presentation and every structure constant are
+identical run to run; only the basis cocycle for the torsion class moves. Four
+of the six name the same class, the cochains differing by a coboundary; the
+other two pick the negative generator, which no structure constant sees. Treat a
+record's representatives as one valid answer, not as a fingerprint. See
 [docs/CANONICALIZATION.md](docs/CANONICALIZATION.md#when-the-record-is-not-reproducible-but-the-hash-is).
 
 `MANIFEST.tsv` also carries `f_vector` and `integral_homology` columns. Those

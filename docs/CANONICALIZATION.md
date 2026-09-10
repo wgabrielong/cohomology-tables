@@ -88,17 +88,25 @@ are the Moore spaces — `M(Z/3,1)`, `M(Z/4,1)`, `M(Z/5,2)`, `M(Z/7,3)`,
 `M(Z/8,4)` and `M(Z/9,2)`, each over two coefficient rings.
 
 For those the input is provably identical: `facets_sha256`, the f-vector, every
-cohomology group and the ring presentation agree run to run. What differs is the
-chosen **cocycle representative** — two runs of the same code on the same
-complex select different, equally valid representatives of the same class. The
-selection underneath is not deterministic, and re-running is enough to see it:
-two fresh processes computing `M(Z/9,2)` over `ZZ` disagree on the
-representatives while agreeing on everything else.
+cohomology group, the ring presentation and every structure constant agree run
+to run. What differs is the **basis cocycle** written down for the torsion
+class. The variation is between processes, not within one — two computations in
+a single session agree; two fresh processes need not.
 
-Nothing mathematical is at stake — a representative is a choice, not an
-invariant — but two consequences follow. A record's representatives are not a
-fingerprint and must not be diffed as one; and `reproducible_labelling: true`
-means the *labelling* replays, not that the file will.
+Comparing the shipped records over `ZZ` against fresh runs separates two cases:
+
+* `M(Z/3,1)`, `M(Z/5,2)`, `M(Z/7,3)` and `M(Z/9,2)` name the **same class**.
+  The two cochains differ by a coboundary, verified by solving for it.
+* `M(Z/4,1)` and `M(Z/8,4)` name a **different generator** of the same cyclic
+  group. In both the record's class is `-1` times the fresh one — `3` mod 4 and
+  `7` mod 8 — and the difference is not a coboundary.
+
+Negating a generator whose square vanishes changes no structure constant and no
+presentation, so the two runs agree as graded rings and differ only by that
+sign. Nothing mathematical is at stake, but two consequences follow: a record's
+representatives are one valid choice rather than a fingerprint, and must not be
+diffed as one; and `reproducible_labelling: true` promises that the *labelling*
+replays, not that the file will.
 
 ## Worked example
 
