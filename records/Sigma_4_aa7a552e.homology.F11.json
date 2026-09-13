@@ -4,7 +4,7 @@
     "canonicalization": "cohomology-tables/canonical-facets/1",
     "dimension": 2,
     "f_vector": [19, 75, 50],
-    "facets_sha256": "b463beeed04d2a67f15de1d57dcba8eeb43fc906d342aa72a1bf8c25ae745cf2",
+    "facets_sha256": "724ba531ac92b93028e6942ed794c392c4eb88d7aac7c687440987a69e2f0f6f",
     "n_facets": 50,
     "n_vertices": 19
   },
@@ -35,14 +35,14 @@
   "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
   "provenance": "Sage",
   "ranks": [1, 8, 1],
-  "reproducible_labelling": false,
+  "reproducible_labelling": true,
   "schema": "cohomology-tables/homology-record/1",
   "source": {
     "invocation": "simplicial_complexes.SurfaceOfGenus(4)",
     "kind": "sage",
-    "labelling_caveat": "simplicial_complexes.SurfaceOfGenus(4) returns a differently labelled complex on each Sage process. The facets_sha256 below is the labelling this record was computed from and will not generally be reproduced; the cohomology ring is unaffected, being a topological invariant, but the cocycle representatives belong to that labelling. regenerate_sage.jl checks isomorphism invariants for these entries instead of the hash.",
     "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
-    "reproducible_labelling": false,
+    "pinned_labelling": "simplicial_complexes.SurfaceOfGenus(4) does not reproduce its vertex labelling between Sage processes, so this entry is pinned to one stored labelling: pin_orientable_surface-4.txt in the local cache, whose canonical form is re-derived and compared on every build. The space is still Sage's; only the labelling is fixed, which is what makes facets_sha256 below identify a model at all.",
+    "reproducible_labelling": true,
     "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
   },
   "space": "Sigma_4",

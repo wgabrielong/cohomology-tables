@@ -131,8 +131,18 @@ const OFFLINE_MODELS = vcat(["point" => point_space()],
     @test is_reproducible(sage_recipe("K3Surface()"))
     @test is_reproducible(lutz_recipe("K3_16"))
     @test is_reproducible(builtin_recipe("sphere(3)"))
-    @test !is_reproducible(find_space("Sigma_3"))
+    # Every SurfaceOfGenus entry in the catalogue is pinned to a stored
+    # labelling, which is what makes its hash identify a model again. The bare
+    # recipes above are the unpinned form and stay non-reproducible.
+    @test is_reproducible(find_space("Sigma_3"))
+    @test is_reproducible(find_space("N_4"))
     @test is_reproducible(find_space("K3"))
+    # A pin must rebuild to the labelling it stores, or it is not a pin.
+    let e = find_space("Sigma_4")
+      @test !isempty(e.recipe.file)
+      @test facets_sha256(build(e)) ==
+            "724ba531ac92b93028e6942ed794c392c4eb88d7aac7c687440987a69e2f0f6f"
+    end
     # record_prefix must not confuse a name with one it is a prefix of
     @test record_prefix("Sigma_4") != record_prefix("Sigma_4 x S^1")
     @test !startswith(record_prefix("Sigma_4 x S^1"), record_prefix("Sigma_4"))

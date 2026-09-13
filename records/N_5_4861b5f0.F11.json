@@ -7,10 +7,31 @@
       "face": [0]
     }, {
       "coefficient": "1",
-      "face": [2]
+      "face": [1]
     }, {
       "coefficient": "1",
       "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [17]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [15]
+    }, {
+      "coefficient": "1",
+      "face": [8]
+    }, {
+      "coefficient": "1",
+      "face": [16]
+    }, {
+      "coefficient": "1",
+      "face": [7]
     }, {
       "coefficient": "1",
       "face": [4]
@@ -19,43 +40,22 @@
       "face": [6]
     }, {
       "coefficient": "1",
-      "face": [7]
-    }, {
-      "coefficient": "1",
-      "face": [8]
-    }, {
-      "coefficient": "1",
-      "face": [3]
-    }, {
-      "coefficient": "1",
-      "face": [9]
-    }, {
-      "coefficient": "1",
-      "face": [1]
-    }, {
-      "coefficient": "1",
-      "face": [12]
-    }, {
-      "coefficient": "1",
-      "face": [13]
+      "face": [11]
     }, {
       "coefficient": "1",
       "face": [14]
     }, {
       "coefficient": "1",
-      "face": [15]
+      "face": [12]
     }, {
       "coefficient": "1",
-      "face": [16]
-    }, {
-      "coefficient": "1",
-      "face": [11]
+      "face": [9]
     }, {
       "coefficient": "1",
       "face": [10]
     }, {
       "coefficient": "1",
-      "face": [17]
+      "face": [13]
     }]],
     "degree": 0,
     "group": "F_11",
@@ -63,197 +63,182 @@
   }, {
     "basis_labels": ["x1_1", "x1_2", "x1_3", "x1_4"],
     "cocycle_representatives": [[{
-      "coefficient": "9",
-      "face": [2, 4]
-    }, {
-      "coefficient": "9",
+      "coefficient": "10",
       "face": [3, 4]
     }, {
-      "coefficient": "9",
-      "face": [2, 7]
-    }, {
-      "coefficient": "10",
-      "face": [2, 6]
-    }, {
-      "coefficient": "10",
-      "face": [5, 6]
-    }, {
-      "coefficient": "2",
-      "face": [4, 13]
-    }, {
       "coefficient": "1",
-      "face": [4, 12]
+      "face": [4, 11]
     }, {
       "coefficient": "1",
       "face": [4, 14]
+    }, {
+      "coefficient": "1",
+      "face": [3, 6]
+    }, {
+      "coefficient": "10",
+      "face": [6, 7]
+    }, {
+      "coefficient": "10",
+      "face": [6, 9]
+    }, {
+      "coefficient": "1",
+      "face": [4, 5]
     }, {
       "coefficient": "10",
       "face": [5, 7]
     }, {
       "coefficient": "1",
-      "face": [7, 8]
-    }, {
-      "coefficient": "10",
-      "face": [2, 8]
-    }, {
-      "coefficient": "1",
-      "face": [0, 13]
-    }, {
-      "coefficient": "10",
-      "face": [13, 14]
-    }, {
-      "coefficient": "1",
-      "face": [0, 12]
-    }], [{
-      "coefficient": "1",
-      "face": [2, 3]
-    }, {
-      "coefficient": "2",
-      "face": [2, 4]
-    }, {
-      "coefficient": "1",
-      "face": [3, 4]
-    }, {
-      "coefficient": "2",
-      "face": [2, 7]
-    }, {
-      "coefficient": "1",
-      "face": [0, 1]
-    }, {
-      "coefficient": "1",
-      "face": [0, 4]
-    }, {
-      "coefficient": "1",
-      "face": [2, 6]
-    }, {
-      "coefficient": "1",
-      "face": [5, 6]
-    }, {
-      "coefficient": "10",
       "face": [4, 13]
-    }, {
-      "coefficient": "10",
-      "face": [4, 12]
-    }, {
-      "coefficient": "10",
-      "face": [4, 14]
-    }, {
-      "coefficient": "10",
-      "face": [1, 2]
-    }, {
-      "coefficient": "1",
-      "face": [5, 7]
-    }, {
-      "coefficient": "10",
-      "face": [7, 8]
-    }, {
-      "coefficient": "1",
-      "face": [2, 16]
-    }, {
-      "coefficient": "10",
-      "face": [16, 17]
-    }, {
-      "coefficient": "1",
-      "face": [2, 8]
-    }, {
-      "coefficient": "1",
-      "face": [0, 15]
-    }, {
-      "coefficient": "1",
-      "face": [0, 16]
-    }, {
-      "coefficient": "10",
-      "face": [1, 17]
-    }, {
-      "coefficient": "10",
-      "face": [15, 17]
-    }, {
-      "coefficient": "1",
-      "face": [2, 15]
-    }], [{
-      "coefficient": "10",
-      "face": [2, 3]
-    }, {
-      "coefficient": "1",
-      "face": [3, 4]
-    }, {
-      "coefficient": "1",
-      "face": [0, 1]
-    }, {
-      "coefficient": "1",
-      "face": [0, 4]
-    }, {
-      "coefficient": "10",
-      "face": [4, 13]
-    }, {
-      "coefficient": "10",
-      "face": [4, 12]
-    }, {
-      "coefficient": "10",
-      "face": [4, 14]
-    }, {
-      "coefficient": "1",
-      "face": [1, 2]
-    }, {
-      "coefficient": "10",
-      "face": [2, 16]
-    }, {
-      "coefficient": "1",
-      "face": [16, 17]
-    }, {
-      "coefficient": "1",
-      "face": [0, 17]
-    }], [{
-      "coefficient": "9",
-      "face": [2, 4]
-    }, {
-      "coefficient": "9",
-      "face": [3, 4]
-    }, {
-      "coefficient": "9",
-      "face": [2, 7]
-    }, {
-      "coefficient": "10",
-      "face": [2, 6]
-    }, {
-      "coefficient": "10",
-      "face": [5, 6]
-    }, {
-      "coefficient": "10",
-      "face": [0, 9]
     }, {
       "coefficient": "1",
       "face": [9, 11]
     }, {
-      "coefficient": "2",
-      "face": [4, 13]
-    }, {
       "coefficient": "1",
-      "face": [3, 11]
+      "face": [4, 12]
+    }], [{
+      "coefficient": "9",
+      "face": [1, 2]
     }, {
       "coefficient": "10",
-      "face": [5, 7]
+      "face": [1, 8]
     }, {
       "coefficient": "1",
-      "face": [7, 8]
+      "face": [2, 8]
     }, {
       "coefficient": "10",
-      "face": [0, 10]
+      "face": [1, 16]
+    }, {
+      "coefficient": "1",
+      "face": [2, 16]
+    }, {
+      "coefficient": "10",
+      "face": [1, 3]
+    }, {
+      "coefficient": "1",
+      "face": [3, 7]
+    }, {
+      "coefficient": "10",
+      "face": [1, 15]
+    }, {
+      "coefficient": "1",
+      "face": [15, 17]
+    }, {
+      "coefficient": "1",
+      "face": [2, 5]
+    }, {
+      "coefficient": "1",
+      "face": [3, 5]
+    }, {
+      "coefficient": "1",
+      "face": [2, 17]
+    }, {
+      "coefficient": "10",
+      "face": [3, 4]
+    }, {
+      "coefficient": "1",
+      "face": [4, 11]
+    }, {
+      "coefficient": "1",
+      "face": [4, 14]
+    }, {
+      "coefficient": "10",
+      "face": [5, 12]
+    }, {
+      "coefficient": "1",
+      "face": [3, 6]
+    }, {
+      "coefficient": "10",
+      "face": [6, 9]
+    }, {
+      "coefficient": "1",
+      "face": [9, 11]
+    }, {
+      "coefficient": "1",
+      "face": [12, 14]
+    }], [{
+      "coefficient": "10",
+      "face": [1, 8]
     }, {
       "coefficient": "10",
       "face": [2, 8]
     }, {
-      "coefficient": "9",
-      "face": [0, 14]
-    }, {
-      "coefficient": "9",
-      "face": [13, 14]
-    }, {
-      "coefficient": "9",
-      "face": [0, 3]
+      "coefficient": "10",
+      "face": [1, 3]
     }, {
       "coefficient": "1",
-      "face": [3, 10]
+      "face": [3, 7]
+    }, {
+      "coefficient": "10",
+      "face": [2, 5]
+    }, {
+      "coefficient": "10",
+      "face": [3, 5]
+    }, {
+      "coefficient": "1",
+      "face": [5, 12]
+    }, {
+      "coefficient": "1",
+      "face": [6, 7]
+    }, {
+      "coefficient": "10",
+      "face": [4, 5]
+    }, {
+      "coefficient": "1",
+      "face": [5, 7]
+    }, {
+      "coefficient": "1",
+      "face": [5, 13]
+    }, {
+      "coefficient": "1",
+      "face": [5, 14]
+    }], [{
+      "coefficient": "2",
+      "face": [1, 2]
+    }, {
+      "coefficient": "2",
+      "face": [1, 8]
+    }, {
+      "coefficient": "1",
+      "face": [1, 16]
+    }, {
+      "coefficient": "10",
+      "face": [2, 16]
+    }, {
+      "coefficient": "2",
+      "face": [1, 3]
+    }, {
+      "coefficient": "9",
+      "face": [3, 7]
+    }, {
+      "coefficient": "1",
+      "face": [1, 15]
+    }, {
+      "coefficient": "10",
+      "face": [15, 17]
+    }, {
+      "coefficient": "10",
+      "face": [2, 17]
+    }, {
+      "coefficient": "9",
+      "face": [3, 6]
+    }, {
+      "coefficient": "2",
+      "face": [6, 9]
+    }, {
+      "coefficient": "1",
+      "face": [4, 10]
+    }, {
+      "coefficient": "1",
+      "face": [6, 10]
+    }, {
+      "coefficient": "1",
+      "face": [4, 9]
+    }, {
+      "coefficient": "10",
+      "face": [9, 11]
+    }, {
+      "coefficient": "1",
+      "face": [6, 11]
     }]],
     "degree": 1,
     "group": "F_11^4",
@@ -269,13 +254,13 @@
     "canonicalization": "cohomology-tables/canonical-facets/1",
     "dimension": 2,
     "f_vector": [18, 63, 42],
-    "facets_sha256": "76cacf0c244104ec849bd169f143f20b7cb6bbeac759dac2a80de203e221b524",
+    "facets_sha256": "937c9c2692b0bce301c0a2484d17e0af86f67e882455059c81dc8cd6deb778f7",
     "n_facets": 42,
     "n_vertices": 18
   },
   "consistency_checks": [],
   "provenance": "Sage",
-  "reproducible_labelling": false,
+  "reproducible_labelling": true,
   "ring_presentation": "F_11[x1_1,x1_2,x1_3,x1_4]/(x1_1*x1_2, x1_1*x1_3, x1_1*x1_4, x1_2*x1_3, x1_2*x1_4, x1_3*x1_4),  |x1_1| = 1, |x1_2| = 1, |x1_3| = 1, |x1_4| = 1",
   "ring_presentation_structured": {
     "generators": [{
@@ -301,9 +286,9 @@
   "source": {
     "invocation": "simplicial_complexes.SurfaceOfGenus(5, orientable=False)",
     "kind": "sage",
-    "labelling_caveat": "simplicial_complexes.SurfaceOfGenus(5, orientable=False) returns a differently labelled complex on each Sage process. The facets_sha256 below is the labelling this record was computed from and will not generally be reproduced; the cohomology ring is unaffected, being a topological invariant, but the cocycle representatives belong to that labelling. regenerate_sage.jl checks isomorphism invariants for these entries instead of the hash.",
     "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
-    "reproducible_labelling": false,
+    "pinned_labelling": "simplicial_complexes.SurfaceOfGenus(5, orientable=False) does not reproduce its vertex labelling between Sage processes, so this entry is pinned to one stored labelling: pin_nonorientable_surface-5.txt in the local cache, whose canonical form is re-derived and compared on every build. The space is still Sage's; only the labelling is fixed, which is what makes facets_sha256 below identify a model at all.",
+    "reproducible_labelling": true,
     "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
   },
   "space": "N_5",

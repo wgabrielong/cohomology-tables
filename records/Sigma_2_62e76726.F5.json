@@ -4,19 +4,10 @@
     "basis_labels": ["1"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [1]
-    }, {
-      "coefficient": "1",
-      "face": [2]
-    }, {
-      "coefficient": "1",
-      "face": [4]
-    }, {
-      "coefficient": "1",
-      "face": [3]
-    }, {
-      "coefficient": "1",
       "face": [0]
+    }, {
+      "coefficient": "1",
+      "face": [1]
     }, {
       "coefficient": "1",
       "face": [5]
@@ -25,16 +16,25 @@
       "face": [9]
     }, {
       "coefficient": "1",
-      "face": [10]
+      "face": [2]
     }, {
       "coefficient": "1",
       "face": [6]
     }, {
       "coefficient": "1",
-      "face": [8]
+      "face": [10]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [4]
     }, {
       "coefficient": "1",
       "face": [7]
+    }, {
+      "coefficient": "1",
+      "face": [8]
     }]],
     "degree": 0,
     "group": "F_5",
@@ -42,95 +42,77 @@
   }, {
     "basis_labels": ["x1_1", "x1_2", "x1_3", "x1_4"],
     "cocycle_representatives": [[{
-      "coefficient": "4",
-      "face": [2, 5]
-    }, {
-      "coefficient": "4",
-      "face": [4, 5]
+      "coefficient": "1",
+      "face": [1, 4]
     }, {
       "coefficient": "1",
-      "face": [5, 6]
-    }, {
-      "coefficient": "4",
-      "face": [2, 3]
+      "face": [2, 4]
     }, {
       "coefficient": "1",
+      "face": [1, 3]
+    }, {
+      "coefficient": "4",
       "face": [3, 6]
     }, {
       "coefficient": "1",
+      "face": [2, 3]
+    }, {
+      "coefficient": "1",
+      "face": [2, 5]
+    }], [{
+      "coefficient": "4",
+      "face": [1, 4]
+    }, {
+      "coefficient": "4",
+      "face": [2, 4]
+    }, {
+      "coefficient": "4",
+      "face": [1, 3]
+    }, {
+      "coefficient": "4",
       "face": [1, 6]
+    }, {
+      "coefficient": "4",
+      "face": [5, 6]
+    }, {
+      "coefficient": "1",
+      "face": [4, 5]
     }], [{
       "coefficient": "1",
-      "face": [2, 9]
+      "face": [1, 8]
     }, {
       "coefficient": "1",
-      "face": [8, 9]
+      "face": [2, 8]
     }, {
       "coefficient": "1",
-      "face": [7, 9]
-    }, {
-      "coefficient": "4",
-      "face": [0, 7]
-    }, {
-      "coefficient": "4",
-      "face": [0, 8]
-    }, {
-      "coefficient": "1",
-      "face": [8, 10]
-    }], [{
-      "coefficient": "4",
       "face": [1, 7]
     }, {
-      "coefficient": "1",
+      "coefficient": "4",
       "face": [7, 10]
     }, {
       "coefficient": "1",
-      "face": [2, 10]
+      "face": [2, 7]
     }, {
       "coefficient": "1",
-      "face": [0, 8]
-    }, {
-      "coefficient": "1",
-      "face": [0, 10]
-    }, {
-      "coefficient": "1",
-      "face": [7, 8]
+      "face": [2, 9]
     }], [{
       "coefficient": "4",
-      "face": [2, 5]
+      "face": [1, 8]
     }, {
       "coefficient": "4",
-      "face": [4, 5]
-    }, {
-      "coefficient": "1",
-      "face": [5, 6]
+      "face": [2, 8]
     }, {
       "coefficient": "4",
-      "face": [2, 3]
+      "face": [1, 7]
     }, {
       "coefficient": "4",
-      "face": [2, 6]
-    }, {
-      "coefficient": "1",
-      "face": [0, 7]
-    }, {
-      "coefficient": "1",
-      "face": [0, 9]
-    }, {
-      "coefficient": "1",
-      "face": [0, 1]
+      "face": [1, 10]
     }, {
       "coefficient": "4",
-      "face": [1, 5]
+      "face": [9, 10]
     }, {
       "coefficient": "1",
-      "face": [0, 8]
-    }, {
-      "coefficient": "1",
-      "face": [0, 10]
-    }, {
-      "coefficient": "1",
-      "face": [0, 2]
+      "face": [8, 9]
     }]],
     "degree": 1,
     "group": "F_5^4",
@@ -139,7 +121,7 @@
     "basis_labels": ["x2"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [1, 5, 6]
+      "face": [8, 9, 10]
     }]],
     "degree": 2,
     "group": "F_5",
@@ -155,8 +137,8 @@
   },
   "consistency_checks": [],
   "provenance": "Sage",
-  "reproducible_labelling": false,
-  "ring_presentation": "F_5[x1_1,x1_2,x1_3,x1_4]/(x1_1*x1_2, x1_1*x1_3, x1_2*x1_3 + x1_1*x1_4, x1_2*x1_4, x1_3*x1_4),  |x1_1| = 1, |x1_2| = 1, |x1_3| = 1, |x1_4| = 1",
+  "reproducible_labelling": true,
+  "ring_presentation": "F_5[x1_1,x1_2,x1_3,x1_4]/(x1_1*x1_3, x1_1*x1_4, x1_2*x1_3, x1_2*x1_4, x1_3*x1_4 + x1_1*x1_2),  |x1_1| = 1, |x1_2| = 1, |x1_3| = 1, |x1_4| = 1",
   "ring_presentation_structured": {
     "generators": [{
       "degree": 1,
@@ -175,15 +157,15 @@
       "label": "x1_4",
       "order": "0"
     }],
-    "relations": ["x1_1*x1_2", "x1_1*x1_3", "x1_2*x1_3 + x1_1*x1_4", "x1_2*x1_4", "x1_3*x1_4"]
+    "relations": ["x1_1*x1_3", "x1_1*x1_4", "x1_2*x1_3", "x1_2*x1_4", "x1_3*x1_4 + x1_1*x1_2"]
   },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.SurfaceOfGenus(2)",
     "kind": "sage",
-    "labelling_caveat": "simplicial_complexes.SurfaceOfGenus(2) returns a differently labelled complex on each Sage process. The facets_sha256 below is the labelling this record was computed from and will not generally be reproduced; the cohomology ring is unaffected, being a topological invariant, but the cocycle representatives belong to that labelling. regenerate_sage.jl checks isomorphism invariants for these entries instead of the hash.",
     "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
-    "reproducible_labelling": false,
+    "pinned_labelling": "simplicial_complexes.SurfaceOfGenus(2) does not reproduce its vertex labelling between Sage processes, so this entry is pinned to one stored labelling: pin_orientable_surface-2.txt in the local cache, whose canonical form is re-derived and compared on every build. The space is still Sage's; only the labelling is fixed, which is what makes facets_sha256 below identify a model at all.",
+    "reproducible_labelling": true,
     "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
   },
   "space": "Sigma_2",
@@ -286,8 +268,8 @@
     },
     "b": {
       "degree": 1,
-      "index": 4,
-      "label": "x1_4"
+      "index": 2,
+      "label": "x1_2"
     },
     "coefficients": ["1"],
     "product_degree": 2
@@ -312,8 +294,8 @@
     },
     "b": {
       "degree": 1,
-      "index": 3,
-      "label": "x1_3"
+      "index": 1,
+      "label": "x1_1"
     },
     "coefficients": ["4"],
     "product_degree": 2
@@ -338,10 +320,10 @@
     },
     "b": {
       "degree": 1,
-      "index": 2,
-      "label": "x1_2"
+      "index": 4,
+      "label": "x1_4"
     },
-    "coefficients": ["1"],
+    "coefficients": ["4"],
     "product_degree": 2
   }, {
     "a": {
@@ -364,10 +346,10 @@
     },
     "b": {
       "degree": 1,
-      "index": 1,
-      "label": "x1_1"
+      "index": 3,
+      "label": "x1_3"
     },
-    "coefficients": ["4"],
+    "coefficients": ["1"],
     "product_degree": 2
   }, {
     "a": {

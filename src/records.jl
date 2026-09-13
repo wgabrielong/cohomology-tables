@@ -217,6 +217,12 @@ function _source_block(e::SpaceEntry, date_accessed)
                 "definitions and vertex labellings can change between releases, " *
                 "so the version pin is load-bearing"
     b["reproducible_labelling"] = is_reproducible(e.recipe)
+    isempty(r.file) || (b["pinned_labelling"] =
+      "simplicial_complexes.$(r.call) does not reproduce its vertex labelling " *
+      "between Sage processes, so this entry is pinned to one stored labelling: " *
+      "$(r.file) in the local cache, whose canonical form is re-derived and " *
+      "compared on every build. The space is still Sage's; only the labelling is " *
+      "fixed, which is what makes facets_sha256 below identify a model at all.")
     is_reproducible(e.recipe) || (b["labelling_caveat"] =
       "simplicial_complexes.$(r.call) returns a differently labelled complex on " *
       "each Sage process. The facets_sha256 below is the labelling this record " *

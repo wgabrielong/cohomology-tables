@@ -4,7 +4,7 @@
     "canonicalization": "cohomology-tables/canonical-facets/1",
     "dimension": 2,
     "f_vector": [18, 63, 42],
-    "facets_sha256": "83a07cdb311a79696d096920445789e3a67b87a1c46fd2608b3a41be8c23bfb5",
+    "facets_sha256": "937c9c2692b0bce301c0a2484d17e0af86f67e882455059c81dc8cd6deb778f7",
     "n_facets": 42,
     "n_vertices": 18
   },
@@ -35,14 +35,14 @@
   "note": "No cycle representatives are stored: for a closed orientable manifold the top-degree one is supported on every facet. See docs/PROVENANCE.md.",
   "provenance": "Sage",
   "ranks": [1, 4, 0],
-  "reproducible_labelling": false,
+  "reproducible_labelling": true,
   "schema": "cohomology-tables/homology-record/1",
   "source": {
     "invocation": "simplicial_complexes.SurfaceOfGenus(5, orientable=False)",
     "kind": "sage",
-    "labelling_caveat": "simplicial_complexes.SurfaceOfGenus(5, orientable=False) returns a differently labelled complex on each Sage process. The facets_sha256 below is the labelling this record was computed from and will not generally be reproduced; the cohomology ring is unaffected, being a topological invariant, but the cocycle representatives belong to that labelling. regenerate_sage.jl checks isomorphism invariants for these entries instead of the hash.",
     "note": "regenerate with scripts/regenerate_sage.jl; Sage example definitions and vertex labellings can change between releases, so the version pin is load-bearing",
-    "reproducible_labelling": false,
+    "pinned_labelling": "simplicial_complexes.SurfaceOfGenus(5, orientable=False) does not reproduce its vertex labelling between Sage processes, so this entry is pinned to one stored labelling: pin_nonorientable_surface-5.txt in the local cache, whose canonical form is re-derived and compared on every build. The space is still Sage's; only the labelling is fixed, which is what makes facets_sha256 below identify a model at all.",
+    "reproducible_labelling": true,
     "sage_version": "SageMath version 10.3, Release Date: 2024-03-19"
   },
   "space": "N_5",

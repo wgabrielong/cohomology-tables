@@ -107,6 +107,20 @@ end
 
 builtin_recipe(call::AbstractString) = Recipe("builtin", call, "", "")
 sage_recipe(call::AbstractString) = Recipe("sage", call, "", "")
+
+"""
+    pinned_sage_recipe(call, file) -> Recipe
+
+A Sage recipe whose labelling is pinned to a stored facet list.
+
+For `SurfaceOfGenus`, Sage returns a differently labelled triangulation on
+each process, so replaying the call alone does not identify a model. `file`
+names a JSON facet list in [`cache_dir`](@ref) that fixes one labelling; the
+space is still Sage's, and `call` still records which constructor produced it.
+Pinning makes the SHA-256 meaningful again, so these entries are reproducible.
+"""
+pinned_sage_recipe(call::AbstractString, file::AbstractString) =
+  Recipe("sage", call, file, "")
 lutz_recipe(file::AbstractString, label::AbstractString = "") = Recipe("lutz", "", file, label)
 arxiv_recipe(id::AbstractString) = Recipe("arxiv", id, "", "")
 
@@ -129,7 +143,7 @@ that produced them, and `scripts/regenerate_sage.jl` checks isomorphism
 invariants instead of the hash.
 """
 is_reproducible(r::Recipe) =
-  !(r.kind == "sage" && startswith(r.call, "SurfaceOfGenus"))
+  !(r.kind == "sage" && startswith(r.call, "SurfaceOfGenus") && isempty(r.file))
 
 """
     build(r::Recipe) -> SimplicialComplex
@@ -138,11 +152,34 @@ Execute a recipe. This is the only place a model is actually constructed, so
 the record's stated recipe and the complex we compute with cannot drift apart.
 """
 function build(r::Recipe)
-  r.kind == "sage" && return sage(r.call)
+  r.kind == "sage" && return isempty(r.file) ? sage(r.call) : _pinned(r.file)
   r.kind == "arxiv" && return bagchi_datta_cp3()
   r.kind == "lutz" && return isempty(r.label) ? lutz(r.file) : lutz(r.file, r.label)
   r.kind == "builtin" && return _build_builtin(r.call)
   throw(ArgumentError("unknown recipe kind \"$(r.kind)\""))
+end
+
+"""
+    _pinned(file) -> SimplicialComplex
+
+Rebuild a complex from a stored canonical facet list in [`cache_dir`](@ref).
+
+The file is exactly [`canonical_form`](@ref): one facet per line, 0-based labels
+ascending within a line, comma-separated, lines in lexicographic order. Oscar
+wants 1-based labels, so this adds one. Because the stored text *is* what
+`facets_sha256` hashes, the check below is a byte comparison against the pin
+itself: a file that does not rebuild to its own hash fails here rather than
+silently binding records to the wrong model.
+"""
+function _pinned(file::AbstractString)
+  path = joinpath(cache_dir(), file)
+  isfile(path) || throw(ArgumentError("pinned facet list not found: $path"))
+  text = rstrip(read(path, String), '\n')
+  facets = [[parse(Int, v) + 1 for v in split(line, ",")] for line in split(text, "\n")]
+  K = simplicial_complex(facets)
+  canonical_form(K) == text ||
+    error("pinned facet list $file did not rebuild to its own canonical form")
+  return K
 end
 
 function _build_builtin(call::AbstractString)
@@ -263,12 +300,16 @@ function _surface_entries()
   push!(E, SpaceEntry("Klein bottle", "Klein bottle", "Sage", sage_recipe("KleinBottle()");
         coeffs = Any[ZZ, GF(2)], note = "non-orientable genus 2"))
   for g in 2:6
-    push!(E, SpaceEntry("Sigma_$g", "orientable surface of genus $g", "Sage", sage_recipe("SurfaceOfGenus($g)"); coeffs = Any[ZZ, GF(2)],
+    push!(E, SpaceEntry("Sigma_$g", "orientable surface of genus $g", "Sage",
+          pinned_sage_recipe("SurfaceOfGenus($g)", "pin_orientable_surface-$g.txt");
+          coeffs = Any[ZZ, GF(2)],
           note = g == 3 ? "also sage(\"FareyMap(7)\")" :
                  g == 6 ? "also sage(\"GenusSix()\") and lutz(\"d2n12g6\")" : ""))
   end
   for k in 3:6
-    push!(E, SpaceEntry("N_$k", "non-orientable surface of genus $k", "Sage", sage_recipe("SurfaceOfGenus($k, orientable=False)"); coeffs = Any[ZZ, GF(2)],
+    push!(E, SpaceEntry("N_$k", "non-orientable surface of genus $k", "Sage",
+          pinned_sage_recipe("SurfaceOfGenus($k, orientable=False)", "pin_nonorientable_surface-$k.txt");
+          coeffs = Any[ZZ, GF(2)],
           note = "genus 1 is RP^2 and genus 2 is the Klein bottle, both above"))
   end
   # FareyMap(5) and FareyMap(7) are the genus 0 and genus 3 orientable surfaces
