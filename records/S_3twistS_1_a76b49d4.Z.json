@@ -126,7 +126,19 @@
   "consistency_checks": [],
   "provenance": "Lutz/further",
   "reproducible_labelling": true,
-  "ring_presentation": null,
+  "ring_presentation": "Z[x1,x4]/(x1^2, 2*x4, x1*x4, x4^2),  |x1| = 1, |x4| = 4",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 1,
+      "label": "x1",
+      "order": "0"
+    }, {
+      "degree": 4,
+      "label": "x4",
+      "order": "2"
+    }],
+    "relations": ["x1^2", "2*x4", "x1*x4", "x4^2"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "catalog": "small_4_manifolds",

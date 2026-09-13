@@ -226,6 +226,12 @@ its summand.
 function class_coords(X::CohomologyRing, d::Int, a)
   b = graded_basis(X, d)
   isempty(b.elems) && return Any[]
+  # A class that vanishes has zero coordinates. The early return is not just an
+  # optimisation: OSCAR leaves the graded part of a zero element unpopulated, so
+  # `graded_part` raises `UndefRefError` on it. Two-factor products keep theirs,
+  # which is why `cup` never hit this; folding three or more factors down to
+  # zero does reach it (`x^2*y` in `T^3` over `ZZ`).
+  is_zero(a) && return Any[zero(X.coeff_ring) for _ in b.keep]
   raw = b.to_coords(a)
   k = ncols(b.V)
   row = matrix(X.coeff_ring, 1, k, [raw[i] for i in 1:k]) * b.V

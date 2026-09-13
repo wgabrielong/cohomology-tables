@@ -10,10 +10,10 @@
       "face": [1]
     }, {
       "coefficient": "1",
-      "face": [3]
+      "face": [4]
     }, {
       "coefficient": "1",
-      "face": [17]
+      "face": [18]
     }, {
       "coefficient": "1",
       "face": [19]
@@ -25,7 +25,25 @@
       "face": [11]
     }, {
       "coefficient": "1",
-      "face": [18]
+      "face": [17]
+    }, {
+      "coefficient": "1",
+      "face": [9]
+    }, {
+      "coefficient": "1",
+      "face": [8]
+    }, {
+      "coefficient": "1",
+      "face": [15]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [16]
+    }, {
+      "coefficient": "1",
+      "face": [20]
     }, {
       "coefficient": "1",
       "face": [7]
@@ -34,37 +52,19 @@
       "face": [14]
     }, {
       "coefficient": "1",
-      "face": [16]
-    }, {
-      "coefficient": "1",
-      "face": [9]
-    }, {
-      "coefficient": "1",
-      "face": [15]
-    }, {
-      "coefficient": "1",
-      "face": [10]
-    }, {
-      "coefficient": "1",
-      "face": [8]
-    }, {
-      "coefficient": "1",
-      "face": [20]
+      "face": [6]
     }, {
       "coefficient": "1",
       "face": [5]
     }, {
       "coefficient": "1",
-      "face": [12]
-    }, {
-      "coefficient": "1",
-      "face": [6]
-    }, {
-      "coefficient": "1",
-      "face": [4]
-    }, {
-      "coefficient": "1",
       "face": [13]
+    }, {
+      "coefficient": "1",
+      "face": [10]
+    }, {
+      "coefficient": "1",
+      "face": [12]
     }]],
     "degree": 0,
     "group": "F_7",
@@ -84,146 +84,143 @@
   }, {
     "basis_labels": ["x3"],
     "cocycle_representatives": [[{
-      "coefficient": "2",
-      "face": [0, 1, 18, 20]
+      "coefficient": "5",
+      "face": [0, 2, 11, 20]
     }, {
       "coefficient": "5",
-      "face": [1, 5, 18, 20]
+      "face": [0, 2, 18, 20]
+    }, {
+      "coefficient": "2",
+      "face": [2, 12, 18, 20]
+    }, {
+      "coefficient": "2",
+      "face": [2, 14, 18, 20]
+    }, {
+      "coefficient": "2",
+      "face": [3, 9, 18, 19]
+    }, {
+      "coefficient": "2",
+      "face": [3, 16, 18, 19]
+    }, {
+      "coefficient": "2",
+      "face": [1, 4, 17, 19]
+    }, {
+      "coefficient": "2",
+      "face": [2, 4, 17, 19]
+    }, {
+      "coefficient": "5",
+      "face": [0, 3, 16, 18]
+    }, {
+      "coefficient": "4",
+      "face": [3, 4, 18, 20]
+    }, {
+      "coefficient": "4",
+      "face": [3, 5, 18, 20]
+    }, {
+      "coefficient": "2",
+      "face": [0, 11, 17, 20]
+    }, {
+      "coefficient": "2",
+      "face": [5, 11, 17, 20]
     }, {
       "coefficient": "5",
       "face": [0, 16, 18, 20]
     }, {
-      "coefficient": "5",
-      "face": [2, 16, 18, 20]
-    }, {
-      "coefficient": "3",
-      "face": [3, 4, 18, 19]
-    }, {
-      "coefficient": "3",
-      "face": [3, 10, 18, 19]
-    }, {
-      "coefficient": "5",
-      "face": [2, 9, 16, 18]
-    }, {
-      "coefficient": "1",
-      "face": [4, 11, 18, 19]
-    }, {
-      "coefficient": "1",
-      "face": [5, 11, 18, 19]
-    }, {
-      "coefficient": "5",
-      "face": [1, 6, 18, 20]
-    }, {
-      "coefficient": "3",
-      "face": [2, 3, 10, 19]
-    }, {
-      "coefficient": "3",
-      "face": [2, 3, 17, 19]
-    }, {
-      "coefficient": "5",
-      "face": [1, 2, 5, 18]
-    }, {
-      "coefficient": "6",
-      "face": [1, 5, 18, 19]
-    }, {
-      "coefficient": "1",
-      "face": [2, 5, 18, 19]
-    }, {
-      "coefficient": "3",
-      "face": [0, 7, 17, 20]
-    }, {
-      "coefficient": "4",
-      "face": [7, 13, 17, 20]
-    }, {
-      "coefficient": "1",
-      "face": [0, 1, 4, 18]
-    }, {
-      "coefficient": "3",
-      "face": [0, 4, 18, 20]
-    }, {
-      "coefficient": "6",
-      "face": [2, 4, 18, 19]
-    }, {
-      "coefficient": "3",
-      "face": [3, 4, 18, 20]
-    }, {
-      "coefficient": "4",
-      "face": [4, 10, 18, 20]
-    }, {
-      "coefficient": "5",
-      "face": [0, 3, 18, 20]
-    }, {
-      "coefficient": "4",
-      "face": [0, 1, 7, 20]
-    }, {
-      "coefficient": "2",
-      "face": [2, 9, 18, 19]
-    }, {
       "coefficient": "2",
       "face": [2, 7, 18, 20]
     }, {
-      "coefficient": "5",
-      "face": [7, 14, 18, 20]
-    }, {
-      "coefficient": "4",
-      "face": [1, 2, 3, 17]
-    }, {
-      "coefficient": "4",
-      "face": [1, 3, 17, 20]
+      "coefficient": "2",
+      "face": [2, 15, 18, 20]
     }, {
       "coefficient": "1",
-      "face": [0, 6, 18, 19]
-    }, {
-      "coefficient": "1",
-      "face": [1, 6, 18, 19]
-    }, {
-      "coefficient": "5",
-      "face": [1, 2, 6, 18]
+      "face": [0, 6, 18, 20]
     }, {
       "coefficient": "6",
-      "face": [0, 5, 18, 19]
+      "face": [6, 12, 18, 20]
     }, {
       "coefficient": "2",
-      "face": [1, 7, 18, 20]
+      "face": [5, 12, 18, 20]
+    }, {
+      "coefficient": "2",
+      "face": [2, 13, 18, 20]
     }, {
       "coefficient": "5",
-      "face": [0, 1, 9, 18]
+      "face": [7, 8, 18, 19]
     }, {
       "coefficient": "2",
-      "face": [1, 9, 18, 19]
+      "face": [8, 14, 18, 19]
     }, {
       "coefficient": "4",
-      "face": [0, 1, 3, 20]
-    }, {
-      "coefficient": "3",
-      "face": [6, 7, 13, 17]
-    }, {
-      "coefficient": "3",
-      "face": [6, 7, 13, 19]
-    }, {
-      "coefficient": "3",
-      "face": [2, 6, 18, 19]
+      "face": [2, 10, 18, 20]
     }, {
       "coefficient": "4",
+      "face": [3, 10, 18, 20]
+    }, {
+      "coefficient": "5",
+      "face": [0, 7, 18, 19]
+    }, {
+      "coefficient": "2",
+      "face": [7, 13, 18, 19]
+    }, {
+      "coefficient": "3",
+      "face": [5, 6, 18, 20]
+    }, {
+      "coefficient": "5",
+      "face": [0, 2, 10, 19]
+    }, {
+      "coefficient": "2",
+      "face": [0, 10, 17, 19]
+    }, {
+      "coefficient": "5",
+      "face": [4, 11, 17, 19]
+    }, {
+      "coefficient": "2",
+      "face": [0, 4, 17, 19]
+    }, {
+      "coefficient": "5",
+      "face": [1, 2, 7, 18]
+    }, {
+      "coefficient": "1",
+      "face": [1, 6, 18, 20]
+    }, {
+      "coefficient": "2",
+      "face": [2, 8, 15, 18]
+    }, {
+      "coefficient": "4",
+      "face": [3, 7, 18, 19]
+    }, {
+      "coefficient": "2",
+      "face": [3, 8, 18, 19]
+    }, {
+      "coefficient": "5",
+      "face": [4, 5, 11, 17]
+    }, {
+      "coefficient": "5",
+      "face": [1, 7, 18, 19]
+    }, {
+      "coefficient": "4",
+      "face": [6, 7, 18, 19]
+    }, {
+      "coefficient": "6",
       "face": [6, 13, 18, 19]
     }, {
-      "coefficient": "6",
-      "face": [1, 4, 18, 19]
-    }, {
-      "coefficient": "1",
-      "face": [2, 12, 18, 19]
-    }, {
-      "coefficient": "4",
-      "face": [3, 4, 5, 18]
+      "coefficient": "5",
+      "face": [0, 8, 18, 19]
     }, {
       "coefficient": "5",
-      "face": [8, 14, 18, 20]
+      "face": [0, 2, 10, 18]
     }, {
-      "coefficient": "2",
-      "face": [0, 8, 18, 20]
+      "coefficient": "5",
+      "face": [1, 8, 18, 19]
+    }, {
+      "coefficient": "5",
+      "face": [2, 8, 18, 19]
     }, {
       "coefficient": "1",
-      "face": [0, 12, 18, 19]
+      "face": [2, 6, 18, 20]
+    }, {
+      "coefficient": "1",
+      "face": [2, 6, 13, 18]
     }]],
     "degree": 3,
     "group": "F_7",
@@ -232,7 +229,7 @@
     "basis_labels": ["x4"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [0, 2, 10, 17, 20]
+      "face": [3, 4, 10, 18, 20]
     }]],
     "degree": 4,
     "group": "F_7",
@@ -249,7 +246,19 @@
   "consistency_checks": [],
   "provenance": "Sage",
   "reproducible_labelling": true,
-  "ring_presentation": null,
+  "ring_presentation": "F_7[x3,x4]/(x3*x4, x4^2),  |x3| = 3, |x4| = 4",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 3,
+      "label": "x3",
+      "order": "0"
+    }, {
+      "degree": 4,
+      "label": "x4",
+      "order": "0"
+    }],
+    "relations": ["x3*x4", "x4^2"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.MooreSpace(7).suspension(2)",

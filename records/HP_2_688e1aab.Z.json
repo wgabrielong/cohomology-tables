@@ -1279,6 +1279,14 @@
   "provenance": "Sage",
   "reproducible_labelling": true,
   "ring_presentation": "Z[x4]/(x4^3),  |x4| = 4",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 4,
+      "label": "x4",
+      "order": "0"
+    }],
+    "relations": ["x4^3"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.QuaternionicProjectivePlane()",

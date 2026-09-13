@@ -5,6 +5,8 @@ Generate the ring records under records/.
     julia scripts/export_records.jl                       # every space, six rings
     julia scripts/export_records.jl --entry-coeffs        # each entry's own rings
     julia scripts/export_records.jl --only K3 --only S^3
+    julia scripts/export_records.jl --skip K3            # everything but K3
+    julia scripts/export_records.jl --no-manifest        # for parallel workers
     julia scripts/export_records.jl --coeffs GF7 --out records
     julia scripts/export_records.jl --manifest-only    # rebuild MANIFEST.tsv alone
     julia scripts/export_records.jl --time-limit 120
@@ -30,7 +32,7 @@ const MANIFEST_HEADER = ["space", "kind", "call", "file", "label",
 # scripts/export_homology.jl, so a plain run reproduces what is in records/.
 # `--entry-coeffs` falls back to each entry's own `coeffs` field, which is the
 # smaller set worth looking at interactively.
-const DEFAULT_GRID = Any[ZZ, QQ, GF(2), GF(3), GF(5), GF(7)]
+const DEFAULT_GRID = Any[ZZ, QQ, GF(2), GF(3), GF(5), GF(7), GF(11)]
 
 function parse_coeffs(s)
   s == "ZZ" && return Any[ZZ]
@@ -71,8 +73,10 @@ function main(args)
     isnothing(i) ? joinpath(@__DIR__, "..", "records") : args[i + 1]
   end
   only = [args[i + 1] for i in eachindex(args) if args[i] == "--only"]
+  skip = [args[i + 1] for i in eachindex(args) if args[i] == "--skip"]
   entries = catalogue(; heavy = ("--all" in args) || !isempty(only))
   isempty(only) || (entries = filter(e -> e.name in only, entries))
+  isempty(skip) || (entries = filter(e -> !(e.name in skip), entries))
   c = findfirst(==("--coeffs"), args)
   coeffs = !isnothing(c) ? parse_coeffs(args[c + 1]) :
            "--entry-coeffs" in args ? nothing : DEFAULT_GRID
@@ -106,6 +110,16 @@ function main(args)
     end
   end
 
+  # `--no-manifest` exists for parallel sweeps. Records are safe to write
+  # concurrently (`_write_atomic` renames into place), but this merge is a
+  # non-atomic read-modify-write and two workers racing on it would lose rows.
+  # Run once with `--manifest-only`, then give every worker `--no-manifest`.
+  if "--no-manifest" in args
+    println("\n$written records in $outdir (MANIFEST.tsv left alone)")
+    _report_skipped(skipped)
+    return
+  end
+
   # Merge rather than overwrite: a `--only` run must not drop the rows for every
   # other space, since the verification scripts read this file as the whole
   # picture.
@@ -136,11 +150,14 @@ function main(args)
   end
 
   println("\n$written records + MANIFEST.tsv in $outdir")
-  if !isempty(skipped)
-    println("$(length(skipped)) skipped:")
-    for s in skipped
-      println("  ", s)
-    end
+  _report_skipped(skipped)
+end
+
+function _report_skipped(skipped)
+  isempty(skipped) && return
+  println("$(length(skipped)) skipped:")
+  for s in skipped
+    println("  ", s)
   end
 end
 

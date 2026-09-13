@@ -7,10 +7,10 @@
       "face": [0]
     }, {
       "coefficient": "1",
-      "face": [8]
+      "face": [2]
     }, {
       "coefficient": "1",
-      "face": [14]
+      "face": [10]
     }, {
       "coefficient": "1",
       "face": [18]
@@ -19,52 +19,52 @@
       "face": [19]
     }, {
       "coefficient": "1",
-      "face": [4]
-    }, {
-      "coefficient": "1",
-      "face": [10]
-    }, {
-      "coefficient": "1",
-      "face": [17]
-    }, {
-      "coefficient": "1",
-      "face": [2]
-    }, {
-      "coefficient": "1",
-      "face": [11]
-    }, {
-      "coefficient": "1",
-      "face": [20]
-    }, {
-      "coefficient": "1",
-      "face": [3]
-    }, {
-      "coefficient": "1",
       "face": [1]
-    }, {
-      "coefficient": "1",
-      "face": [7]
-    }, {
-      "coefficient": "1",
-      "face": [6]
-    }, {
-      "coefficient": "1",
-      "face": [5]
     }, {
       "coefficient": "1",
       "face": [9]
     }, {
       "coefficient": "1",
-      "face": [16]
-    }, {
-      "coefficient": "1",
-      "face": [13]
+      "face": [8]
     }, {
       "coefficient": "1",
       "face": [15]
     }, {
       "coefficient": "1",
+      "face": [17]
+    }, {
+      "coefficient": "1",
+      "face": [20]
+    }, {
+      "coefficient": "1",
+      "face": [14]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [6]
+    }, {
+      "coefficient": "1",
+      "face": [7]
+    }, {
+      "coefficient": "1",
+      "face": [16]
+    }, {
+      "coefficient": "1",
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [13]
+    }, {
+      "coefficient": "1",
       "face": [12]
+    }, {
+      "coefficient": "1",
+      "face": [11]
     }]],
     "degree": 0,
     "group": "Z",
@@ -91,7 +91,7 @@
     "basis_labels": ["x4"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [0, 2, 11, 18, 20]
+      "face": [0, 2, 11, 17, 19]
     }]],
     "degree": 4,
     "group": "Z/7",
@@ -109,6 +109,14 @@
   "provenance": "Sage",
   "reproducible_labelling": true,
   "ring_presentation": "Z[x4]/(7*x4, x4^2),  |x4| = 4",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 4,
+      "label": "x4",
+      "order": "7"
+    }],
+    "relations": ["7*x4", "x4^2"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.MooreSpace(7).suspension(2)",

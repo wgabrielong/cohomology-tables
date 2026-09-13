@@ -18,6 +18,8 @@ The four pieces:
   spaces.jl       the catalogue -- one model per topological type
   ring_tables.jl  the computation: canonical bases per degree, cup products as
                   coordinates, and the wall-clock budget
+  presentation.jl generators and relations for rings with more than one
+                  generator; the monogenic case stays in report.jl
   report.jl       printing, ring identification, consistency checks
 
 `scripts/run_tables.jl` is the batch driver. See README.md for the full space
@@ -35,6 +37,7 @@ include("spaces.jl")
 include("canonical.jl")
 include("chain_complex.jl")
 include("ring_tables.jl")
+include("presentation.jl")
 include("homology_tables.jl")
 include("report.jl")
 include("records.jl")
@@ -58,6 +61,8 @@ export
   SimplicialChainComplex, SimplicialHomology, HomologyGroup,
   simplicial_homology, homology_group, homology_ranks, free_rank, torsion_orders,
   cycle_representative, integral_invariant_factors, integral_homology_symbols,
+  # ring presentations
+  RingGenerator, RingPresentation, ring_presentation, indecomposable_generators,
   # reporting
   cup_product_table, identify_ring, check_ring, print_report, print_homology,
   check_homology,

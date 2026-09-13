@@ -37,6 +37,14 @@
   "provenance": "built-in",
   "reproducible_labelling": true,
   "ring_presentation": "F_2[x1]/(x1^2),  |x1| = 1",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 1,
+      "label": "x1",
+      "order": "0"
+    }],
+    "relations": ["x1^2"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "sphere(1)",

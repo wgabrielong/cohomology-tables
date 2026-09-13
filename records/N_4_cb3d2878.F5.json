@@ -4,49 +4,49 @@
     "basis_labels": ["1"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [1]
-    }, {
-      "coefficient": "1",
-      "face": [2]
-    }, {
-      "coefficient": "1",
-      "face": [6]
-    }, {
-      "coefficient": "1",
       "face": [0]
-    }, {
-      "coefficient": "1",
-      "face": [8]
-    }, {
-      "coefficient": "1",
-      "face": [3]
-    }, {
-      "coefficient": "1",
-      "face": [5]
     }, {
       "coefficient": "1",
       "face": [9]
     }, {
       "coefficient": "1",
-      "face": [11]
+      "face": [10]
     }, {
       "coefficient": "1",
-      "face": [14]
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [2]
     }, {
       "coefficient": "1",
       "face": [12]
     }, {
       "coefficient": "1",
+      "face": [14]
+    }, {
+      "coefficient": "1",
+      "face": [6]
+    }, {
+      "coefficient": "1",
+      "face": [8]
+    }, {
+      "coefficient": "1",
       "face": [13]
     }, {
       "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [11]
+    }, {
+      "coefficient": "1",
       "face": [7]
-    }, {
-      "coefficient": "1",
-      "face": [10]
-    }, {
-      "coefficient": "1",
-      "face": [4]
     }]],
     "degree": 0,
     "group": "F_5",
@@ -54,122 +54,143 @@
   }, {
     "basis_labels": ["x1_1", "x1_2", "x1_3"],
     "cocycle_representatives": [[{
-      "coefficient": "4",
-      "face": [0, 1]
-    }, {
       "coefficient": "1",
-      "face": [1, 14]
-    }, {
-      "coefficient": "1",
-      "face": [1, 8]
-    }, {
-      "coefficient": "1",
-      "face": [12, 14]
+      "face": [0, 4]
     }, {
       "coefficient": "4",
+      "face": [4, 10]
+    }, {
+      "coefficient": "1",
+      "face": [2, 4]
+    }, {
+      "coefficient": "4",
+      "face": [0, 3]
+    }, {
+      "coefficient": "1",
+      "face": [3, 11]
+    }, {
+      "coefficient": "1",
+      "face": [10, 11]
+    }, {
+      "coefficient": "1",
+      "face": [2, 5]
+    }, {
+      "coefficient": "1",
+      "face": [3, 5]
+    }], [{
+      "coefficient": "3",
+      "face": [0, 4]
+    }, {
+      "coefficient": "2",
+      "face": [4, 10]
+    }, {
+      "coefficient": "3",
+      "face": [2, 4]
+    }, {
+      "coefficient": "3",
       "face": [2, 3]
     }, {
-      "coefficient": "1",
+      "coefficient": "2",
       "face": [3, 8]
     }, {
-      "coefficient": "4",
-      "face": [2, 12]
+      "coefficient": "2",
+      "face": [7, 8]
     }, {
-      "coefficient": "1",
-      "face": [0, 2]
-    }], [{
-      "coefficient": "1",
-      "face": [5, 6]
+      "coefficient": "4",
+      "face": [2, 7]
     }, {
       "coefficient": "4",
       "face": [6, 7]
     }, {
+      "coefficient": "1",
+      "face": [3, 9]
+    }, {
+      "coefficient": "1",
+      "face": [3, 10]
+    }, {
+      "coefficient": "1",
+      "face": [4, 9]
+    }, {
       "coefficient": "4",
-      "face": [3, 11]
+      "face": [1, 7]
     }, {
       "coefficient": "4",
       "face": [10, 11]
     }, {
       "coefficient": "1",
-      "face": [4, 10]
-    }, {
-      "coefficient": "1",
-      "face": [5, 10]
-    }, {
-      "coefficient": "4",
-      "face": [1, 4]
-    }, {
-      "coefficient": "1",
-      "face": [4, 6]
+      "face": [4, 11]
     }, {
       "coefficient": "3",
-      "face": [3, 4]
-    }, {
-      "coefficient": "4",
-      "face": [3, 7]
+      "face": [2, 5]
     }, {
       "coefficient": "1",
-      "face": [4, 7]
+      "face": [1, 6]
     }, {
       "coefficient": "1",
-      "face": [4, 9]
+      "face": [3, 6]
     }, {
       "coefficient": "1",
-      "face": [4, 11]
+      "face": [1, 8]
     }], [{
       "coefficient": "2",
-      "face": [0, 1]
+      "face": [0, 4]
     }, {
       "coefficient": "3",
-      "face": [1, 14]
+      "face": [4, 10]
+    }, {
+      "coefficient": "2",
+      "face": [2, 4]
+    }, {
+      "coefficient": "2",
+      "face": [2, 3]
     }, {
       "coefficient": "3",
-      "face": [1, 8]
+      "face": [3, 8]
     }, {
       "coefficient": "1",
-      "face": [5, 6]
+      "face": [1, 12]
     }, {
-      "coefficient": "4",
-      "face": [6, 7]
-    }, {
-      "coefficient": "3",
-      "face": [12, 14]
+      "coefficient": "2",
+      "face": [1, 13]
     }, {
       "coefficient": "1",
-      "face": [2, 12]
+      "face": [12, 13]
+    }, {
+      "coefficient": "2",
+      "face": [1, 2]
+    }, {
+      "coefficient": "3",
+      "face": [7, 8]
     }, {
       "coefficient": "4",
-      "face": [2, 14]
+      "face": [3, 9]
     }, {
-      "coefficient": "3",
-      "face": [1, 3]
+      "coefficient": "4",
+      "face": [3, 10]
     }, {
-      "coefficient": "3",
-      "face": [1, 5]
+      "coefficient": "4",
+      "face": [4, 9]
     }, {
-      "coefficient": "3",
+      "coefficient": "2",
       "face": [1, 7]
+    }, {
+      "coefficient": "1",
+      "face": [10, 11]
+    }, {
+      "coefficient": "4",
+      "face": [4, 11]
+    }, {
+      "coefficient": "2",
+      "face": [2, 5]
     }, {
       "coefficient": "1",
       "face": [0, 13]
     }, {
-      "coefficient": "4",
-      "face": [13, 14]
-    }, {
-      "coefficient": "4",
-      "face": [1, 4]
+      "coefficient": "1",
+      "face": [1, 14]
     }, {
       "coefficient": "1",
-      "face": [4, 6]
-    }, {
-      "coefficient": "4",
-      "face": [3, 7]
-    }, {
-      "coefficient": "4",
-      "face": [4, 7]
-    }, {
-      "coefficient": "1",
-      "face": [0, 12]
+      "face": [0, 14]
     }]],
     "degree": 1,
     "group": "F_5^3",
@@ -185,14 +206,30 @@
     "canonicalization": "cohomology-tables/canonical-facets/1",
     "dimension": 2,
     "f_vector": [15, 51, 34],
-    "facets_sha256": "71fefea4a7cd4ede61ff16a5fe5281ae805b00480ef84a17f8c7f36f58a00d90",
+    "facets_sha256": "caae2451c528bd4dab4a07b56a706c68376d1c04b9929f86426980a0f3a52930",
     "n_facets": 34,
     "n_vertices": 15
   },
   "consistency_checks": [],
   "provenance": "Sage",
   "reproducible_labelling": false,
-  "ring_presentation": null,
+  "ring_presentation": "F_5[x1_1,x1_2,x1_3]/(x1_1*x1_2, x1_1*x1_3, x1_2*x1_3),  |x1_1| = 1, |x1_2| = 1, |x1_3| = 1",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 1,
+      "label": "x1_1",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_2",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_3",
+      "order": "0"
+    }],
+    "relations": ["x1_1*x1_2", "x1_1*x1_3", "x1_2*x1_3"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.SurfaceOfGenus(4, orientable=False)",

@@ -310,7 +310,8 @@ the torsion shows; over `ZZ` the cup product vanishes in positive degrees.
 `M(Z/2, 1)` is not listed: it is `RP^2`, already in the catalogue.
 """
 function _moore_entries()
-  spec = [(3, 1, 3), (4, 1, 2), (5, 2, 5), (7, 3, 7), (8, 4, 2), (9, 2, 3)]
+  spec = [(3, 1, 3), (4, 1, 2), (5, 2, 5), (7, 3, 7), (8, 4, 2), (9, 2, 3),
+          (11, 2, 11)]
   return [SpaceEntry("M(Z/$q,$n)", "Moore space with H_$n = Z/$q", "Sage",
                      sage_recipe(n == 1 ? "MooreSpace($q)" :
                                           "MooreSpace($q).suspension($(n - 1))");

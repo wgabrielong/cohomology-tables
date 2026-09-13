@@ -73,6 +73,14 @@
   "provenance": "built-in",
   "reproducible_labelling": true,
   "ring_presentation": "Q[x5]/(x5^2),  |x5| = 5",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 5,
+      "label": "x5",
+      "order": "0"
+    }],
+    "relations": []
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "sphere(5)",

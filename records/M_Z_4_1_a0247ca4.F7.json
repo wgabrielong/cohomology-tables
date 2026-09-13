@@ -7,34 +7,34 @@
       "face": [0]
     }, {
       "coefficient": "1",
-      "face": [2]
-    }, {
-      "coefficient": "1",
-      "face": [7]
-    }, {
-      "coefficient": "1",
-      "face": [3]
+      "face": [1]
     }, {
       "coefficient": "1",
       "face": [4]
     }, {
       "coefficient": "1",
-      "face": [8]
+      "face": [2]
     }, {
       "coefficient": "1",
-      "face": [10]
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [7]
     }, {
       "coefficient": "1",
       "face": [5]
     }, {
       "coefficient": "1",
+      "face": [6]
+    }, {
+      "coefficient": "1",
       "face": [9]
     }, {
       "coefficient": "1",
-      "face": [1]
+      "face": [10]
     }, {
       "coefficient": "1",
-      "face": [6]
+      "face": [8]
     }]],
     "degree": 0,
     "group": "F_7",

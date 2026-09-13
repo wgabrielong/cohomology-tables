@@ -178,7 +178,20 @@ function ring_record(e::SpaceEntry, X::CohomologyRing;
   n_basis <= max_basis || (rec["structure_constants_omitted_because"] =
     "$n_basis basis classes exceeds max_basis = $max_basis; the full list would " *
     "have $(n_basis^2) entries. Compute individual products with cup(X, (p,i), (q,j)).")
-  rec["ring_presentation"] = identify_ring(X)
+  # `ring_presentation` stays a nullable human-readable string, as it has been
+  # since the first release, so existing readers are unaffected and the schema
+  # id does not move. The structured sibling is what a program should read: the
+  # generators with their degrees and orders, and the relations. Both are absent
+  # together when no presentation was found.
+  # The monogenic fast path keeps its exact historical wording, so the records
+  # that already carried a presentation are unchanged by this field being added.
+  P = ring_presentation(X)
+  mono = _identify_monogenic(X)
+  rec["ring_presentation"] = !isnothing(mono) ? mono : (isnothing(P) ? nothing : P.text)
+  isnothing(P) || (rec["ring_presentation_structured"] = Dict{String,Any}(
+    "generators" => [Dict{String,Any}("label" => g.label, "degree" => g.degree,
+                                      "order" => string(g.order)) for g in P.generators],
+    "relations" => P.relations))
   rec["reproducible_labelling"] = is_reproducible(e.recipe)
   rec["consistency_checks"] = check_ring(X)
   return rec

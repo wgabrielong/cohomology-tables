@@ -7,25 +7,7 @@
       "face": [0]
     }, {
       "coefficient": "1",
-      "face": [1]
-    }, {
-      "coefficient": "1",
-      "face": [9]
-    }, {
-      "coefficient": "1",
-      "face": [20]
-    }, {
-      "coefficient": "1",
-      "face": [21]
-    }, {
-      "coefficient": "1",
-      "face": [23]
-    }, {
-      "coefficient": "1",
       "face": [2]
-    }, {
-      "coefficient": "1",
-      "face": [6]
     }, {
       "coefficient": "1",
       "face": [14]
@@ -34,46 +16,64 @@
       "face": [19]
     }, {
       "coefficient": "1",
-      "face": [15]
-    }, {
-      "coefficient": "1",
       "face": [22]
     }, {
       "coefficient": "1",
-      "face": [7]
+      "face": [23]
     }, {
       "coefficient": "1",
-      "face": [24]
-    }, {
-      "coefficient": "1",
-      "face": [8]
-    }, {
-      "coefficient": "1",
-      "face": [17]
-    }, {
-      "coefficient": "1",
-      "face": [10]
+      "face": [1]
     }, {
       "coefficient": "1",
       "face": [5]
     }, {
       "coefficient": "1",
-      "face": [16]
+      "face": [20]
+    }, {
+      "coefficient": "1",
+      "face": [21]
+    }, {
+      "coefficient": "1",
+      "face": [24]
     }, {
       "coefficient": "1",
       "face": [4]
     }, {
       "coefficient": "1",
+      "face": [11]
+    }, {
+      "coefficient": "1",
       "face": [3]
     }, {
       "coefficient": "1",
-      "face": [11]
+      "face": [6]
     }, {
       "coefficient": "1",
       "face": [12]
     }, {
       "coefficient": "1",
+      "face": [7]
+    }, {
+      "coefficient": "1",
+      "face": [9]
+    }, {
+      "coefficient": "1",
+      "face": [8]
+    }, {
+      "coefficient": "1",
+      "face": [16]
+    }, {
+      "coefficient": "1",
+      "face": [15]
+    }, {
+      "coefficient": "1",
+      "face": [10]
+    }, {
+      "coefficient": "1",
       "face": [13]
+    }, {
+      "coefficient": "1",
+      "face": [17]
     }, {
       "coefficient": "1",
       "face": [18]
@@ -109,7 +109,7 @@
     "basis_labels": ["x5"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [0, 1, 8, 19, 21, 24]
+      "face": [0, 1, 4, 20, 21, 23]
     }]],
     "degree": 5,
     "group": "Z/8",
@@ -127,6 +127,14 @@
   "provenance": "Sage",
   "reproducible_labelling": true,
   "ring_presentation": "Z[x5]/(8*x5, x5^2),  |x5| = 5",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 5,
+      "label": "x5",
+      "order": "8"
+    }],
+    "relations": ["8*x5", "x5^2"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.MooreSpace(8).suspension(3)",

@@ -10,67 +10,67 @@
       "face": [2]
     }, {
       "coefficient": "1",
-      "face": [14]
+      "face": [17]
     }, {
       "coefficient": "1",
       "face": [21]
     }, {
       "coefficient": "1",
-      "face": [1]
-    }, {
-      "coefficient": "1",
-      "face": [5]
-    }, {
-      "coefficient": "1",
-      "face": [7]
+      "face": [15]
     }, {
       "coefficient": "1",
       "face": [22]
     }, {
       "coefficient": "1",
-      "face": [9]
-    }, {
-      "coefficient": "1",
-      "face": [10]
+      "face": [7]
     }, {
       "coefficient": "1",
       "face": [18]
     }, {
       "coefficient": "1",
+      "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [9]
+    }, {
+      "coefficient": "1",
       "face": [8]
-    }, {
-      "coefficient": "1",
-      "face": [17]
-    }, {
-      "coefficient": "1",
-      "face": [3]
-    }, {
-      "coefficient": "1",
-      "face": [11]
-    }, {
-      "coefficient": "1",
-      "face": [6]
-    }, {
-      "coefficient": "1",
-      "face": [16]
     }, {
       "coefficient": "1",
       "face": [4]
     }, {
       "coefficient": "1",
+      "face": [13]
+    }, {
+      "coefficient": "1",
+      "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [16]
+    }, {
+      "coefficient": "1",
+      "face": [10]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [6]
+    }, {
+      "coefficient": "1",
+      "face": [14]
+    }, {
+      "coefficient": "1",
       "face": [12]
     }, {
       "coefficient": "1",
-      "face": [13]
+      "face": [11]
     }, {
       "coefficient": "1",
       "face": [19]
     }, {
       "coefficient": "1",
       "face": [20]
-    }, {
-      "coefficient": "1",
-      "face": [15]
     }]],
     "degree": 0,
     "group": "Q",

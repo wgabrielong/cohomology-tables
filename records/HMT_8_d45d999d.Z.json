@@ -207,7 +207,39 @@
   "consistency_checks": [],
   "provenance": "Lutz/library",
   "reproducible_labelling": true,
-  "ring_presentation": null,
+  "ring_presentation": "Z[x2_1,x2_2,x2_3,x2_4,x2_5,x2_6,x2_7]/(2*x2_1, 2*x2_2, 2*x2_3, 4*x2_4, 4*x2_5, 4*x2_6, 8*x2_7, x2_1*x2_2, x2_1*x2_3, x2_1*x2_4, x2_1*x2_5, x2_1*x2_6, x2_1*x2_7, x2_1^2, x2_2*x2_3, x2_2*x2_4, x2_2*x2_5, x2_2*x2_6, x2_2*x2_7, x2_2^2, x2_3*x2_4, x2_3*x2_5, x2_3*x2_6, x2_3*x2_7, x2_3^2, x2_4*x2_5, x2_4*x2_6, x2_4*x2_7, x2_4^2, x2_5*x2_6, x2_5*x2_7, x2_5^2, x2_6*x2_7, x2_6^2, x2_7^2),  |x2_1| = 2, |x2_2| = 2, |x2_3| = 2, |x2_4| = 2, |x2_5| = 2, |x2_6| = 2, |x2_7| = 2",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 2,
+      "label": "x2_1",
+      "order": "2"
+    }, {
+      "degree": 2,
+      "label": "x2_2",
+      "order": "2"
+    }, {
+      "degree": 2,
+      "label": "x2_3",
+      "order": "2"
+    }, {
+      "degree": 2,
+      "label": "x2_4",
+      "order": "4"
+    }, {
+      "degree": 2,
+      "label": "x2_5",
+      "order": "4"
+    }, {
+      "degree": 2,
+      "label": "x2_6",
+      "order": "4"
+    }, {
+      "degree": 2,
+      "label": "x2_7",
+      "order": "8"
+    }],
+    "relations": ["2*x2_1", "2*x2_2", "2*x2_3", "4*x2_4", "4*x2_5", "4*x2_6", "8*x2_7", "x2_1*x2_2", "x2_1*x2_3", "x2_1*x2_4", "x2_1*x2_5", "x2_1*x2_6", "x2_1*x2_7", "x2_1^2", "x2_2*x2_3", "x2_2*x2_4", "x2_2*x2_5", "x2_2*x2_6", "x2_2*x2_7", "x2_2^2", "x2_3*x2_4", "x2_3*x2_5", "x2_3*x2_6", "x2_3*x2_7", "x2_3^2", "x2_4*x2_5", "x2_4*x2_6", "x2_4*x2_7", "x2_4^2", "x2_5*x2_6", "x2_5*x2_7", "x2_5^2", "x2_6*x2_7", "x2_6^2", "x2_7^2"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "catalog": "HMT_8",

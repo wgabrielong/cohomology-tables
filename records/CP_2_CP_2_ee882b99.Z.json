@@ -186,7 +186,19 @@
   "consistency_checks": [],
   "provenance": "Lutz/further",
   "reproducible_labelling": true,
-  "ring_presentation": null,
+  "ring_presentation": "Z[x2_1,x2_2]/(x2_1*x2_2, x2_2^2 - x2_1^2),  |x2_1| = 2, |x2_2| = 2",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 2,
+      "label": "x2_1",
+      "order": "0"
+    }, {
+      "degree": 2,
+      "label": "x2_2",
+      "order": "0"
+    }],
+    "relations": ["x2_1*x2_2", "x2_2^2 - x2_1^2"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "catalog": "small_4_manifolds",

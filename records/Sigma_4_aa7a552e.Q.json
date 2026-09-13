@@ -4,16 +4,46 @@
     "basis_labels": ["1"],
     "cocycle_representatives": [[{
       "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [7]
+    }, {
+      "coefficient": "1",
+      "face": [9]
+    }, {
+      "coefficient": "1",
       "face": [1]
     }, {
       "coefficient": "1",
-      "face": [2]
+      "face": [15]
     }, {
       "coefficient": "1",
       "face": [16]
     }, {
       "coefficient": "1",
+      "face": [18]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [8]
+    }, {
+      "coefficient": "1",
       "face": [5]
+    }, {
+      "coefficient": "1",
+      "face": [0]
+    }, {
+      "coefficient": "1",
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [6]
+    }, {
+      "coefficient": "1",
+      "face": [17]
     }, {
       "coefficient": "1",
       "face": [11]
@@ -22,43 +52,13 @@
       "face": [14]
     }, {
       "coefficient": "1",
-      "face": [0]
-    }, {
-      "coefficient": "1",
-      "face": [15]
-    }, {
-      "coefficient": "1",
-      "face": [17]
-    }, {
-      "coefficient": "1",
-      "face": [8]
-    }, {
-      "coefficient": "1",
-      "face": [9]
-    }, {
-      "coefficient": "1",
-      "face": [6]
-    }, {
-      "coefficient": "1",
-      "face": [7]
-    }, {
-      "coefficient": "1",
-      "face": [3]
-    }, {
-      "coefficient": "1",
-      "face": [10]
-    }, {
-      "coefficient": "1",
-      "face": [4]
-    }, {
-      "coefficient": "1",
-      "face": [18]
-    }, {
-      "coefficient": "1",
       "face": [12]
     }, {
       "coefficient": "1",
       "face": [13]
+    }, {
+      "coefficient": "1",
+      "face": [10]
     }]],
     "degree": 0,
     "group": "Q",
@@ -66,20 +66,29 @@
   }, {
     "basis_labels": ["x1_1", "x1_2", "x1_3", "x1_4", "x1_5", "x1_6", "x1_7", "x1_8"],
     "cocycle_representatives": [[{
-      "coefficient": "1",
-      "face": [2, 6]
+      "coefficient": "-1",
+      "face": [0, 5]
+    }, {
+      "coefficient": "-1",
+      "face": [4, 5]
     }, {
       "coefficient": "1",
-      "face": [3, 6]
+      "face": [1, 6]
+    }, {
+      "coefficient": "1",
+      "face": [5, 6]
     }, {
       "coefficient": "1",
       "face": [2, 4]
     }, {
       "coefficient": "1",
-      "face": [2, 7]
-    }, {
+      "face": [1, 4]
+    }], [{
       "coefficient": "1",
       "face": [0, 5]
+    }, {
+      "coefficient": "1",
+      "face": [4, 5]
     }, {
       "coefficient": "1",
       "face": [2, 5]
@@ -87,188 +96,116 @@
       "coefficient": "1",
       "face": [0, 6]
     }, {
-      "coefficient": "1",
-      "face": [4, 6]
-    }], [{
       "coefficient": "-1",
+      "face": [5, 7]
+    }, {
+      "coefficient": "-1",
+      "face": [5, 8]
+    }, {
+      "coefficient": "1",
       "face": [2, 6]
     }, {
-      "coefficient": "-1",
-      "face": [3, 6]
-    }, {
-      "coefficient": "-1",
-      "face": [2, 4]
-    }, {
-      "coefficient": "-1",
-      "face": [2, 7]
-    }, {
-      "coefficient": "-1",
-      "face": [3, 4]
+      "coefficient": "1",
+      "face": [2, 3]
     }, {
       "coefficient": "1",
-      "face": [4, 13]
+      "face": [7, 10]
+    }, {
+      "coefficient": "1",
+      "face": [2, 10]
+    }], [{
+      "coefficient": "1",
+      "face": [0, 12]
+    }, {
+      "coefficient": "1",
+      "face": [4, 12]
+    }, {
+      "coefficient": "-1",
+      "face": [12, 13]
     }, {
       "coefficient": "1",
       "face": [4, 14]
     }, {
       "coefficient": "1",
-      "face": [4, 5]
+      "face": [13, 14]
     }, {
       "coefficient": "1",
       "face": [4, 11]
-    }, {
-      "coefficient": "1",
-      "face": [4, 12]
     }], [{
       "coefficient": "-1",
-      "face": [0, 7]
+      "face": [0, 5]
     }, {
       "coefficient": "-1",
-      "face": [4, 7]
-    }, {
-      "coefficient": "-1",
-      "face": [2, 3]
-    }, {
-      "coefficient": "-1",
-      "face": [2, 6]
-    }, {
-      "coefficient": "-1",
-      "face": [2, 7]
+      "face": [4, 5]
     }, {
       "coefficient": "1",
-      "face": [1, 10]
-    }, {
-      "coefficient": "1",
-      "face": [3, 10]
+      "face": [2, 4]
     }, {
       "coefficient": "-1",
-      "face": [0, 3]
+      "face": [0, 6]
     }, {
       "coefficient": "-1",
-      "face": [2, 9]
-    }, {
-      "coefficient": "1",
-      "face": [9, 10]
-    }], [{
-      "coefficient": "-1",
-      "face": [2, 15]
-    }, {
-      "coefficient": "1",
-      "face": [15, 18]
+      "face": [0, 2]
     }, {
       "coefficient": "-1",
-      "face": [2, 17]
+      "face": [1, 2]
     }, {
       "coefficient": "-1",
       "face": [16, 17]
     }, {
-      "coefficient": "1",
-      "face": [1, 18]
-    }, {
-      "coefficient": "1",
-      "face": [17, 18]
-    }], [{
-      "coefficient": "1",
-      "face": [0, 7]
-    }, {
-      "coefficient": "1",
-      "face": [4, 7]
-    }, {
-      "coefficient": "1",
-      "face": [2, 3]
-    }, {
-      "coefficient": "1",
-      "face": [2, 6]
-    }, {
-      "coefficient": "1",
-      "face": [2, 7]
-    }, {
-      "coefficient": "1",
-      "face": [1, 3]
+      "coefficient": "-1",
+      "face": [16, 18]
     }, {
       "coefficient": "-1",
-      "face": [3, 10]
+      "face": [0, 18]
     }, {
       "coefficient": "1",
-      "face": [0, 3]
-    }, {
-      "coefficient": "1",
-      "face": [2, 9]
-    }, {
-      "coefficient": "1",
-      "face": [2, 10]
-    }, {
-      "coefficient": "1",
-      "face": [1, 8]
-    }, {
-      "coefficient": "1",
-      "face": [2, 8]
+      "face": [2, 16]
     }], [{
       "coefficient": "1",
-      "face": [1, 15]
+      "face": [16, 17]
     }, {
-      "coefficient": "-1",
-      "face": [15, 16]
+      "coefficient": "1",
+      "face": [16, 18]
     }, {
       "coefficient": "1",
       "face": [2, 15]
     }, {
-      "coefficient": "-1",
-      "face": [15, 18]
+      "coefficient": "1",
+      "face": [2, 18]
+    }, {
+      "coefficient": "1",
+      "face": [0, 18]
     }, {
       "coefficient": "1",
       "face": [2, 17]
-    }, {
-      "coefficient": "1",
-      "face": [16, 17]
+    }], [{
+      "coefficient": "-1",
+      "face": [0, 15]
     }, {
       "coefficient": "-1",
       "face": [0, 16]
     }, {
-      "coefficient": "1",
-      "face": [16, 18]
-    }], [{
       "coefficient": "-1",
-      "face": [2, 6]
+      "face": [2, 15]
     }, {
       "coefficient": "-1",
-      "face": [3, 6]
+      "face": [2, 18]
     }, {
       "coefficient": "-1",
-      "face": [2, 4]
-    }, {
-      "coefficient": "-1",
-      "face": [2, 7]
-    }, {
-      "coefficient": "-1",
-      "face": [3, 4]
+      "face": [0, 18]
     }, {
       "coefficient": "1",
-      "face": [4, 13]
-    }, {
-      "coefficient": "-1",
-      "face": [13, 14]
-    }, {
-      "coefficient": "1",
-      "face": [4, 5]
-    }, {
-      "coefficient": "-1",
-      "face": [5, 12]
-    }, {
-      "coefficient": "1",
-      "face": [12, 13]
+      "face": [15, 17]
     }], [{
       "coefficient": "1",
-      "face": [2, 6]
+      "face": [0, 12]
     }, {
       "coefficient": "1",
-      "face": [3, 6]
+      "face": [4, 12]
     }, {
       "coefficient": "1",
-      "face": [2, 4]
-    }, {
-      "coefficient": "1",
-      "face": [2, 7]
+      "face": [0, 13]
     }, {
       "coefficient": "-1",
       "face": [3, 11]
@@ -277,28 +214,37 @@
       "face": [11, 12]
     }, {
       "coefficient": "1",
-      "face": [3, 4]
-    }, {
+      "face": [11, 13]
+    }], [{
       "coefficient": "-1",
-      "face": [4, 13]
-    }, {
-      "coefficient": "-1",
-      "face": [4, 14]
+      "face": [0, 5]
     }, {
       "coefficient": "-1",
       "face": [4, 5]
     }, {
-      "coefficient": "1",
-      "face": [11, 13]
+      "coefficient": "-1",
+      "face": [2, 5]
     }, {
       "coefficient": "-1",
-      "face": [4, 11]
+      "face": [0, 6]
     }, {
       "coefficient": "1",
-      "face": [5, 12]
+      "face": [5, 8]
     }, {
       "coefficient": "1",
-      "face": [5, 13]
+      "face": [7, 8]
+    }, {
+      "coefficient": "-1",
+      "face": [2, 6]
+    }, {
+      "coefficient": "-1",
+      "face": [2, 3]
+    }, {
+      "coefficient": "1",
+      "face": [3, 10]
+    }, {
+      "coefficient": "1",
+      "face": [3, 8]
     }]],
     "degree": 1,
     "group": "Q^8",
@@ -307,7 +253,7 @@
     "basis_labels": ["x2"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [0, 15, 16]
+      "face": [3, 8, 10]
     }]],
     "degree": 2,
     "group": "Q",
@@ -317,14 +263,50 @@
     "canonicalization": "cohomology-tables/canonical-facets/1",
     "dimension": 2,
     "f_vector": [19, 75, 50],
-    "facets_sha256": "68fd08d4a57ba914881924442145057dd923b51553d8ca17b56bca4e032b9bdd",
+    "facets_sha256": "d8bb238a291c478990dd8c6408322e1209064a2fc82e8420e93e908bca7a0835",
     "n_facets": 50,
     "n_vertices": 19
   },
   "consistency_checks": [],
   "provenance": "Sage",
   "reproducible_labelling": false,
-  "ring_presentation": null,
+  "ring_presentation": "Q[x1_1,x1_2,x1_3,x1_4,x1_5,x1_6,x1_7,x1_8]/(x1_1*x1_3, x1_1*x1_5, x1_1*x1_6, x1_1*x1_7, x1_2*x1_3, x1_2*x1_4, x1_2*x1_5, x1_2*x1_6, x1_2*x1_7, x1_3*x1_4, x1_3*x1_5, x1_3*x1_6, x1_3*x1_8, x1_4*x1_5, x1_4*x1_7, x1_4*x1_8, x1_5*x1_6 + x1_1*x1_4, x1_5*x1_6 + x1_1*x1_8, x1_5*x1_6 + x1_2*x1_8, x1_5*x1_6 + x1_4*x1_6, x1_5*x1_6 - x1_1*x1_2, x1_5*x1_6 - x1_3*x1_7, x1_5*x1_7, x1_5*x1_8, x1_6*x1_7, x1_6*x1_8, x1_7*x1_8),  |x1_1| = 1, |x1_2| = 1, |x1_3| = 1, |x1_4| = 1, |x1_5| = 1, |x1_6| = 1, |x1_7| = 1, |x1_8| = 1",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 1,
+      "label": "x1_1",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_2",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_3",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_4",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_5",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_6",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_7",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_8",
+      "order": "0"
+    }],
+    "relations": ["x1_1*x1_3", "x1_1*x1_5", "x1_1*x1_6", "x1_1*x1_7", "x1_2*x1_3", "x1_2*x1_4", "x1_2*x1_5", "x1_2*x1_6", "x1_2*x1_7", "x1_3*x1_4", "x1_3*x1_5", "x1_3*x1_6", "x1_3*x1_8", "x1_4*x1_5", "x1_4*x1_7", "x1_4*x1_8", "x1_5*x1_6 + x1_1*x1_4", "x1_5*x1_6 + x1_1*x1_8", "x1_5*x1_6 + x1_2*x1_8", "x1_5*x1_6 + x1_4*x1_6", "x1_5*x1_6 - x1_1*x1_2", "x1_5*x1_6 - x1_3*x1_7", "x1_5*x1_7", "x1_5*x1_8", "x1_6*x1_7", "x1_6*x1_8", "x1_7*x1_8"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.SurfaceOfGenus(4)",
@@ -489,32 +471,6 @@
       "index": 2,
       "label": "x1_2"
     },
-    "coefficients": ["1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 1,
-      "label": "x1_1"
-    },
-    "b": {
-      "degree": 1,
-      "index": 3,
-      "label": "x1_3"
-    },
-    "coefficients": ["1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 1,
-      "label": "x1_1"
-    },
-    "b": {
-      "degree": 1,
-      "index": 5,
-      "label": "x1_5"
-    },
     "coefficients": ["-1"],
     "product_degree": 2
   }, {
@@ -525,8 +481,8 @@
     },
     "b": {
       "degree": 1,
-      "index": 7,
-      "label": "x1_7"
+      "index": 4,
+      "label": "x1_4"
     },
     "coefficients": ["1"],
     "product_degree": 2
@@ -541,7 +497,7 @@
       "index": 8,
       "label": "x1_8"
     },
-    "coefficients": ["-1"],
+    "coefficients": ["1"],
     "product_degree": 2
   }, {
     "a": {
@@ -567,7 +523,7 @@
       "index": 1,
       "label": "x1_1"
     },
-    "coefficients": ["-1"],
+    "coefficients": ["1"],
     "product_degree": 2
   }, {
     "a": {
@@ -577,21 +533,8 @@
     },
     "b": {
       "degree": 1,
-      "index": 3,
-      "label": "x1_3"
-    },
-    "coefficients": ["-1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 2,
-      "label": "x1_2"
-    },
-    "b": {
-      "degree": 1,
-      "index": 5,
-      "label": "x1_5"
+      "index": 8,
+      "label": "x1_8"
     },
     "coefficients": ["1"],
     "product_degree": 2
@@ -616,60 +559,8 @@
     },
     "b": {
       "degree": 1,
-      "index": 1,
-      "label": "x1_1"
-    },
-    "coefficients": ["-1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 3,
-      "label": "x1_3"
-    },
-    "b": {
-      "degree": 1,
-      "index": 2,
-      "label": "x1_2"
-    },
-    "coefficients": ["1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 3,
-      "label": "x1_3"
-    },
-    "b": {
-      "degree": 1,
-      "index": 5,
-      "label": "x1_5"
-    },
-    "coefficients": ["1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 3,
-      "label": "x1_3"
-    },
-    "b": {
-      "degree": 1,
       "index": 7,
       "label": "x1_7"
-    },
-    "coefficients": ["1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 3,
-      "label": "x1_3"
-    },
-    "b": {
-      "degree": 1,
-      "index": 8,
-      "label": "x1_8"
     },
     "coefficients": ["-1"],
     "product_degree": 2
@@ -694,10 +585,23 @@
     },
     "b": {
       "degree": 1,
+      "index": 1,
+      "label": "x1_1"
+    },
+    "coefficients": ["-1"],
+    "product_degree": 2
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 4,
+      "label": "x1_4"
+    },
+    "b": {
+      "degree": 1,
       "index": 6,
       "label": "x1_6"
     },
-    "coefficients": ["-1"],
+    "coefficients": ["1"],
     "product_degree": 2
   }, {
     "a": {
@@ -720,62 +624,10 @@
     },
     "b": {
       "degree": 1,
-      "index": 1,
-      "label": "x1_1"
-    },
-    "coefficients": ["1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 5,
-      "label": "x1_5"
-    },
-    "b": {
-      "degree": 1,
-      "index": 2,
-      "label": "x1_2"
+      "index": 6,
+      "label": "x1_6"
     },
     "coefficients": ["-1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 5,
-      "label": "x1_5"
-    },
-    "b": {
-      "degree": 1,
-      "index": 3,
-      "label": "x1_3"
-    },
-    "coefficients": ["-1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 5,
-      "label": "x1_5"
-    },
-    "b": {
-      "degree": 1,
-      "index": 7,
-      "label": "x1_7"
-    },
-    "coefficients": ["-1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 5,
-      "label": "x1_5"
-    },
-    "b": {
-      "degree": 1,
-      "index": 8,
-      "label": "x1_8"
-    },
-    "coefficients": ["1"],
     "product_degree": 2
   }, {
     "a": {
@@ -801,6 +653,19 @@
       "index": 4,
       "label": "x1_4"
     },
+    "coefficients": ["-1"],
+    "product_degree": 2
+  }, {
+    "a": {
+      "degree": 1,
+      "index": 6,
+      "label": "x1_6"
+    },
+    "b": {
+      "degree": 1,
+      "index": 5,
+      "label": "x1_5"
+    },
     "coefficients": ["1"],
     "product_degree": 2
   }, {
@@ -824,49 +689,10 @@
     },
     "b": {
       "degree": 1,
-      "index": 1,
-      "label": "x1_1"
-    },
-    "coefficients": ["-1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 7,
-      "label": "x1_7"
-    },
-    "b": {
-      "degree": 1,
       "index": 3,
       "label": "x1_3"
     },
-    "coefficients": ["-1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 7,
-      "label": "x1_7"
-    },
-    "b": {
-      "degree": 1,
-      "index": 5,
-      "label": "x1_5"
-    },
     "coefficients": ["1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 7,
-      "label": "x1_7"
-    },
-    "b": {
-      "degree": 1,
-      "index": 8,
-      "label": "x1_8"
-    },
-    "coefficients": ["-1"],
     "product_degree": 2
   }, {
     "a": {
@@ -892,32 +718,6 @@
       "index": 1,
       "label": "x1_1"
     },
-    "coefficients": ["1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 8,
-      "label": "x1_8"
-    },
-    "b": {
-      "degree": 1,
-      "index": 3,
-      "label": "x1_3"
-    },
-    "coefficients": ["1"],
-    "product_degree": 2
-  }, {
-    "a": {
-      "degree": 1,
-      "index": 8,
-      "label": "x1_8"
-    },
-    "b": {
-      "degree": 1,
-      "index": 5,
-      "label": "x1_5"
-    },
     "coefficients": ["-1"],
     "product_degree": 2
   }, {
@@ -928,10 +728,10 @@
     },
     "b": {
       "degree": 1,
-      "index": 7,
-      "label": "x1_7"
+      "index": 2,
+      "label": "x1_2"
     },
-    "coefficients": ["1"],
+    "coefficients": ["-1"],
     "product_degree": 2
   }, {
     "a": {

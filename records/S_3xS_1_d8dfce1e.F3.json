@@ -153,7 +153,19 @@
   "consistency_checks": [],
   "provenance": "Lutz/further",
   "reproducible_labelling": true,
-  "ring_presentation": null,
+  "ring_presentation": "Lambda_F_3(x1, x3),  |x1| = 1, |x3| = 3",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 1,
+      "label": "x1",
+      "order": "0"
+    }, {
+      "degree": 3,
+      "label": "x3",
+      "order": "0"
+    }],
+    "relations": []
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "catalog": "small_4_manifolds",

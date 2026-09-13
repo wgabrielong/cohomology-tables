@@ -55,6 +55,14 @@
   "provenance": "built-in",
   "reproducible_labelling": true,
   "ring_presentation": "Z[x3]/(x3^2),  |x3| = 3",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 3,
+      "label": "x3",
+      "order": "0"
+    }],
+    "relations": ["x3^2"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "sphere(3)",

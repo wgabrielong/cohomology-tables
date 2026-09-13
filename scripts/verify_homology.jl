@@ -194,7 +194,8 @@ function main(args)
   deep = "--deep" in args
   cross = ("--cross" in args) || ("--field" in args)
   rings = let i = findfirst(==("--rings"), args)
-    isnothing(i) ? Any[ZZ, QQ, GF(2), GF(3), GF(5), GF(7), GF(4), GF(8), GF(9), GF(25)] :
+    isnothing(i) ? Any[ZZ, QQ, GF(2), GF(3), GF(5), GF(7), GF(11),
+                       GF(4), GF(8), GF(9), GF(25)] :
       Any[parse_ring(t) for t in split(args[i + 1], ",")]
   end
   tl = let i = findfirst(==("--time-limit"), args)

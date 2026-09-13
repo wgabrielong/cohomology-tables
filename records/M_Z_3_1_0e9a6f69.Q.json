@@ -4,31 +4,31 @@
     "basis_labels": ["1"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [2]
+      "face": [3]
     }, {
       "coefficient": "1",
       "face": [4]
     }, {
       "coefficient": "1",
-      "face": [7]
+      "face": [6]
     }, {
       "coefficient": "1",
       "face": [0]
     }, {
       "coefficient": "1",
-      "face": [8]
-    }, {
-      "coefficient": "1",
       "face": [5]
     }, {
       "coefficient": "1",
-      "face": [3]
-    }, {
-      "coefficient": "1",
-      "face": [6]
+      "face": [7]
     }, {
       "coefficient": "1",
       "face": [1]
+    }, {
+      "coefficient": "1",
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [8]
     }]],
     "degree": 0,
     "group": "Q",

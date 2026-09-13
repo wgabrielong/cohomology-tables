@@ -4,7 +4,7 @@
     "canonicalization": "cohomology-tables/canonical-facets/1",
     "dimension": 2,
     "f_vector": [15, 51, 34],
-    "facets_sha256": "d2c46692903de4335d981cb9649a488ddf7d107aa850fdea7ff24a0880b97a86",
+    "facets_sha256": "f43087d03641ed9aabf748a5bf026c7a2bac32a9133c0760006d30bad9ad1f75",
     "n_facets": 34,
     "n_vertices": 15
   },

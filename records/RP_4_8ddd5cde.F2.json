@@ -415,6 +415,14 @@
   "provenance": "Sage",
   "reproducible_labelling": true,
   "ring_presentation": "F_2[x1]/(x1^5),  |x1| = 1",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 1,
+      "label": "x1",
+      "order": "0"
+    }],
+    "relations": ["x1^5"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.RealProjectiveSpace(4)",

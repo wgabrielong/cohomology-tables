@@ -88,6 +88,14 @@
   "provenance": "Lutz/3-manifolds",
   "reproducible_labelling": true,
   "ring_presentation": "F_7[x3]/(x3^2),  |x3| = 3",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 3,
+      "label": "x3",
+      "order": "0"
+    }],
+    "relations": []
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "catalog": "homology_3spheres",

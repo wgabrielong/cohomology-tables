@@ -290,7 +290,8 @@ const OFFLINE_MODELS = vcat(["point" => point_space()],
     @test !("M(Z/2,1)" in names)                          # that is "RP^2"
     # the Moore family, one entry per (q, n)
     @test [n for n in names if startswith(n, "M(Z/")] ==
-          ["M(Z/3,1)", "M(Z/4,1)", "M(Z/5,2)", "M(Z/7,3)", "M(Z/8,4)", "M(Z/9,2)"]
+          ["M(Z/3,1)", "M(Z/4,1)", "M(Z/5,2)", "M(Z/7,3)", "M(Z/8,4)", "M(Z/9,2)",
+             "M(Z/11,2)"]
   end
 
   @testset "time budget" begin
@@ -323,7 +324,47 @@ const OFFLINE_MODELS = vcat(["point" => point_space()],
       @test groups(XT) == ["Z", "Z^2", "Z"]
       @test cup(XT, (1, 1), (1, 1)) == [zero(ZZ)]
       @test cup(XT, (1, 1), (1, 2)) == [-c for c in cup(XT, (1, 2), (1, 1))]
-      @test isnothing(identify_ring(XT))
+      # the torus is the smallest space needing more than one generator, and was
+      # unpresentable until src/presentation.jl
+      @test identify_ring(XT) == "Lambda_Z(x1_1, x1_2),  |x1_1| = 1, |x1_2| = 1"
+    end
+
+    @testset "presentations with more than one generator" begin
+      pres(nm, R) = identify_ring(simplicial_cohomology_ring(nm, catalogue_space(nm), R))
+      # exterior algebras agree across coefficient rings, even though over QQ the
+      # squares are never enumerated and over ZZ they are found as relations
+      @test pres("T^3", ZZ) ==
+            "Lambda_Z(x1_1, x1_2, x1_3),  |x1_1| = 1, |x1_2| = 1, |x1_3| = 1"
+      @test pres("T^3", QQ) ==
+            "Lambda_Q(x1_1, x1_2, x1_3),  |x1_1| = 1, |x1_2| = 1, |x1_3| = 1"
+      # Lambda(x1) tensor Z[x2]/(x2^2), two generators in different degrees
+      @test pres("S^2xS^1", ZZ) == "Z[x1,x2]/(x1^2, x2^2),  |x1| = 1, |x2| = 2"
+      # torsion relations over ZZ: the order of the generator becomes n*x
+      @test pres("RP^3", ZZ) ==
+            "Z[x2,x3]/(2*x2, x2^2, x2*x3, x3^2),  |x2| = 2, |x3| = 3"
+      @test pres("L(3,1)", ZZ) ==
+            "Z[x2,x3]/(3*x2, x2^2, x2*x3, x3^2),  |x2| = 2, |x3| = 3"
+      # the cup product separates these two: same groups, different rings
+      @test pres("S^2xS^2", ZZ) ==
+            "Z[x2_1,x2_2]/(x2_1^2, x2_2^2),  |x2_1| = 2, |x2_2| = 2"
+      @test pres("CP^2#CP^2", ZZ) ==
+            "Z[x2_1,x2_2]/(x2_1*x2_2, x2_2^2 - x2_1^2),  |x2_1| = 2, |x2_2| = 2"
+      # the monogenic fast path must keep its exact historical output
+      @test pres("CP^2", ZZ) == "Z[x2]/(x2^3),  |x2| = 2"
+      @test pres("RP^4", GF(2)) == "F_2[x1]/(x1^5),  |x1| = 1"
+      @test pres("RP^4", ZZ) == "Z[x2]/(2*x2, x2^3),  |x2| = 2"
+      @test pres("point", ZZ) == "Z"
+      # every generator is a class of the canonical basis, so its label is one
+      # the printed table already uses
+      XW = simplicial_cohomology_ring("Wu", catalogue_space("Wu manifold"), ZZ)
+      G = indecomposable_generators(XW)
+      @test [g.label for g in G] == ["x3", "x5"]
+      @test [g.degree for g in G] == [3, 5]
+      @test all(g -> g.label in graded_basis(XW, g.degree).labels, G)
+    end
+
+    @testset "cohomology of catalogue spaces, continued" begin
+      dims(X) = [length(graded_basis(X, d)) for d in 0:top_degree(X)]
       # K3: H^2 has rank 22
       @test dims(simplicial_cohomology_ring("K3", catalogue_space("K3"), GF(7))) == [1, 0, 22, 0, 1]
       # M(Z/5,2), the suspension of Sage's MooreSpace(5): the Z/5 in H_2 shows
@@ -331,6 +372,12 @@ const OFFLINE_MODELS = vcat(["point" => point_space()],
       KM = catalogue_space("M(Z/5,2)")
       @test dims(simplicial_cohomology_ring("M", KM, GF(5))) == [1, 0, 1, 1]
       @test dims(simplicial_cohomology_ring("M", KM, GF(7))) == [1, 0, 0, 0]
+      # M(Z/11,2) is the only space in the catalogue with 11-torsion, and the
+      # reason GF(11) is in the grid at all: every other space agrees with QQ
+      # over F_11 by universal coefficients.
+      K11 = catalogue_space("M(Z/11,2)")
+      @test dims(simplicial_cohomology_ring("M", K11, GF(11))) == [1, 0, 1, 1]
+      @test dims(simplicial_cohomology_ring("M", K11, GF(7))) == [1, 0, 0, 0]
     end
 
     @testset "homology of catalogue spaces" begin
@@ -354,6 +401,9 @@ const OFFLINE_MODELS = vcat(["point" => point_space()],
       KM = catalogue_space("M(Z/5,2)")
       @test hdims(simplicial_homology("M", KM, GF(7))) == [1, 0, 0, 0]
       @test hdims(simplicial_homology("M", KM, GF(5))) == [1, 0, 1, 1]
+      # M(Z/11,2): the same story one prime up
+      @test hgroups(simplicial_homology("M11", catalogue_space("M(Z/11,2)"), ZZ)) ==
+            ["Z", "0", "Z/11", "0"]
       # the Wu manifold, independently of the cup product machinery
       @test hgroups(simplicial_homology("Wu", catalogue_space("Wu manifold"), ZZ)) ==
             ["Z", "0", "Z/2", "0", "0", "Z"]

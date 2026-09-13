@@ -162,7 +162,23 @@
   "consistency_checks": [],
   "provenance": "Lutz/3-manifolds",
   "reproducible_labelling": true,
-  "ring_presentation": null,
+  "ring_presentation": "Z[x2_1,x2_2,x3]/(4*x2_1, 4*x2_2, x2_1*x2_2, x2_1^2, x2_2^2, x2_1*x3, x2_2*x3, x3^2),  |x2_1| = 2, |x2_2| = 2, |x3| = 3",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 2,
+      "label": "x2_1",
+      "order": "4"
+    }, {
+      "degree": 2,
+      "label": "x2_2",
+      "order": "4"
+    }, {
+      "degree": 3,
+      "label": "x3",
+      "order": "0"
+    }],
+    "relations": ["4*x2_1", "4*x2_2", "x2_1*x2_2", "x2_1^2", "x2_2^2", "x2_1*x3", "x2_2*x3", "x3^2"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "catalog": "flat_3manifolds",

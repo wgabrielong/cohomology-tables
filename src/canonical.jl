@@ -69,12 +69,6 @@ function _smith_form(R, rel, k::Int)
   return V, inv(V), orders
 end
 
-function _labels(d::Int, k::Int)
-  d == 0 && k == 1 && return ["1"]
-  k == 1 && return ["x$d"]
-  return ["x$(d)_$j" for j in 1:k]
-end
-
 """
     _canonical_pieces(R, rel, k) -> (V, Vinv, orders, keep)
 

@@ -4,16 +4,22 @@
     "basis_labels": ["1"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [0]
-    }, {
-      "coefficient": "1",
       "face": [1]
     }, {
       "coefficient": "1",
-      "face": [5]
+      "face": [2]
     }, {
       "coefficient": "1",
-      "face": [8]
+      "face": [4]
+    }, {
+      "coefficient": "1",
+      "face": [3]
+    }, {
+      "coefficient": "1",
+      "face": [0]
+    }, {
+      "coefficient": "1",
+      "face": [5]
     }, {
       "coefficient": "1",
       "face": [9]
@@ -22,19 +28,13 @@
       "face": [10]
     }, {
       "coefficient": "1",
-      "face": [3]
-    }, {
-      "coefficient": "1",
-      "face": [4]
-    }, {
-      "coefficient": "1",
-      "face": [7]
-    }, {
-      "coefficient": "1",
       "face": [6]
     }, {
       "coefficient": "1",
-      "face": [2]
+      "face": [8]
+    }, {
+      "coefficient": "1",
+      "face": [7]
     }]],
     "degree": 0,
     "group": "F_5",
@@ -43,88 +43,94 @@
     "basis_labels": ["x1_1", "x1_2", "x1_3", "x1_4"],
     "cocycle_representatives": [[{
       "coefficient": "4",
+      "face": [2, 5]
+    }, {
+      "coefficient": "4",
+      "face": [4, 5]
+    }, {
+      "coefficient": "1",
+      "face": [5, 6]
+    }, {
+      "coefficient": "4",
+      "face": [2, 3]
+    }, {
+      "coefficient": "1",
+      "face": [3, 6]
+    }, {
+      "coefficient": "1",
+      "face": [1, 6]
+    }], [{
+      "coefficient": "1",
+      "face": [2, 9]
+    }, {
+      "coefficient": "1",
+      "face": [8, 9]
+    }, {
+      "coefficient": "1",
+      "face": [7, 9]
+    }, {
+      "coefficient": "4",
+      "face": [0, 7]
+    }, {
+      "coefficient": "4",
+      "face": [0, 8]
+    }, {
+      "coefficient": "1",
+      "face": [8, 10]
+    }], [{
+      "coefficient": "4",
       "face": [1, 7]
     }, {
       "coefficient": "1",
       "face": [7, 10]
     }, {
       "coefficient": "1",
-      "face": [0, 8]
-    }, {
-      "coefficient": "1",
-      "face": [0, 10]
-    }, {
-      "coefficient": "1",
-      "face": [7, 8]
-    }, {
-      "coefficient": "1",
       "face": [2, 10]
-    }], [{
-      "coefficient": "1",
-      "face": [0, 3]
-    }, {
-      "coefficient": "4",
-      "face": [3, 5]
     }, {
       "coefficient": "1",
-      "face": [2, 3]
-    }, {
-      "coefficient": "1",
-      "face": [2, 6]
-    }, {
-      "coefficient": "1",
-      "face": [0, 4]
-    }, {
-      "coefficient": "1",
-      "face": [0, 6]
-    }], [{
-      "coefficient": "4",
       "face": [0, 8]
     }, {
-      "coefficient": "4",
+      "coefficient": "1",
       "face": [0, 10]
     }, {
       "coefficient": "1",
-      "face": [2, 3]
-    }, {
-      "coefficient": "1",
-      "face": [2, 5]
-    }, {
-      "coefficient": "4",
-      "face": [1, 8]
-    }, {
-      "coefficient": "4",
       "face": [7, 8]
-    }, {
-      "coefficient": "1",
-      "face": [2, 6]
-    }, {
-      "coefficient": "4",
-      "face": [1, 2]
-    }, {
-      "coefficient": "4",
-      "face": [0, 2]
-    }, {
-      "coefficient": "1",
-      "face": [2, 4]
     }], [{
       "coefficient": "4",
-      "face": [0, 3]
-    }, {
-      "coefficient": "1",
-      "face": [3, 5]
-    }, {
-      "coefficient": "1",
       "face": [2, 5]
     }, {
       "coefficient": "4",
-      "face": [0, 4]
-    }, {
-      "coefficient": "1",
-      "face": [4, 6]
-    }, {
-      "coefficient": "1",
       "face": [4, 5]
+    }, {
+      "coefficient": "1",
+      "face": [5, 6]
+    }, {
+      "coefficient": "4",
+      "face": [2, 3]
+    }, {
+      "coefficient": "4",
+      "face": [2, 6]
+    }, {
+      "coefficient": "1",
+      "face": [0, 7]
+    }, {
+      "coefficient": "1",
+      "face": [0, 9]
+    }, {
+      "coefficient": "1",
+      "face": [0, 1]
+    }, {
+      "coefficient": "4",
+      "face": [1, 5]
+    }, {
+      "coefficient": "1",
+      "face": [0, 8]
+    }, {
+      "coefficient": "1",
+      "face": [0, 10]
+    }, {
+      "coefficient": "1",
+      "face": [0, 2]
     }]],
     "degree": 1,
     "group": "F_5^4",
@@ -133,7 +139,7 @@
     "basis_labels": ["x2"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [0, 2, 6]
+      "face": [1, 5, 6]
     }]],
     "degree": 2,
     "group": "F_5",
@@ -150,7 +156,27 @@
   "consistency_checks": [],
   "provenance": "Sage",
   "reproducible_labelling": false,
-  "ring_presentation": null,
+  "ring_presentation": "F_5[x1_1,x1_2,x1_3,x1_4]/(x1_1*x1_2, x1_1*x1_3, x1_2*x1_3 + x1_1*x1_4, x1_2*x1_4, x1_3*x1_4),  |x1_1| = 1, |x1_2| = 1, |x1_3| = 1, |x1_4| = 1",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 1,
+      "label": "x1_1",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_2",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_3",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_4",
+      "order": "0"
+    }],
+    "relations": ["x1_1*x1_2", "x1_1*x1_3", "x1_2*x1_3 + x1_1*x1_4", "x1_2*x1_4", "x1_3*x1_4"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.SurfaceOfGenus(2)",
@@ -260,10 +286,10 @@
     },
     "b": {
       "degree": 1,
-      "index": 3,
-      "label": "x1_3"
+      "index": 4,
+      "label": "x1_4"
     },
-    "coefficients": ["4"],
+    "coefficients": ["1"],
     "product_degree": 2
   }, {
     "a": {
@@ -286,8 +312,8 @@
     },
     "b": {
       "degree": 1,
-      "index": 4,
-      "label": "x1_4"
+      "index": 3,
+      "label": "x1_3"
     },
     "coefficients": ["4"],
     "product_degree": 2
@@ -312,8 +338,8 @@
     },
     "b": {
       "degree": 1,
-      "index": 1,
-      "label": "x1_1"
+      "index": 2,
+      "label": "x1_2"
     },
     "coefficients": ["1"],
     "product_degree": 2
@@ -338,10 +364,10 @@
     },
     "b": {
       "degree": 1,
-      "index": 2,
-      "label": "x1_2"
+      "index": 1,
+      "label": "x1_1"
     },
-    "coefficients": ["1"],
+    "coefficients": ["4"],
     "product_degree": 2
   }, {
     "a": {

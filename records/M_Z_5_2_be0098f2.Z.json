@@ -13,22 +13,16 @@
       "face": [10]
     }, {
       "coefficient": "1",
-      "face": [13]
+      "face": [14]
     }, {
       "coefficient": "1",
       "face": [1]
     }, {
       "coefficient": "1",
-      "face": [3]
-    }, {
-      "coefficient": "1",
-      "face": [14]
-    }, {
-      "coefficient": "1",
       "face": [4]
     }, {
       "coefficient": "1",
-      "face": [8]
+      "face": [13]
     }, {
       "coefficient": "1",
       "face": [0]
@@ -37,13 +31,19 @@
       "face": [6]
     }, {
       "coefficient": "1",
-      "face": [9]
+      "face": [3]
     }, {
       "coefficient": "1",
       "face": [7]
     }, {
       "coefficient": "1",
       "face": [12]
+    }, {
+      "coefficient": "1",
+      "face": [9]
+    }, {
+      "coefficient": "1",
+      "face": [8]
     }, {
       "coefficient": "1",
       "face": [11]
@@ -67,7 +67,7 @@
     "basis_labels": ["x3"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [1, 2, 5, 14]
+      "face": [0, 5, 9, 13]
     }]],
     "degree": 3,
     "group": "Z/5",
@@ -85,6 +85,14 @@
   "provenance": "Sage",
   "reproducible_labelling": true,
   "ring_presentation": "Z[x3]/(5*x3, x3^2),  |x3| = 3",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 3,
+      "label": "x3",
+      "order": "5"
+    }],
+    "relations": ["5*x3", "x3^2"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.MooreSpace(5).suspension(1)",

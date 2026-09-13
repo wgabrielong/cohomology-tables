@@ -90,7 +90,19 @@
   "consistency_checks": [],
   "provenance": "Sage",
   "reproducible_labelling": true,
-  "ring_presentation": null,
+  "ring_presentation": "Lambda_Z(x1_1, x1_2),  |x1_1| = 1, |x1_2| = 1",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 1,
+      "label": "x1_1",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_2",
+      "order": "0"
+    }],
+    "relations": ["x1_1^2", "x1_2^2"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.Torus()",

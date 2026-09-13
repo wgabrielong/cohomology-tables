@@ -52,6 +52,14 @@
   "provenance": "Sage",
   "reproducible_labelling": true,
   "ring_presentation": "Z[x2]/(2*x2, x2^2),  |x2| = 2",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 2,
+      "label": "x2",
+      "order": "2"
+    }],
+    "relations": ["2*x2", "x2^2"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.RealProjectivePlane()",

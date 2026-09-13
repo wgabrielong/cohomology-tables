@@ -64,6 +64,14 @@
   "provenance": "built-in",
   "reproducible_labelling": true,
   "ring_presentation": "F_2[x4]/(x4^2),  |x4| = 4",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 4,
+      "label": "x4",
+      "order": "0"
+    }],
+    "relations": ["x4^2"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "sphere(4)",

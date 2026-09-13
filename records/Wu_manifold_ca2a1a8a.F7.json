@@ -91,6 +91,14 @@
   "provenance": "Lutz/library",
   "reproducible_labelling": true,
   "ring_presentation": "F_7[x5]/(x5^2),  |x5| = 5",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 5,
+      "label": "x5",
+      "order": "0"
+    }],
+    "relations": []
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "catalog": "SU2_SO3",

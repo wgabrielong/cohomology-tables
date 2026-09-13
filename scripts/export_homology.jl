@@ -24,7 +24,7 @@ using Oscar
 include(joinpath(@__DIR__, "..", "src", "CohomologyTables.jl"))
 using .CohomologyTables
 
-const DEFAULT_GRID = Any[ZZ, QQ, GF(2), GF(3), GF(5), GF(7)]
+const DEFAULT_GRID = Any[ZZ, QQ, GF(2), GF(3), GF(5), GF(7), GF(11)]
 
 function parse_coeffs(s)
   s == "ZZ" && return Any[ZZ]

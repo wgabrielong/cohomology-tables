@@ -1161,7 +1161,31 @@
   "consistency_checks": [],
   "provenance": "Lutz/3-manifolds",
   "reproducible_labelling": true,
-  "ring_presentation": null,
+  "ring_presentation": "Q[x1_1,x1_2,x1_3,x1_4,x1_5]/(x1_1*x1_2, x1_1*x1_5 + x1_1*x1_3, x1_1*x1_5 - x1_1*x1_4, x1_2*x1_5 + x1_2*x1_3, x1_2*x1_5 - x1_2*x1_4, x1_4*x1_5 + x1_3*x1_5 - x1_3*x1_4),  |x1_1| = 1, |x1_2| = 1, |x1_3| = 1, |x1_4| = 1, |x1_5| = 1",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 1,
+      "label": "x1_1",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_2",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_3",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_4",
+      "order": "0"
+    }, {
+      "degree": 1,
+      "label": "x1_5",
+      "order": "0"
+    }],
+    "relations": ["x1_1*x1_2", "x1_1*x1_5 + x1_1*x1_3", "x1_1*x1_5 - x1_1*x1_4", "x1_2*x1_5 + x1_2*x1_3", "x1_2*x1_5 - x1_2*x1_4", "x1_4*x1_5 + x1_3*x1_5 - x1_3*x1_4"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "catalog": "H2xR_spaces",

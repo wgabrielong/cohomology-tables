@@ -82,6 +82,14 @@
   "provenance": "built-in",
   "reproducible_labelling": true,
   "ring_presentation": "Q[x6]/(x6^2),  |x6| = 6",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 6,
+      "label": "x6",
+      "order": "0"
+    }],
+    "relations": ["x6^2"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "sphere(6)",

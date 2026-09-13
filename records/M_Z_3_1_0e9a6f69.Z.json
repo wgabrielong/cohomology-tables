@@ -4,19 +4,16 @@
     "basis_labels": ["1"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [2]
+      "face": [0]
     }, {
       "coefficient": "1",
       "face": [3]
     }, {
       "coefficient": "1",
-      "face": [6]
+      "face": [8]
     }, {
       "coefficient": "1",
-      "face": [0]
-    }, {
-      "coefficient": "1",
-      "face": [1]
+      "face": [4]
     }, {
       "coefficient": "1",
       "face": [5]
@@ -25,10 +22,13 @@
       "face": [7]
     }, {
       "coefficient": "1",
-      "face": [4]
+      "face": [1]
     }, {
       "coefficient": "1",
-      "face": [8]
+      "face": [2]
+    }, {
+      "coefficient": "1",
+      "face": [6]
     }]],
     "degree": 0,
     "group": "Z",
@@ -43,7 +43,7 @@
     "basis_labels": ["x2"],
     "cocycle_representatives": [[{
       "coefficient": "1",
-      "face": [0, 4, 6]
+      "face": [0, 5, 7]
     }]],
     "degree": 2,
     "group": "Z/3",
@@ -61,6 +61,14 @@
   "provenance": "Sage",
   "reproducible_labelling": true,
   "ring_presentation": "Z[x2]/(3*x2, x2^2),  |x2| = 2",
+  "ring_presentation_structured": {
+    "generators": [{
+      "degree": 2,
+      "label": "x2",
+      "order": "3"
+    }],
+    "relations": ["3*x2", "x2^2"]
+  },
   "schema": "cohomology-tables/ring-record/1",
   "source": {
     "invocation": "simplicial_complexes.MooreSpace(3)",
