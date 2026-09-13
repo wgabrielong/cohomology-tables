@@ -104,7 +104,7 @@ julia test/runtests.jl                  # offline checks; no network, no Sage
 julia test/runtests.jl --online         # + Sage and Manifold Page checks
 ```
 
-The first line should print 204 entries, the second should report 5790 passing
+The first line should print 204 entries, the second should report 5793 passing
 checks. Neither needs Sage or a network connection: the 2772 records under
 `records/` are committed — 1386 cup product rings and 1386 homology records — so
 every computed result can be read straight from the repository. Sage and the
@@ -424,7 +424,7 @@ disagreements.**
 | Cup product laws: unit, graded commutativity (`check_ring`) | every ring record | all pass |
 | Universal coefficients: `dim H^d(K;F)` against the integral homology | every space, `QQ` and the five fields | 4782 / 4782 agree |
 | Euler characteristic against the f-vector | every space | all pass |
-| Test suite | offline / online | 5790 / 5847 pass |
+| Test suite | offline / online | 5793 / 5850 pass |
 
 ### What is *not* independent
 
@@ -476,7 +476,7 @@ Worth recording, because each was found by a check rather than by reading:
 ### Reproducing
 
 ```bash
-julia test/runtests.jl --online                         # 5847 checks
+julia test/runtests.jl --online                         # 5850 checks
 julia scripts/verify_homology.jl --deep                # cheap pass + integral oracle
 julia scripts/verify_homology.jl --cross                # the ten-ring cross-check
 julia scripts/fetch_sources.jl                         # 157 input hashes
