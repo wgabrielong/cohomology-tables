@@ -354,6 +354,17 @@ const OFFLINE_MODELS = vcat(["point" => point_space()],
       @test pres("RP^4", GF(2)) == "F_2[x1]/(x1^5),  |x1| = 1"
       @test pres("RP^4", ZZ) == "Z[x2]/(2*x2, x2^3),  |x2| = 2"
       @test pres("point", ZZ) == "Z"
+      # K3: 22 generators in one degree, and the 252 relations are the
+      # intersection form. The cost of a presentation tracks the monomial count,
+      # not the generator count -- K3's generators all sit in degree 2, which is
+      # why it is affordable where `(S^2xS^1)#11`, also 22 generators but spread
+      # over degrees 1 and 2, is not.
+      XK = simplicial_cohomology_ring("K3", catalogue_space("K3"), GF(7))
+      PK = ring_presentation(XK)
+      @test !isnothing(PK)
+      @test length(PK.generators) == 22
+      @test all(g -> g.degree == 2, PK.generators)
+      @test length(PK.relations) == 252
       # every generator is a class of the canonical basis, so its label is one
       # the printed table already uses
       XW = simplicial_cohomology_ring("Wu", catalogue_space("Wu manifold"), ZZ)

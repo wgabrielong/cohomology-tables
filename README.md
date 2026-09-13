@@ -270,10 +270,11 @@ Three qualifications on what a ring record contains:
   `(S^2twistS^1)#20` (41–42). Those records still carry the graded groups and
   the cocycle representatives; only the structure constants are dropped, and
   `cup(X, (p,i), (q,j))` computes any single product locally.
-* **A closed-form presentation is stored for 1109 of 1386**, and 1030 of those
+* **A closed-form presentation is stored for 1127 of 1386**, and 1048 of those
   also carry a machine-readable `ring_presentation_structured` with the
-  generators and relations as separate fields. 157 of the 198 spaces are
-  presented over every ring. What is left unpresented is bounded by the caps in
+  generators and relations as separate fields. 158 of the 198 spaces are
+  presented over every ring, `K3` among them — 22 generators in degree 2 and
+  252 relations, which is its intersection form. What is left unpresented is bounded by the caps in
   [Known limitations](#known-limitations): `K3` and the `(S^2xS^1)#k` family
   need more generators than the default allows, and `S^0` is disconnected.
   The table remains the primary content; the presentation is derived from it.
@@ -423,7 +424,7 @@ disagreements.**
 | Cup product laws: unit, graded commutativity (`check_ring`) | every ring record | all pass |
 | Universal coefficients: `dim H^d(K;F)` against the integral homology | every space, `QQ` and the five fields | 4782 / 4782 agree |
 | Euler characteristic against the f-vector | every space | all pass |
-| Test suite | offline / online | 5790 / 5843 pass |
+| Test suite | offline / online | 5790 / 5847 pass |
 
 ### What is *not* independent
 
@@ -475,7 +476,7 @@ Worth recording, because each was found by a check rather than by reading:
 ### Reproducing
 
 ```bash
-julia test/runtests.jl --online                         # 5843 checks
+julia test/runtests.jl --online                         # 5847 checks
 julia scripts/verify_homology.jl --deep                # cheap pass + integral oracle
 julia scripts/verify_homology.jl --cross                # the ten-ring cross-check
 julia scripts/fetch_sources.jl                         # 157 input hashes
@@ -917,18 +918,32 @@ takes the first derived subdivision of a simplicial cell complex with `(2n)!/n!`
 facets — for `n = 4` that is `1680 * 9! = 609,638,400` facets in dimension 8. An
 earlier announced family (Sarkar) was withdrawn from arXiv.
 
-**Ring presentations stop at 12 generators.** `identify_ring` handles the
-singly-generated case directly and otherwise runs the general search in
-[`src/presentation.jl`](src/presentation.jl) — indecomposables as generators,
-then the kernel of the free graded-commutative algebra up to degree
-`top + max(|g_i|)`. That covers 159 of the 198 computable spaces. The rest are
-turned away by one of three caps, all of them keyword arguments on
-`ring_presentation`: more than `max_generators = 12` generators (`K3` needs 22,
-`(S^2xS^1)#k` needs `2k`), more than `max_relations = 80`, or a disconnected
-space, where `H^0` is not cyclic (`S^0`). Raising the generator cap to 16 buys
-6 more spaces for roughly ten times the time, which is why it is not the
-default. `rand2_n25`, with 476 classes in one degree, is refused before the
-search starts.
+**Ring presentations are bounded by monomial count, not generator count.**
+`identify_ring` handles the singly-generated case directly and otherwise runs
+the general search in [`src/presentation.jl`](src/presentation.jl) —
+indecomposables as generators, then the kernel of the free graded-commutative
+algebra up to degree `top + max(|g_i|)`. As shipped, 1127 of the 1386 ring
+records carry a presentation and 158 of the 198 spaces have one over every
+coefficient ring.
+
+The binding cap is `max_monomials = 2500`, because that is what the relation
+search actually costs, and it comes apart from the generator count badly. `K3`
+and `(S^2xS^1)#11` both have 22 generators; K3's all sit in degree 2, giving
+2299 monomials and a 16-second presentation with 252 relations — the
+intersection form — while `#11` spreads its generators over degrees 1 and 2,
+giving 4367 monomials and 274 seconds. Capping on generators would either lose
+K3 or admit the whole expensive tail.
+
+What is still turned away: the `(S^2xS^1)#k` and `(S^2twistS^1)#k` families,
+`Sigma_15` and `Sigma_26`, `Hom_C6_compl_K5_small`, `rand2_n25` (476 classes in
+one degree, refused before the search starts), and `S^0`, which is disconnected,
+so `H^0` is not cyclic and no cap will help.
+
+The cap is not cosmetic. `(S^2xS^1)#11` over `GF(2)` has 9163 monomials, and
+without the guard the relation search does not finish -- it was left running for
+over thirty minutes. With it the space is refused in 0.3 seconds. All the limits
+are keyword arguments on `ring_presentation`, so a larger budget is available on
+demand, but the default is chosen to be safe on every space in the catalogue.
 
 **One Manifold Page file contradicts itself.** `SU2_SO3` publishes
 `f=(13,78,286,533,468,156)` and `H_*=(Z,0,Z,Z,0,Z)` — the homology of `S^2 x

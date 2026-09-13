@@ -101,6 +101,18 @@ function _in_span(R, rows, v)
   return can_solve(A, matrix(R, 1, n, v); side = :left)
 end
 
+# Are *all* of `cands` in the span of `rows`? One solve with a many-row right
+# hand side, rather than one solve per candidate. In the degrees above the top
+# of the ring every monomial is a relation and nearly all of them are already
+# implied, so this collapses thousands of membership tests into one. Over ZZ
+# `can_solve` tests the lattice, not the rational span, which is what is wanted.
+function _all_in_span(R, rows, cands)
+  (isempty(cands) || isempty(rows)) && return isempty(cands)
+  n = length(first(cands))
+  n == 0 && return true
+  return can_solve(_as_matrix(R, rows, n), _as_matrix(R, cands, n); side = :left)
+end
+
 # Rows spanning {a : a * V lies in the span of `amb`}, as vectors of length
 # nrows(V). This is the kernel of the evaluation map into H^d = R^n / amb.
 function _relation_kernel(R, V::Vector{Vector{Any}}, amb, n::Int)
@@ -144,7 +156,8 @@ bases: in each positive degree, the basis classes that are not already in the
 span of the decomposables and of the classes chosen before them.
 
 `max_generators` stops the search as soon as that many have been found, and
-returns `nothing`. This is a real economy, not just a cap on the answer: the
+returns `nothing`. It is a coarse guard only -- the cap that usually binds is
+`max_monomials` on `ring_presentation`. This is a real economy, not just a cap on the answer: the
 decomposables in degree `d` cost one `cup` per pair from `H^i x H^(d-i)`, so
 abandoning a hopeless space in low degree avoids the quadratic work in high
 degree. `Hom_C6_compl_K5_small` has 58 classes in `H^2`, and computing `H^2*H^2`
@@ -269,8 +282,9 @@ end
 printing -- too many generators, too many relations, or a presentation that
 failed its own verification.
 """
-function ring_presentation(X::CohomologyRing; max_generators::Int = 12,
-                           max_relations::Int = 80, max_classes::Int = 500)
+function ring_presentation(X::CohomologyRing; max_generators::Int = 40,
+                           max_relations::Int = 300, max_classes::Int = 500,
+                           max_monomials::Int = 2500)
   R = X.coeff_ring
   length(graded_basis(X, 0)) == 1 || return nothing
   # A coarse pre-guard, cheap to evaluate; the real economy is the early bail
@@ -284,6 +298,14 @@ function ring_presentation(X::CohomologyRing; max_generators::Int = 12,
   top = top_degree(X)
   bound = top + maximum(degs)
   mons_by_deg = _monomials_by_degree(degs, bound, _odd_squares_possible(R))
+  # The monomial count, not the generator count, is what the relation search
+  # costs, and the two come apart badly. `K3` and `(S^2xS^1)#11` both have 22
+  # generators; K3's all sit in degree 2, giving 2299 monomials and a 16-second
+  # presentation, while #11 spreads its over degrees 1 and 2, giving 4367 over
+  # GF(7) and 9163 over GF(2) -- where odd generators may square, so exponents
+  # are not capped at 1 -- and does not finish. Capping on generators would
+  # either lose K3 or admit that.
+  sum(length, mons_by_deg) <= max_monomials || return nothing
   index_of = [Dict(m => t for (t, m) in enumerate(mons_by_deg[d])) for d in 1:bound]
 
   found = Tuple{Int,Vector{Any},Vector{Vector{Int}}}[]   # (degree, coeffs, monomials)
@@ -297,6 +319,9 @@ function ring_presentation(X::CohomologyRing; max_generators::Int = 12,
     kern = _relation_kernel(R, V, amb, n)
     isempty(kern) && continue
     implied = _implied_rows(R, mons_by_deg, found, d, index_of, degs)
+    # Nothing new in this degree is the common case by far; settle it in one
+    # solve before falling back to testing row by row.
+    _all_in_span(R, implied, kern) && continue
     for row in kern
       _in_span(R, implied, row) && continue
       push!(found, (d, row, mons))
